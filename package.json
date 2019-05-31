@@ -1,0 +1,29 @@
+{
+  "name": "ts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DreamLarva/my_ts_starter.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DreamLarva/my_ts_starter/issues"
+  },
+  "homepage": "https://github.com/DreamLarva/my_ts_starter#readme",
+  "devDependencies": {
+    "@types/jquery": "^3.3.29",
+    "@types/lodash-es": "^4.17.3",
+    "ts-node": "^8.1.0",
+    "typescript": "^3.4.1"
+  }
+}

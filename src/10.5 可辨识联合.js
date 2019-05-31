@@ -1,0 +1,43 @@
+"use strict";
+/**
+ * 合并单例类型，联合类型，类型保护和类型别名来创建一个叫做 可辨识联合的高级模式
+ * 称做 标签联合或 代数数据类型
+ *  具有普通的单例类型属性— 可辨识的特征。
+ *  一个类型别名包含了那些类型的联合— 联合。
+ *  此属性上的类型保护。
+ * */
+Object.defineProperty(exports, "__esModule", { value: true });
+{
+    let area = function (s) {
+        switch (s.kind) { // 通过kind 辨识
+            case "square":
+                return s.size * s.size;
+            case "rectangle":
+                return s.height * s.width;
+            case "circle":
+                return Math.PI * s.radius ** 2;
+        }
+    };
+}
+{
+    let assertNever = function (x) {
+        throw new Error("Unexpected object: " + x);
+    };
+    let area = function (s) {
+        switch (s.kind) {
+            case "square":
+                return s.size * s.size;
+            case "rectangle":
+                return s.height * s.width;
+            case "circle":
+                return Math.PI * s.radius ** 2;
+            /**
+             * 没有Triangle 的类型方法 可能会返回 undefined
+             * 需要一个 default 来确保类型
+             * */
+            default:
+                return assertNever(s);
+        }
+    };
+}
+//# sourceMappingURL=10.5 可辨识联合.js.map

@@ -1,0 +1,1 @@
+{"version":3,"file":"Node.js里的动态模块加载.js","sourceRoot":"./","sources":["src/11.1 模块 可选的模块加载和其它高级加载场景/Node.js里的动态模块加载.ts"],"names":[],"mappings":";;AAGA;;;;KAIK;AACL,IAAI,IAAI,EAAE;IACN;;SAEK;IACL,IAAI,gBAAgB,GAAe,OAAO,CAAC,oBAAoB,CAAC,CAAC;IACjE,IAAI,SAAS,GAAG,IAAI,gBAAgB,EAAE,CAAC;IACvC,IAAI,SAAS,CAAC,YAAY,CAAC,KAAK,CAAC,EAAE,EAAE,SAAS,EAAE;CACnD"}
