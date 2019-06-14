@@ -137,7 +137,7 @@ type T22 = InstanceType<never>;  // any
 type T26 = typeof C // 提示类型 {new():C,prototype:C}
 
 /**
- * 本类型 非ts 默认的
+ * from 3.5.0 为ts 默认
  * 从类型 T 中排除 key 是 类型 T 的类型s
  * */
 type Omit<T, K> = Pick<T, Exclude<keyof T, K>>

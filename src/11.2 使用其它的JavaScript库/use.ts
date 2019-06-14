@@ -15,4 +15,4 @@ import URL from "url" // ok
 // import * as URL from "url"; // ok
 
 let myUrl = URL.parse("http://www.typescriptlang.org");
-console.log(myUrl)
+console.log(myUrl);

@@ -18,7 +18,8 @@
     // "outFile": "./",                       /* Concatenate and emit output to single file. */
     // "outDir": "lib",
     /* Redirect output structure to the directory. */
-     "rootDir": "./src",                       /* Specify the root directory of input files. Use to control the output directory structure with --outDir. */
+    "rootDir": "./src",
+    /* Specify the root directory of input files. Use to control the output directory structure with --outDir. */
     // "composite": true,                     /* Enable project compilation */
     // "removeComments": true,                /* Do not emit comments to output. */
     // "noEmit": true,                        /* Do not emit outputs. */
@@ -28,31 +29,38 @@
     // "isolatedModules": true,               /* Transpile each file as a separate module (similar to 'ts.transpileModule'). */
 
     /* Strict Type-Checking Options */
-    "strict": true,
     /* Enable all strict type-checking options. */
-    // "noImplicitAny": true,                 /* Raise error on expressions and declarations with an implied 'any' type. */
-    "strictNullChecks": true,
+    "strict": true,
+    /* Raise error on expressions and declarations with an implied 'any' type. */
+    "noImplicitAny": true,
     /* Enable strict null checks. */
-    "strictFunctionTypes": true,
+    "strictNullChecks": true,
     /* Enable strict checking of function types. */
-    "strictPropertyInitialization": true,
+    "strictFunctionTypes": true,
     /* Enable strict checking of property initialization in classes. */
-    "noImplicitThis": true,
+    "strictPropertyInitialization": true,
     /* Raise error on 'this' expressions with an implied 'any' type. */
-    "alwaysStrict": true,
+    "noImplicitThis": true,
     /* Parse in strict mode and emit "use strict" for each source file. */
+    "alwaysStrict": true,
 
     /* Additional Checks */
     // "noUnusedLocals": true,                /* Report errors on unused locals. */
     // "noUnusedParameters": true,            /* Report errors on unused parameters. */
-    // "noImplicitReturns": true,             /* Report error when not all code paths in function return a value. */
-    // "noFallthroughCasesInSwitch": true,    /* Report errors for fallthrough cases in switch statement. */
+    // "noImplicitReturns": true,             /* 不允许 隐式返回(有任何分支 没有return 内容) */
+    "noFallthroughCasesInSwitch": true,
+    /* 不允许出现 switch case 出现到达 多个case中的情况 */
+    "allowUnreachableCode": false,
+    // 是否允许 出现不可能执行到的 代码
+
 
     /* Module Resolution Options */
-    // "moduleResolution": "node",            /* Specify module resolution strategy: 'node' (Node.js) or 'classic' (TypeScript pre-1.6). */
+    "moduleResolution": "node",
+    /* Specify module resolution strategy: 'node' (Node.js) or 'classic' (TypeScript pre-1.6). */
     // "baseUrl": "./",                       /* Base directory to resolve non-absolute module names. */
     // "paths": {},                           /* A series of entries which re-map imports to lookup locations relative to the 'baseUrl'. */
-    // "rootDirs": [],                        /* List of root folders whose combined content represents the structure of the project at runtime. */
+    "rootDirs": [],
+    /* List of root folders whose combined content represents the structure of the project at runtime. */
     // "typeRoots": [],                       /* List of folders to include type definitions from. */
     // "types": [],                           /* Type declaration files to be included in compilation. */
     "allowSyntheticDefaultImports": true,

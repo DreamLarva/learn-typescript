@@ -59,5 +59,27 @@
 
 
 }
+/**
+ * From 2.4
+ * 返回类型作为推断目标
+ * */
+{
+    function arrayMap<T, U>(f: (x: T) => U): (a: T[]) => U[] {
+        return a => a.map(f);
+    }
+
+    const lengths: (a: string[]) => number[] = arrayMap(s => s.length)
+// 等同于
+}
+{
+    // 推断类型为 arrayMap(f: (x: T) => U): (a: T[]) => U[] 同上
+    function arrayMap<T, U>(f: (x: T) => U) {
+        return (a:T[]) => a.map(f);
+    }
+
+    // 推断为 lengths: (a: string[]) => number[] 同上
+    // 相当于 将T 设为 string 同时 由 T 推断了 S 为 number
+    const lengths = arrayMap((s:string) => s.length)
+}
 
 export{}

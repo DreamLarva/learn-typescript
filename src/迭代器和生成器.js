@@ -82,4 +82,30 @@ Object.defineProperty(exports, "__esModule", { value: true });
         // a 被推断为 number | string | true | 1 | Promise<1>
     }
 }
+/**
+ * 异步生成器
+ * */
+{
+    async function sleep(time) {
+        return new Promise(resolve => setTimeout(resolve, time));
+    }
+    // 返回值 推断为 AsyncIterableIterator<1 | number | 4>
+    async function* g() {
+        yield 1;
+        await sleep(100);
+        yield* [2, 3]; // 此处推断 出 number
+        yield* (async function* () {
+            await sleep(100);
+            yield 4;
+        })();
+    }
+    async function main() {
+        // for-await-of语句 进行 迭代
+        for await (const a of g()) {
+            // a 推断为 1 | number | 4
+            console.log(a);
+        }
+    }
+    main();
+}
 //# sourceMappingURL=迭代器和生成器.js.map

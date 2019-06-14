@@ -23,6 +23,7 @@
   "devDependencies": {
     "@types/jquery": "^3.3.29",
     "@types/lodash-es": "^4.17.3",
+    "@types/node": "^10.14.8",
     "ts-node": "^8.1.0",
     "typescript": "^3.4.1"
   }

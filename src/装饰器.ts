@@ -6,7 +6,7 @@
 {
     function f() {
         console.log("f(): evaluated");
-        return function (target, propertyKey: string, descriptor: PropertyDescriptor) {
+        return function (target: Object, propertyKey: string, descriptor: PropertyDescriptor) {
             console.log(target, propertyKey, descriptor);
             console.log("f(): called");
         }
@@ -14,7 +14,7 @@
 
     function g() {
         console.log("g(): evaluated");
-        return function (target, propertyKey: string, descriptor: PropertyDescriptor) {
+        return function (target: Object, propertyKey: string, descriptor: PropertyDescriptor) {
             console.log(target, propertyKey, descriptor);
             console.log("g(): called");
         }
@@ -54,17 +54,20 @@
  * * 注意  如果你要返回一个新的构造函数，你必须注意处理好原来的原型链。 在运行时的装饰器调用逻辑中 不会为你做这些。
  * */
 {
-    function decorator(target) {
-
+    function decorator<T>(target: T): T {
+        return target
     }
 
     @decorator
-    class Test1 {}
+    class Test1 {
+    }
 
     // 相当于
 
-    class Test2 {}
-    const AfterDecorate = decorator(Test2) || Test2
+    class Test2 {
+    }
+
+    decorator(Test2);
 
 
     // 密封此类的构造函数和原型
@@ -76,9 +79,11 @@
     @sealed
     class Greeter {
         greeting: string;
+
         constructor(message: string) {
             this.greeting = message;
         }
+
         greet() {
             return "Hello, " + this.greeting;
         }
@@ -87,9 +92,9 @@
 {
     // function classDecorator<T extends {new(...args:any[]):{greeting:string,greet:()=>string}}>(constructor:T) {
     // 约束 泛型T 也就会参数 必须是 一个类(注意并不是一个实例)
-    function classDecorator<T extends {new(...args:any[]):{}}>(constructor:T) {
+    function classDecorator<T extends { new(...args: any[]): {} }>(constructor: T) {
 
-            return class extends constructor {
+        return class extends constructor {
             newProperty = "new property";
             hello = "override";
         }
@@ -99,6 +104,7 @@
     class Greeter {
         property = "property";
         hello: string;
+
         constructor(m: string) {
             this.hello = m;
         }

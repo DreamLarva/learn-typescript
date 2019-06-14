@@ -64,6 +64,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * */
 {
     function decorator(target) {
+        return target;
     }
     let Test1 = class Test1 {
     };
@@ -73,7 +74,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     // 相当于
     class Test2 {
     }
-    const AfterDecorate = decorator(Test2) || Test2;
+    decorator(Test2);
     // 密封此类的构造函数和原型
     function sealed(constructor) {
         Object.seal(constructor);
