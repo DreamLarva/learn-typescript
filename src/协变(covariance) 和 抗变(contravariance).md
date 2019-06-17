@@ -68,7 +68,7 @@
 形式上来讲: 我们可以允许不可变列表的类型在其类型参数中是协变的，
 但是可变列表的类型在其类型参数中必须是不变的（既不是协变也不是逆变）。
 
-> 在Java中，数组是可变的和协变的。这当然是不健全的。
-> 然而 Typescript 的 Array 也是 数组是可变的和协变的
+> 在Java中，数组是可变的和协变的。这当然是不健全的。  
+> 然而 Typescript 的 Array 也是, 数组是可变的和协变的
 
 [原文地址](https://www.stephanboyer.com/post/132/what-are-covariance-and-contravariance)
