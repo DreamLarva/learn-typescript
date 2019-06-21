@@ -84,6 +84,26 @@
     let value1: Map[1] = 1;
     // let value1: Map["2"] = "1"; // error Map中属性名为 "2" 的属性值 必须是number
 }
+/**
+ * 对于数组类型同理
+ * Array<T>[number] =  T
+ * */
+{
+    type a = (string | number) [];
+
+    type b = a[number] // 推断为 string | number
+}
+/**
+ * 当然可以用 字符串联合类型 取出 值的 联合类型
+ * */
+{
+    type keys = "a" | "b";
+    type properties1 = { a: 1, b: true }[keys] // 推断出类型 1 | true
+    type properties2<T> = T[keyof T] // 推断出 T 类型 1 所有的值的类型的集合
+
+    type someObject = { a: 1, b: "", c: never }; // 注意这里有个never
+    type properties3 = properties2<someObject>; // 推断 1 | "" (老样子 联合 只有有 非 never 最后 就会过滤掉 never 类型)
+}
 
 
 export {}

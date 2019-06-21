@@ -1,6 +1,21 @@
 let sym1 = Symbol();
 let sym2 = Symbol("key"); // 可选的字符串key
 let sym3 = Symbol("key");
+
+/**
+ * 注意 let 初始化的 类型为 symbol
+ * 而 const 初始化的 类型为 unique symbol
+ *
+ * unique symbols是 symbols的子类型
+ * */
+{
+    let a = Symbol();
+    const b = a; // b 类型为 symbol
+
+    const c = Symbol();
+    let d = c; // d 类型为 symbol
+}
+
 // symbols是唯一的
 sym2 === sym3; // false,
 

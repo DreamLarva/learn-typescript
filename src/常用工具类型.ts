@@ -1,3 +1,5 @@
+import {sample} from "lodash-es";
+
 type sample = {
     a: 1,
     b: number,
@@ -35,6 +37,7 @@ type Readonly<T> = {
 };
 type Readonly_1 = Readonly<sample>
 
+
 /**
  * From T, pick a set of properties whose keys are in the union K
  * 返回 泛型 T 中 索引 K 的那些 组成一个新的 类型
@@ -52,10 +55,19 @@ type Pick_1 = Pick<sample, "a" | "b">
 type Record<K extends keyof any, T> = {
     [P in K]: T;
 };
-type Record_1 = Record<number, sample>
+type Record_1 = Record<"key", sample>
+const record:Record_1 =  {
+    "key":{
+        a: 1,
+        b: 1,
+        c: "string",
+        d: true,
+        e: () => {}
+    }
+};
 
 
-/**
+    /**
  * Exclude from T those types that are assignable to U
  * 从T中剔除可以赋值给U的类型
  */

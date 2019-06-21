@@ -50,7 +50,10 @@
 
     // 当推断时 只要有 非never 类型的 就是推断为非 never 类型
     // 当仅有 never 类型 才推断为 never 类型
-    let a = 1 || new Error()
+    let a = 1 || new Error();
+
+    // never 类型 和 任意非never类型 T 的联合类型 为 T
+    type b = never | number ; // 推断类型 为 number
 }
 
 /**
@@ -91,7 +94,19 @@
 
 /**
  * Function类型
+ * 代表最广泛的任意的函数
  * */
+{
+    type a = Function
+    type b = (...x: any[]) => any;
+    let a!:a;
+    let b!:b;
+
+    a = b ;
+    // b = a // Error
+}
+
+
 
 
 export {}
