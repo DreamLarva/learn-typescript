@@ -154,4 +154,41 @@
 {
     // type ElementType<T> = T extends any[] ? ElementType<T[number]> : T;  // Error 不允许递归自己
 }
+/**
+ * 有条件类型中的类型推断
+ *
+ * 现在在有条件类型的extends子语句中，允许出现infer声明，它会引入一个待推断的类型变量。
+ * 这个推断的类型变量可以在有条件类型的true分支中被引用。
+ * 允许出现多个同类型变量的infer。
+ * */
+{
+    // 返回 传入函数的 返回值的类型
+    type ReturnType<T> = T extends (...args: any[]) => infer R ? R : any;
+    type T0 = ReturnType<() => number> // 推断为 number
+    type T1<T> = ReturnType<() => T> // 推断为 {}
+}
+{
+    type Unpacked<T> =
+        T extends (infer U)[] ? U :
+            T extends (...args: any[]) => infer U ? U :
+                T extends Promise<infer U> ? U :
+                    T;
+
+    type T0 = Unpacked<string>;  // string
+    type T1 = Unpacked<string[]>;  // string
+    type T2 = Unpacked<() => string>;  // string
+    type T3 = Unpacked<Promise<string>>;  // string
+    type T4 = Unpacked<Promise<string>[]>;  // Promise<string>
+    type T5 = Unpacked<Unpacked<Promise<string>[]>>;  // string
+    type T6 = Unpacked<{a:number}>;  // {a:number}
+
+    /**
+     * 下面的例子解释了在协变位置上，同一个类型变量的多个候选类型会被推断为联合类型
+     * */
+    type Foo<T> = T extends { a: infer U, b: infer U } ? U : never;
+    type T10 = Foo<{ a: string, b: string }>;  // string
+    type T11 = Foo<{ a: string, b: number }>;  // string | number
+    type T12 = Foo<{ a: {a:string}, b: {b:number} }>;  // {a:string} | {b:number}
+}
+
 export {};
