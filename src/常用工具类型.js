@@ -1,5 +1,14 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const record = {
+    "key": {
+        a: 1,
+        b: 1,
+        c: "string",
+        d: true,
+        e: () => { }
+    }
+};
 const Parameters_1 = []; // 无参数 就是 空数组
 function f1(s) {
     return { a: 1, b: s };

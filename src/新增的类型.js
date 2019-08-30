@@ -78,4 +78,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
     create_1(() => {
     }); // ok
 }
+/**
+ * Function类型
+ * 代表最广泛的任意的函数
+ * */
+{
+    let a;
+    let b;
+    a = b;
+    // b = a // Error
+}
 //# sourceMappingURL=新增的类型.js.map

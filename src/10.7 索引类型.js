@@ -55,4 +55,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
     let value1 = 1;
     // let value1: Map["2"] = "1"; // error Map中属性名为 "2" 的属性值 必须是number
 }
+/**
+ * 对于数组类型同理
+ * Array<T>[number] =  T
+ * */
+{
+}
+/**
+ * 当然可以用 字符串联合类型 取出 值的 联合类型
+ * */
+{
+}
 //# sourceMappingURL=10.7 索引类型.js.map
