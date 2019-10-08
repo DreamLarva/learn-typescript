@@ -1,3 +1,0 @@
-interface AA {
-    color: string;
-}

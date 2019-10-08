@@ -35,8 +35,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
         // y = x; // Error because x() lacks a location property
     }
 }
+/**
+ * @deprecated 函数参数双向协变
+ * 现在 函数 在参数位置上抗变 在返回值位置协变
+ * */
 {
-    /** 函数参数双向协变 */
     let EventType;
     (function (EventType) {
         EventType[EventType["Mouse"] = 0] = "Mouse";
@@ -46,8 +49,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
         /* ... */
     }
     // MouseEvent兼容Event  不稳妥, but useful and common
-    // 现在报错 尽管你 将 e 声明为 MouseEvent 但是依然声明为Event Event 上并没有 x,y 属性 所以此处报错
-    // listenEvent(EventType.Mouse, (e: MouseEvent) => console.log(e.x + ',' + e.y)); // error
+    // listenEvent(EventType.Mouse, (e: MouseEvent) => console.log(e.x + ',' + e.y)); // error 现在 e 的位置抗变 所以现在报错
     // 不推荐 在函数内容 指定参数的类型 Undesirable alternatives in presence of soundness
     listenEvent(EventType.Mouse, (e) => console.log(e.x + ',' + e.y));
     // 完整声明写法 泛型约束:函数必定兼容<(e: Event) => void>
@@ -93,4 +95,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
     }
     invokeLater([1, 2], foo); // 这里 foo 匹配的是 (a:number):number
 }
+// a = b; // error 回调函数 在 参数位置抗变
+b = a;
 //# sourceMappingURL=9.1 兼容 比较两个函数.js.map

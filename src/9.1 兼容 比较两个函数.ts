@@ -40,8 +40,11 @@
         // y = x; // Error because x() lacks a location property
     }
 }
+/**
+ * @deprecated 函数参数双向协变
+ * 现在 函数 在参数位置上抗变 在返回值位置协变
+ * */
 {
-    /** 函数参数双向协变 */
     enum EventType { Mouse, Keyboard }
 
     interface Event {
@@ -62,8 +65,7 @@
     }
 
     // MouseEvent兼容Event  不稳妥, but useful and common
-    // 现在报错 尽管你 将 e 声明为 MouseEvent 但是依然声明为Event Event 上并没有 x,y 属性 所以此处报错
-    // listenEvent(EventType.Mouse, (e: MouseEvent) => console.log(e.x + ',' + e.y)); // error
+    // listenEvent(EventType.Mouse, (e: MouseEvent) => console.log(e.x + ',' + e.y)); // error 现在 e 的位置抗变 所以现在报错
 
     // 不推荐 在函数内容 指定参数的类型 Undesirable alternatives in presence of soundness
     listenEvent(EventType.Mouse, (e: Event) => console.log((<MouseEvent>e).x + ',' + (<MouseEvent>e).y));
@@ -124,5 +126,20 @@
     }
     invokeLater([1, 2],foo) // 这里 foo 匹配的是 (a:number):number
 }
+/**
+ * from 2.4 回调参数的严格抗变
+ * TypeScript一直是以双变（bivariant）的方式来比较参数。
+ * 这样做有很多原因，总体上来说这不会有什么大问题直到我们发现它应用在 Promise和Observable上时有些副作用。
+ * */
+
+interface Mappable<T> {
+    map<U>(f: (x: T) => U): Mappable<U>;
+}
+
+declare let a: Mappable<number>;
+declare let b: Mappable<string | number>;
+
+// a = b; // error 回调函数 在 参数位置抗变
+b = a;
 
 export {};

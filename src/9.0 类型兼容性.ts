@@ -56,4 +56,23 @@
 }
 
 
+interface Dog {
+    kind: "dog"
+    dogProp: any;
+}
+
+interface Cat {
+    kind: "cat"
+    catProp: any;
+}
+
+type a1 = Dog[] | Cat[];
+type a2 = (Dog | Cat)[];
+
+declare let a1: a1;
+declare let a2: a2;
+
+// a1 = a2; // error
+a2 = a1; // a2 兼容 a1
+
 export {}

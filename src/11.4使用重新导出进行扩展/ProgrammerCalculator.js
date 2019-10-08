@@ -16,8 +16,8 @@ class ProgrammerCalculator extends Calculator_1.Calculator {
         }
     }
 }
-ProgrammerCalculator.digits = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F"];
 exports.Calculator = ProgrammerCalculator;
+ProgrammerCalculator.digits = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F"];
 // Also, export the helper function
 var Calculator_2 = require("./Calculator");
 exports.test = Calculator_2.test;

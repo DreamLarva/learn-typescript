@@ -32,4 +32,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
     }
     greet(y); // OK
 }
+// a1 = a2; // error
+a2 = a1; // a2 兼容 a1
 //# sourceMappingURL=9.0 类型兼容性.js.map
