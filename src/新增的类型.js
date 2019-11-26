@@ -89,7 +89,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
     // b = a // Error
 }
 /**
- * unKnown 类型
+ * unknown 类型
  * 任何值都可以赋给unknown，
  * 但是当没有类型断言或基于控制流的类型细化时unknown不可以赋值给其它类型，除了它自己和any外。
  * 同样地，在unknown没有被断言或细化到一个确切类型之前，是不允许在其上进行任何操作的。
@@ -153,8 +153,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
     // Spread of unknown causes result to be unknown
     function f26(x, y, z) {
         let o1 = { a: 42, ...x }; // { a: number }
-        let o2 = { a: 42, ...x, ...y }; // unknown
-        let o3 = { a: 42, ...x, ...y, ...z }; // any
+        // let o2 = {a: 42, ...x, ...y}; // error 3.72 只要对象类型才能展开
+        // let o3 = {a: 42, ...x, ...y, ...z}; // error 3.72 只要对象类型才能展开
     }
     // Functions with unknown return type don't need return expressions
     // function f27(): unknown {} // error
