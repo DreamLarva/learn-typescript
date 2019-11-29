@@ -168,9 +168,9 @@ _name = "smith";
      * */
     let a = new Animal() as Dog;
     let b = new Dog() as Animal;
-    b = {} as any;
-    b = 1 as any;
-    b = true as any;
+    b = {} as any; // b 类型依然是 Animal
+    b = 1 as any; // b 类型依然是 Animal
+    b = true as any; // b 类型依然是 Animal
     // b = {} as unknown; // error
     // b = {} as {};  // error
     // b = {} as Object; // error
