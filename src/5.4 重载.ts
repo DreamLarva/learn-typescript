@@ -62,5 +62,36 @@
     fun("1", false);
     fun("1", "2")
 }
+{
+    /**
+     * 当然可以出现不同的 参数名
+     * */
+    type returnData = {
+        top: number;
+        right: number;
+        bottom: number;
+        left: number;
+    };
+
+    function padding(all: number): returnData;
+    function padding(topAndBottom: number, leftAndRight: number): returnData;
+    function padding(top: number, right: number, bottom: number, left: number): returnData;
+    // Actual implementation that is a true representation of all the cases the function body needs to handle
+    function padding(a: number, b?: number, c?: number, d?: number): returnData {
+        if (b === undefined && c === undefined && d === undefined) {
+            b = c = d = a;
+        } else if (c === undefined && d === undefined) {
+            c = a;
+            d = b;
+        }
+        return {
+            top: a,
+            right: b!,
+            bottom: c!,
+            left: d!
+        };
+    }
+}
+
 
 export {}

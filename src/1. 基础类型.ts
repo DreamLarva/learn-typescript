@@ -5,6 +5,7 @@ let binaryLiteral: number = 0b1010;
 let octalLiteral: number = 0o744;
 
 declare function create(o: object | null): void;
+
 /**
  * 注意ts 中不能直接在最外层的作用域 定义 name 的变量 或者是 常量
  * */
@@ -17,8 +18,8 @@ _name = "smith";
 {
     let name: string = `Gene`;
     let age: number = 37;
-    let sentence1: string = `Hello, my name is ${ name }.
-    I'll be ${ age + 1 } years old next month.`;
+    let sentence1: string = `Hello, my name is ${name}.
+    I'll be ${age + 1} years old next month.`;
     let sentence2: string = "Hello, my name is " + name + ".\n\n" +
         "I'll be " + (age + 1) + " years old next month.";
 }
@@ -32,7 +33,7 @@ _name = "smith";
 
 {
     /** 元祖 */
-    // Declare a tuple type
+        // Declare a tuple type
     let x: [string, number];
     // Initialize it
     x = ['hello', 10]; // OK
@@ -109,13 +110,12 @@ _name = "smith";
 }
 
 
-
 {
     /** Object*/
     // object表示非原始类型，也就是除number，string，boolean，symbol，null或undefined之外的类型。
     // ** 注意 ** 这里是不包含null的
     // 使用object类型，就可以更好的表示像Object.create这样的API
-    create({ prop: 0 }); // OK
+    create({prop: 0}); // OK
     create(null); // OK
 
     // create(42); // Error
@@ -153,6 +153,38 @@ _name = "smith";
     let someValue1: any = "this is a string";
 
     let strLength1: number = (someValue as string).length;
+
+    class Animal {
+        a!: number
+    }
+
+    class Dog extends Animal {
+        b!: string
+    }
+
+    /**
+     * 断言只要 左右之前 有一方兼容另一方 就能互相断言
+     * 断言成 any 可以无视任何类型约束
+     * */
+    let a = new Animal() as Dog;
+    let b = new Dog() as Animal;
+    b = {} as any;
+    b = 1 as any;
+    b = true as any;
+    // b = {} as unknown; // error
+    // b = {} as {};  // error
+    // b = {} as Object; // error
+
+    function c(a: any) {
+        let b: Animal = a;
+    }
+
+
+
+    // // let c: Dog = new Animal(); // error
+    // let d: Animal = new Dog()
+
+
 }
 
 export {}

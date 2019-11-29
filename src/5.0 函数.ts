@@ -1,4 +1,58 @@
 /**
+ * 函数声明
+ * 在没有提供函数实现的情况下，有两种声明函数类型的方式:
+ * */
+{
+    type LongHand = {
+        (a: number): number;
+    };
+    type ShortHand = (a: number) => number;
+
+    /**
+     * 重载类型声明的话当然只能用 type
+     * */
+    type LongHandAllowsOverloadDeclarations = {
+        (a: number): number;
+        (a: string): string;
+    };
+
+    const a: LongHandAllowsOverloadDeclarations = <T>(a: T): T => {
+        return a
+    };
+    const b: LongHandAllowsOverloadDeclarations = <T extends string | number>(a: T): T => {
+        return a
+    };
+    const c: LongHandAllowsOverloadDeclarations = (a: any): any => {
+        return a
+    };
+
+    /**
+     * 不报错但是 逻辑有错误
+     * */
+    const f: LongHandAllowsOverloadDeclarations = (a: any): any => {
+        return true
+    };
+    /**
+     * 下面两个错误都是对应关系的错误
+     * 入参的类型 没有完全对应返回值的类型
+     * */
+
+    // error
+    // const d: LongHandAllowsOverloadDeclarations = (a: string | number): string | number => {
+    //     return a
+    // };
+
+    // error
+    // const e: LongHandAllowsOverloadDeclarations = (a: string | number): string | number => {
+    //     if(typeof a === "string"){
+    //         return a as string
+    //     }else{
+    //         return a as number
+    //     }
+    // };
+}
+
+/**
  * 为函数定义类型
  * */
 {
