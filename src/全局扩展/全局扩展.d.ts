@@ -6,6 +6,9 @@ export declare class Observable<T> {
     val: number;
     constructor(val: number);
 }
+/**
+ * 在 .ts 文件中
+ * */
 declare global {
     interface Array<T> {
         toObservable(): Observable<T>;

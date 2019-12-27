@@ -20,8 +20,13 @@ _name = "smith";
     let age: number = 37;
     let sentence1: string = `Hello, my name is ${name}.
     I'll be ${age + 1} years old next month.`;
-    let sentence2: string = "Hello, my name is " + name + ".\n\n" +
-        "I'll be " + (age + 1) + " years old next month.";
+    let sentence2: string =
+        "Hello, my name is " +
+        name +
+        ".\n\n" +
+        "I'll be " +
+        (age + 1) +
+        " years old next month.";
 }
 
 {
@@ -30,13 +35,12 @@ _name = "smith";
     let list2: Array<number> = [1, 2, 3];
 }
 
-
 {
     /** 元祖 */
         // Declare a tuple type
     let x: [string, number];
     // Initialize it
-    x = ['hello', 10]; // OK
+    x = ["hello", 10]; // OK
     console.log(x[0].substr(1)); // OK
     // console.log(x[1].substr(1)); // Error, 'number' does not have 'substr'
 
@@ -50,7 +54,7 @@ _name = "smith";
     {
         let x: [string | number];
         // Initialize it
-        x = ['hello']; // OK
+        x = ["hello"]; // OK
         // 类型断言 x[0]是一个string
         console.log((<string>x[0]).substr(1)); // OK
         // console.log(x[1].substr(1)); // Error, 'number' does not have 'substr'
@@ -58,22 +62,33 @@ _name = "smith";
 }
 {
     /** 枚举 */
-    enum Color {Red, Green, Blue}
+    enum Color {
+        Red,
+        Green,
+        Blue
+    }
 
     let c: Color = Color.Green;
     {
         /** 手动赋值 */
-        enum Color {Red = 1, Green = 2, Blue = 4}
+        enum Color {
+            Red = 1,
+            Green = 2,
+            Blue = 4
+        }
 
         let c: Color = Color.Green;
     }
     {
-        enum Color {Red = 1, Green, Blue}
+        enum Color {
+            Red = 1,
+            Green,
+            Blue
+        }
 
         let colorName: string = Color[2]; // warn 可能index 越界
-        console.log(colorName);  // 显示'Green'因为上面代码里它的值是2
+        console.log(colorName); // 显示'Green'因为上面代码里它的值是2
     }
-
 }
 
 {
@@ -109,7 +124,6 @@ _name = "smith";
     let n: null = null;
 }
 
-
 {
     /** Object*/
     // object表示非原始类型，也就是除number，string，boolean，symbol，null或undefined之外的类型。
@@ -141,7 +155,6 @@ _name = "smith";
         while (true) {
         }
     }
-
 }
 
 {
@@ -155,23 +168,24 @@ _name = "smith";
     let strLength1: number = (someValue as string).length;
 
     class Animal {
-        a!: number
+        a!: number;
     }
 
     class Dog extends Animal {
-        b!: string
+        b!: string;
     }
 
     /**
      * 断言只要 左右之前 有一方兼容另一方 就能互相断言
      * 断言成 any 可以无视任何类型约束
      * */
-    let a = new Animal() as Dog;
-    let b = new Dog() as Animal;
+    let a = new Animal() as Dog; // a 类型为 Dog
+    let b = new Dog() as Animal; // b 类型为 Animal
     b = {} as any; // b 类型依然是 Animal
     b = 1 as any; // b 类型依然是 Animal
     b = true as any; // b 类型依然是 Animal
     // b = {} as unknown; // error
+    b = ({} as unknown) as Animal;
     // b = {} as {};  // error
     // b = {} as Object; // error
 
@@ -179,12 +193,8 @@ _name = "smith";
         let b: Animal = a;
     }
 
-
-
     // // let c: Dog = new Animal(); // error
     // let d: Animal = new Dog()
-
-
 }
 
-export {}
+export {};

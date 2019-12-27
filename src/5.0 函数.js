@@ -1,6 +1,43 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 /**
+ * 函数声明
+ * 在没有提供函数实现的情况下，有两种声明函数类型的方式:
+ * */
+{
+    const a = (a) => {
+        return a;
+    };
+    const b = (a) => {
+        return a;
+    };
+    const c = (a) => {
+        return a;
+    };
+    /**
+     * 不报错但是 逻辑有错误
+     * */
+    const f = (a) => {
+        return true;
+    };
+    /**
+     * 下面两个错误都是对应关系的错误
+     * 入参的类型 没有完全对应返回值的类型
+     * */
+    // error
+    // const d: LongHandAllowsOverloadDeclarations = (a: string | number): string | number => {
+    //     return a
+    // };
+    // error
+    // const e: LongHandAllowsOverloadDeclarations = (a: string | number): string | number => {
+    //     if(typeof a === "string"){
+    //         return a as string
+    //     }else{
+    //         return a as number
+    //     }
+    // };
+}
+/**
  * 为函数定义类型
  * */
 {

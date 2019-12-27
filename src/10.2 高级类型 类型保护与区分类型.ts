@@ -45,6 +45,7 @@
         (<Bird>pet).fly();
     }
 }
+
 /** 用户自定义的类型保护 */
 {
     /**
@@ -127,6 +128,7 @@
      * */
 }
 /**
+ * 字面量类型保护
  * 可以通过 识别 不同的 字符串 字面量 带断言
  * */
 {
@@ -201,6 +203,28 @@
         padder.b() // 类型细化为 StringPadder
     }
 }
+/** in 类型保护 */
+{
+    /**
+     * 判断有没有 差集的字段 来判断是哪个类型
+     * */
+    interface A {
+        x: number;
+    }
+
+    interface B {
+        y: string;
+    }
+
+    function doStuff(q: A | B) {
+        if ('x' in q) {
+            // q: A
+        } else {
+            // q: B
+        }
+    }
+}
+
 /** 可以为null 的类型*/
 {
     /**

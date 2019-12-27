@@ -18,8 +18,12 @@ _name = "smith";
     let age = 37;
     let sentence1 = `Hello, my name is ${name}.
     I'll be ${age + 1} years old next month.`;
-    let sentence2 = "Hello, my name is " + name + ".\n\n" +
-        "I'll be " + (age + 1) + " years old next month.";
+    let sentence2 = "Hello, my name is " +
+        name +
+        ".\n\n" +
+        "I'll be " +
+        (age + 1) +
+        " years old next month.";
 }
 {
     let list1 = [1, 2, 3];
@@ -31,7 +35,7 @@ _name = "smith";
     // Declare a tuple type
     let x;
     // Initialize it
-    x = ['hello', 10]; // OK
+    x = ["hello", 10]; // OK
     console.log(x[0].substr(1)); // OK
     // console.log(x[1].substr(1)); // Error, 'number' does not have 'substr'
     /**
@@ -43,7 +47,7 @@ _name = "smith";
     {
         let x;
         // Initialize it
-        x = ['hello']; // OK
+        x = ["hello"]; // OK
         // 类型断言 x[0]是一个string
         console.log(x[0].substr(1)); // OK
         // console.log(x[1].substr(1)); // Error, 'number' does not have 'substr'
@@ -142,5 +146,27 @@ _name = "smith";
     let strLength = someValue.length;
     let someValue1 = "this is a string";
     let strLength1 = someValue.length;
+    class Animal {
+    }
+    class Dog extends Animal {
+    }
+    /**
+     * 断言只要 左右之前 有一方兼容另一方 就能互相断言
+     * 断言成 any 可以无视任何类型约束
+     * */
+    let a = new Animal(); // a 类型为 Dog
+    let b = new Dog(); // b 类型为 Animal
+    b = {}; // b 类型依然是 Animal
+    b = 1; // b 类型依然是 Animal
+    b = true; // b 类型依然是 Animal
+    // b = {} as unknown; // error
+    b = {};
+    // b = {} as {};  // error
+    // b = {} as Object; // error
+    function c(a) {
+        let b = a;
+    }
+    // // let c: Dog = new Animal(); // error
+    // let d: Animal = new Dog()
 }
 //# sourceMappingURL=1. 基础类型.js.map

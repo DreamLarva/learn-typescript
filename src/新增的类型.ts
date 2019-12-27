@@ -53,6 +53,8 @@
 
     // never 类型 和 任意非never类型 T 的联合类型 为 T
     type b = never | number; // 推断类型 为 number
+
+    type c = Promise<number | never> // Promise<number>
 }
 
 /**

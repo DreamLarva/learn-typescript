@@ -153,8 +153,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
     // Spread of unknown causes result to be unknown
     function f26(x, y, z) {
         let o1 = { a: 42, ...x }; // { a: number }
-        // let o2 = {a: 42, ...x, ...y}; // error 3.72 只要对象类型才能展开
-        // let o3 = {a: 42, ...x, ...y, ...z}; // error 3.72 只要对象类型才能展开
+        // let o2 = {a: 42, ...x, ...y}; // error 版本3.7.2 只要对象类型才能展开 unknown 类型不再可以使用 spread 运算符
+        // let o3 = {a: 42, ...x, ...y, ...z}; // error 版本3.7.2 只要对象类型才能展开 unknown 类型不再可以使用 spread 运算符
     }
     // Functions with unknown return type don't need return expressions
     // function f27(): unknown {} // error

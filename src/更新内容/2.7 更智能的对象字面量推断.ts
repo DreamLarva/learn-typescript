@@ -57,3 +57,6 @@ let bar = Math.random() < 0.5 ? bar1 : bar2;
     //     bar.bData.toLowerCase() //error
     // }
 }
+
+
+export {}

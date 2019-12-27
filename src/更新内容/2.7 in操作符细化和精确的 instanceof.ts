@@ -20,3 +20,6 @@ function foo(x: A | B) {
     }
     return x.b; // 推断为 B
 }
+
+
+export {}
