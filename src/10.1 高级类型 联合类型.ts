@@ -90,4 +90,35 @@
 
 }
 
+/**
+ * 对象中含有 联合类型
+ * 等同于 笛卡尔积的所有类型
+ * */
+{
+    type A = { a: 1 | 2 };
+    type B = { a: 1 } | { a: 2 };
+
+    function fun(a: A, b: B) {
+        a = b;
+        b = a
+    }
+
+    type C = { a: 1 | 2, b: 3 | 4 }
+    type D = { a: 1, b: 3 } | { a: 1, b: 4 } | { a: 2, b: 3 } | { a: 2, b: 4 };
+
+    function fun1(c: C, d: D) {
+        c = d;
+        d = c;
+    }
+
+    type E = [1 | 2];
+    type F = [1] | [2]
+
+    function fun3(e:E,f:F) {
+        e = f;
+        // f = e // error
+    }
+
+}
+
 export {}
