@@ -100,11 +100,16 @@
 {
     type a = Function;
     type b = (...x: any[]) => any;
+    type c = (...x: string[]) => string;
     let a!: a;
     let b!: b;
-
+    let c!:c;
     a = b;
     // b = a // Error
+    a = c;
+    b = c;
+    c = b // ok 注意 any 类型即可匹配任何 协变 也可匹配 任何抗变
+    // c = a // error
 }
 
 /**
