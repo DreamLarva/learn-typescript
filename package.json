@@ -24,6 +24,7 @@
     "@types/jquery": "latest",
     "@types/lodash-es": "latest",
     "@types/node": "^10.17.13",
+    "@types/ramda": "latest",
     "ts-node": "latest",
     "typescript": "latest"
   },
