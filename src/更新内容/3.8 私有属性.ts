@@ -109,3 +109,7 @@ declare let y: Square;
 
 let z = smushObjects(x, y);
 console.log(z.kind);
+
+
+
+export {};
