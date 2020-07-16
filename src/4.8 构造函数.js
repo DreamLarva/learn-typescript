@@ -14,20 +14,23 @@ Object.defineProperty(exports, "__esModule", { value: true });
     console.log(greeter.greet());
 }
 {
-    class Greeter {
-        constructor(greeting) {
-            this.greeting = greeting;
-        }
-        greet() {
-            if (this.greeting) {
-                return "Hello, " + this.greeting;
+    let Greeter = /** @class */ (() => {
+        class Greeter {
+            constructor(greeting) {
+                this.greeting = greeting;
             }
-            else {
-                return Greeter.standardGreeting;
+            greet() {
+                if (this.greeting) {
+                    return "Hello, " + this.greeting;
+                }
+                else {
+                    return Greeter.standardGreeting;
+                }
             }
         }
-    }
-    Greeter.standardGreeting = "Hello, there";
+        Greeter.standardGreeting = "Hello, there";
+        return Greeter;
+    })();
     let greeter1;
     greeter1 = new Greeter();
     console.log(greeter1.greet());

@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 {
     // foo的最类型是 { value: number } | { value?: undefined }
     let foo = someTest ? { value: 42 } : {};

@@ -6,16 +6,22 @@ Object.defineProperty(exports, "__esModule", { value: true });
  * 静态成员和构造函数不在比较的范围内。
  * */
 {
-    class Animal {
-        constructor(name, numFeet) {
+    let Animal = /** @class */ (() => {
+        class Animal {
+            constructor(name, numFeet) {
+            }
         }
-    }
-    Animal.b = " some text"; // 不参与类型比较
-    class Size {
-        constructor(numFeet) {
+        Animal.b = " some text"; // 不参与类型比较
+        return Animal;
+    })();
+    let Size = /** @class */ (() => {
+        class Size {
+            constructor(numFeet) {
+            }
         }
-    }
-    Size.a = 1; // 不参与类型比较
+        Size.a = 1; // 不参与类型比较
+        return Size;
+    })();
     let a = new Animal("name", 123);
     let s = new Size(123);
     // 如果都不实例化 就不能这样 兼容赋值
@@ -26,16 +32,22 @@ Object.defineProperty(exports, "__esModule", { value: true });
  * 对于可选属性
  * */
 {
-    class Animal {
-        constructor(name, numFeet) {
+    let Animal = /** @class */ (() => {
+        class Animal {
+            constructor(name, numFeet) {
+            }
         }
-    }
-    Animal.b = " some text"; // 不参与类型比较
-    class Size {
-        constructor(numFeet) {
+        Animal.b = " some text"; // 不参与类型比较
+        return Animal;
+    })();
+    let Size = /** @class */ (() => {
+        class Size {
+            constructor(numFeet) {
+            }
         }
-    }
-    Size.a = 1; // 不参与类型比较
+        Size.a = 1; // 不参与类型比较
+        return Size;
+    })();
     let a = new Animal("name", 123);
     let s = new Size(123);
     // s.feet 兼容 a.feet 反之 不行 因为(s.feet: void | number)

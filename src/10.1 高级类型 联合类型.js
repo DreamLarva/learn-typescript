@@ -61,4 +61,22 @@ Object.defineProperty(exports, "__esModule", { value: true });
     // pet.layEggs(1); // error
     pet.layEggs("1"); // ok
 }
+/**
+ * 对象中含有 联合类型
+ * 等同于 笛卡尔积的所有类型
+ * */
+{
+    function fun(a, b) {
+        a = b;
+        b = a;
+    }
+    function fun1(c, d) {
+        c = d;
+        d = c;
+    }
+    function fun3(e, f) {
+        e = f;
+        // f = e // error
+    }
+}
 //# sourceMappingURL=10.1 高级类型 联合类型.js.map

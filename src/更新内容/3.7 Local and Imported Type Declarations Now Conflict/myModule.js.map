@@ -1,1 +1,1 @@
-{"version":3,"file":"myModule.js","sourceRoot":"./","sources":["src/更新内容/3.7 Local and Imported Type Declarations Now Conflict/myModule.ts"],"names":[],"mappings":";;AAMA,SAAS,EAAE,CAAC,GAAa;IACrB,OAAO,CAAC,GAAG,CAAC,GAAG,CAAC,CAAC,CAAC,CAAC,CAAC,yCAAyC;AACjE,CAAC"}
+{"version":3,"file":"myModule.js","sourceRoot":"./","sources":["src/更新内容/3.7 Local and Imported Type Declarations Now Conflict/myModule.ts"],"names":[],"mappings":";;AAMA;;KAEK;AAEL,SAAS,EAAE,CAAC,GAAa;IACrB,gEAAgE;AACpE,CAAC"}

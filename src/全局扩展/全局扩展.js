@@ -4,6 +4,7 @@
  * 在项目的任何一个地方 都有效果
  * */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.Observable = void 0;
 // observable.ts
 class Observable {
     // ... still no implementation ...

@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 function foo(x) {
     if ("a" in x) {
         // 已经正确推断了 x 的类型 为 A

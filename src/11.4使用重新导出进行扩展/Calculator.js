@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.test = exports.Calculator = void 0;
 class Calculator {
     constructor() {
         this.current = 0;

@@ -31,19 +31,16 @@ _name = "smith";
     let list2 = [1, 2, 3];
 }
 {
-    /** 元祖 */
+    /** 元组 */
     // Declare a tuple type
     let x;
     // Initialize it
     x = ["hello", 10]; // OK
     console.log(x[0].substr(1)); // OK
     // console.log(x[1].substr(1)); // Error, 'number' does not have 'substr'
-    /**
-     * 官网不报错 但是实际报错
-     * */
-    // x[3] = 'world'; // OK, 字符串可以赋值给(string | number)类型
-    // console.log(x[5].toString()); // OK, 'string' 和 'number' 都有 toString
-    // x[6] = true; // Error, 布尔不是(string | number)类型
+    // x[3] = 'world'; // error
+    // console.log(x[5].toString()); // error
+    // x[6] = true; // Error
     {
         let x;
         // Initialize it
@@ -52,6 +49,14 @@ _name = "smith";
         console.log(x[0].substr(1)); // OK
         // console.log(x[1].substr(1)); // Error, 'number' does not have 'substr'
     }
+    let y1 = [1];
+    let y2 = [1, "string"];
+    let y3 = Math.random() > 0.5 ? [1, "string"] : [1];
+    let y4 = Math.random() > 0.5 ? [1, "string"] : [1];
+    function fun1(a, b) { }
+    fun1(...y2); // ok
+    // fun1(...y3) // error 不行
+    fun1(...y4); // ok
 }
 {
     /** 枚举 */
@@ -136,8 +141,7 @@ _name = "smith";
     }
     // 返回never的函数必须存在无法达到的终点
     function infiniteLoop() {
-        while (true) {
-        }
+        while (true) { }
     }
 }
 {

@@ -21,12 +21,12 @@
   },
   "homepage": "https://github.com/DreamLarva/my_ts_starter#readme",
   "devDependencies": {
-    "@types/jquery": "latest",
+    "@types/jquery": "^3.5.0",
     "@types/lodash-es": "latest",
-    "@types/node": "^10.17.13",
-    "@types/ramda": "latest",
-    "ts-node": "latest",
-    "typescript": "latest"
+    "@types/node": "^10.17.26",
+    "@types/ramda": "^0.27.7",
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.6"
   },
   "dependencies": {
     "core-decorators": "latest",

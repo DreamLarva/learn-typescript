@@ -91,6 +91,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
      * */
 }
 /**
+ * 字面量类型保护
  * 可以通过 识别 不同的 字符串 字面量 带断言
  * */
 {
@@ -137,6 +138,17 @@ Object.defineProperty(exports, "__esModule", { value: true });
     }
     if (padder instanceof StringPadder) {
         padder.b(); // 类型细化为 StringPadder
+    }
+}
+/** in 类型保护 */
+{
+    function doStuff(q) {
+        if ('x' in q) {
+            // q: A
+        }
+        else {
+            // q: B
+        }
     }
 }
 /** 可以为null 的类型*/
