@@ -23,9 +23,9 @@ const enum Directions {
 let directions = [Directions.Up, Directions.Down, Directions.Left, Directions.Right];
 // let directions = [0 /* Up */, 1 /* Down */, 2 /* Left */, 3 /* Right */];
 
-const a:Directions = 1;
+const a: Directions = 1;
 // const b:Directions = ""; // error
-const c:Directions = Directions.Down;
+const c: Directions = Directions.Down;
 // const d:Directions = {}; // error
 
 

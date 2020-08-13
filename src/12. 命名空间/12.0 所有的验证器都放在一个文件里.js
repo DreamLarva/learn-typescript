@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 let lettersRegexp = /^[a-zA-Z]+$/;
 let numberRegexp = /^[0-9]+$/;
 class LettersOnlyValidator {

@@ -1,2 +1,3 @@
-import { add } from '../index';
+import {add} from '../index';
+
 export default add;

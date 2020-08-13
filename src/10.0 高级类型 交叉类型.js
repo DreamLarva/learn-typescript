@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * 交叉类型（Intersection Types）
  * 交叉类型是将多个类型合并为一个类型。

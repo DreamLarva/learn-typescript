@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 let sym1 = Symbol();
 let sym2 = Symbol("key"); // 可选的字符串key
 let sym3 = Symbol("key");

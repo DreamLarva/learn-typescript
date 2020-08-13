@@ -88,7 +88,7 @@ customer.accountBalance = 0;
 
     }
 
-    const instance = new (WithLocation(Point))(1,2)
+    const instance = new (WithLocation(Point))(1, 2)
 
 
 }

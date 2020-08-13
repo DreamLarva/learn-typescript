@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * 类型别名
  * 类型别名会给一个类型起个新名字。

@@ -42,7 +42,7 @@
 }
 /** 交叉类型  */
 {
-    type LinkList<T> = T & { next?: LinkList<T>  }
+    type LinkList<T> = T & { next?: LinkList<T> }
 
     interface Person {
         name: string

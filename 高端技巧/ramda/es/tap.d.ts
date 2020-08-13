@@ -1,2 +1,3 @@
-import { tap } from '../index';
+import {tap} from '../index';
+
 export default tap;

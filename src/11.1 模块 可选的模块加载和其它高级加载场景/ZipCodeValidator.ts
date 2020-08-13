@@ -1,4 +1,4 @@
-import { StringValidator } from "./Validation";
+import {StringValidator} from "./Validation";
 
 const numberRegexp = /^[0-9]+$/;
 

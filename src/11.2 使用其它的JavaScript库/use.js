@@ -1,4 +1,3 @@
-"use strict";
 /// <reference path="node.d.ts"/>
 // 现在已经可以不需要的样子
 /**
@@ -10,12 +9,8 @@
  * import url = require("url");
  * import * as URL from "url"
  * */
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-const url_1 = __importDefault(require("url")); // ok
+import URL from "url"; // ok
 // import * as URL from "url"; // ok
-let myUrl = url_1.default.parse("http://www.typescriptlang.org");
+let myUrl = URL.parse("http://www.typescriptlang.org");
 console.log(myUrl);
 //# sourceMappingURL=use.js.map

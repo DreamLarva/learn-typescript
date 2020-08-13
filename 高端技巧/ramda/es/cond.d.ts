@@ -1,2 +1,3 @@
-import { cond } from '../index';
+import {cond} from '../index';
+
 export default cond;

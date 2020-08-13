@@ -27,13 +27,15 @@
     // dog 是 animal 的子类
     interface NotOkay {
         [x: number]: Dog;
+
         [x: string]: Animal;
     }
 }
 {
     interface NumberDictionary {
-        [index: string]: number;
         length: number;    // 可以，length是number类型
+
+        [index: string]: number;
         // name: string     // 错误，`name`的类型与索引类型返回值的类型不匹配(必须是和索引的类型相同 或者是 索引的类型的子类相同)
     }
 }
@@ -41,6 +43,7 @@
     interface ReadonlyStringArray {
         readonly [index: number]: string;
     }
+
     let myArray: ReadonlyStringArray = ["Alice", "Bob"];
     // myArray[2] = "Mallory"; // error!
 }
@@ -49,6 +52,7 @@
     interface ReadonlyStringArray {
         readonly [index: number]: string;
     }
+
     let myArray: ReadonlyStringArray = ["Alice", "Bob"];
     // myArray[2] = "Mallory"; // error!
 

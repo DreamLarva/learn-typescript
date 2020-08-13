@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * 函数声明
  * 在没有提供函数实现的情况下，有两种声明函数类型的方式:

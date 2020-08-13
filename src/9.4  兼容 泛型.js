@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * TypeScript是结构性的类型系统，类型参数只影响使用其做为类型一部分的结果类型
  * 必须是泛型不影响 实例的数据的类型 才能够兼容(基本不太可能的样子)

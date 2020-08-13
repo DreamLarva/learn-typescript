@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * 多态的 this类型表示的是某个包含类或接口的 子类型
  * */

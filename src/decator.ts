@@ -415,7 +415,8 @@ console.log("----")
         constructor(
             public  _p0: Point,
             public  _p1: Point,
-        ) {}
+        ) {
+        }
 
         get p0() {
             return this._p0;

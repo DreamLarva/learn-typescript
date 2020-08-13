@@ -1,2 +1,3 @@
-import { F } from '../index';
+import {F} from '../index';
+
 export default F;

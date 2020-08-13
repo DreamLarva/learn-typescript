@@ -5,24 +5,22 @@
  * */
 {
     class Animal {
+        static b: string = " some text" // 不参与类型比较
         feet!: number;
 
         constructor(name: string, numFeet: number) {
         }
-
-        static b: string = " some text" // 不参与类型比较
     }
 
     class Size {
+        static a: number = 1; // 不参与类型比较
         feet!: number;
 
         constructor(numFeet: number) {
         }
-
-        static a: number = 1; // 不参与类型比较
     }
 
-    let a: Animal = new Animal("name",123);
+    let a: Animal = new Animal("name", 123);
     let s: Size = new Size(123);
 
     // 如果都不实例化 就不能这样 兼容赋值
@@ -34,23 +32,22 @@
  * */
 {
     class Animal {
+        static b: string = " some text" // 不参与类型比较
         feet!: number;
 
         constructor(name: string, numFeet: number) {
         }
-
-        static b: string = " some text" // 不参与类型比较
     }
+
     class Size {
+        static a: number = 1; // 不参与类型比较
         feet?: number;
 
         constructor(numFeet: number) {
         }
-
-        static a: number = 1; // 不参与类型比较
     }
 
-    let a: Animal = new Animal("name",123);
+    let a: Animal = new Animal("name", 123);
     let s: Size = new Size(123);
 
     // s.feet 兼容 a.feet 反之 不行 因为(s.feet: void | number)
@@ -82,7 +79,7 @@
     }
 
 
-    let a: Animal = new Animal("name",123);
+    let a: Animal = new Animal("name", 123);
     let s: Size = new Size(123);
 
     // 如果都不实例化 就不能这样 兼容赋值
@@ -183,8 +180,8 @@
         }
     }
 
-    let a: Animal = new Animal("name",123);
-    let s: BlackPanther = new BlackPanther("name",123,true);
+    let a: Animal = new Animal("name", 123);
+    let s: BlackPanther = new BlackPanther("name", 123, true);
 
     a = s;  // 父类可以兼容子类
     // s = a;  // 子类不能兼容父类

@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * 参数收集到一个变量里
  * 注意收集的变量一定是一个 数组

@@ -5,8 +5,8 @@
  * */
 {
     class Control {
-        private state: any; // any 包含 void
         public props?: number;
+        private state: any; // any 包含 void
     }
 
     interface SelectableControl extends Control {
@@ -33,14 +33,14 @@
     }
 
     /** 错误：“Image”类型缺少“state”属性。 必须extends Control 才行*/
-    // class Image implements SelectableControl {
-    //     public props: any;
-    //     private state: any;
-    //
-    //     select() {
-    //
-    //     }
-    // }
+        // class Image implements SelectableControl {
+        //     public props: any;
+        //     private state: any;
+        //
+        //     select() {
+        //
+        //     }
+        // }
 
 //  可以 因为继承里 拥有私有属性的 Control 类
     class inheritControl extends Control implements SelectableControl {

@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * TypeScript  3.6引入了对迭代器和生成器功能的更严格检查。
  * 在早期版本中，生成器的用户无法区分是从生成yield的值还return 的值。

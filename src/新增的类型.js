@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * any 类型指代所有类型
  * 且 使用.操作符 获得的类型 依然是 any
@@ -157,7 +155,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
     }
     // Spread of unknown causes result to be unknown
     function f26(x, y, z) {
-        let o1 = { a: 42, ...x }; // { a: number }
+        let o1 = Object.assign({ a: 42 }, x); // { a: number }
         // let o2 = {a: 42, ...x, ...y}; // error 版本3.7.2 只要对象类型才能展开 unknown 类型不再可以使用 spread 运算符
         // let o3 = {a: 42, ...x, ...y, ...z}; // error 版本3.7.2 只要对象类型才能展开 unknown 类型不再可以使用 spread 运算符
     }

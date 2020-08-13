@@ -1,11 +1,9 @@
-"use strict";
 /*
  * @Author: YangJiaqi
  * @Date: 2019-11-26 15:12:02
  * @Company: orientsec.com.cn
  * @Description:
  */
-Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * 枚举的一个很好用途是使用枚举作为标志。这些标志允许你检查一组条件中的某个条件是否为真
  * 考虑如下代码例子，我们有一组关于 animals 的属性：

@@ -1,4 +1,4 @@
-import { Observable } from "./observable";
+import {Observable} from "./observable";
 // import "./map";
 // 虽然 不引入map 还是能够 提示 o.map 但是实际运行就会报错
 

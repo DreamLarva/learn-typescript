@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 {
     /**
      * 参数 ?: 可选参数
@@ -27,7 +25,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
         }
     }
     let c = new C();
-    let clone = { ...c };
+    let clone = Object.assign({}, c);
     console.log(clone.p); // ok 能正确判断为 数字类型
     // 方法都在prototype 上
     // clone.m(); // error!
@@ -38,13 +36,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
         a: "string",
         b: 2
     };
-    const combination = { ...a, ...b };
+    const combination = Object.assign(Object.assign({}, a), b);
     // combination.a. // 正确判断为 string 类型
     // <string>combination.a // 需要断言为需要的
 }
 {
     let combine = function (a, b, c) {
-        const combination = { ...a, ...b };
+        const combination = Object.assign(Object.assign({}, a), b);
         // combination.a // 类型为 string |
         // <string>combination.a.charCodeAt(1) // error 不能直接使用
         if (typeof combination.a === "string") {

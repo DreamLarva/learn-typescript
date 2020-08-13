@@ -256,6 +256,7 @@
             a!: number;
             b?: number;
         }
+
         let c = new C();
         c.a = 12;
         // c.a = undefined; // error, 'undefined' is not assignable to 'number'
@@ -289,6 +290,7 @@
             function postfix(epithet: string) {
                 return name!.charAt(0) + '.  the ' + epithet; // ok
             }
+
             name = name || "Bob";
             return postfix("great");
         }

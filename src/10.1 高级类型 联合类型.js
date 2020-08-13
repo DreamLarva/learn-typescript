@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 {
     /**
      * Takes a string and adds "padding" to the left.

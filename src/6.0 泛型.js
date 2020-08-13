@@ -1,9 +1,7 @@
-"use strict";
 /**
  * 类型变量T
  * T帮助我们捕获用户传入的类型（比如：number），之后我们就可以使用这个类型。
  * */
-Object.defineProperty(exports, "__esModule", { value: true });
 {
     function identity0(arg) {
         return arg;

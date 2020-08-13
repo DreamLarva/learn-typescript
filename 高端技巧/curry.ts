@@ -3,17 +3,17 @@ type Head<T extends any[]> = T extends [any, ...any[]] ? T[0] : never;
 
 // 取元祖 除去第一个元素的 之外的元祖
 type Tail<T extends any[]> = ((...t: T) => any) extends (
-  _: any,
-  ...tail: infer TT
-) => any
-  ? TT
-  : [];
+    _: any,
+    ...tail: infer TT
+    ) => any
+    ? TT
+    : [];
 
 // 取元祖的最后一个类型
 
 type Last<T extends any[]> = {
-  0: Last<Tail<T>>;
-  1: Head<T>;
+    0: Last<Tail<T>>;
+    1: Head<T>;
 }[HasTail<T> extends true ? 0 : 1];
 
 type testLast = Last<[]>; // never
@@ -26,14 +26,14 @@ type HasTail<T extends any[]> = T extends [] | [any] ? false : true;
  * 一次只执行 一个参数
  * */
 type CurryV0<P extends any[], R> = (
-  arg0: Head<P> // 一次调用 第一个参数的类型
+    arg0: Head<P> // 一次调用 第一个参数的类型
 ) => HasTail<P> extends true // 如果没有到达最后一个参数 就递归
-  ? CurryV0<Tail<P>, R>
-  : R; // 否则返回最后一个返回类型
+    ? CurryV0<Tail<P>, R>
+    : R; // 否则返回最后一个返回类型
 
 // 递归函数类型
 declare function curryV0<P extends any[], R>(
-  f: (...args: P) => R
+    f: (...args: P) => R
 ): CurryV0<P, R>;
 
 const toCurry02 = (a: string, b: number, C: boolean) => true;
@@ -56,12 +56,14 @@ const curried06 = curryV0(toCurry06);
  * 如果使用神域参数的话 V0 版本就不行了,所以要每次提交 >= 1 个参数,并且还要可以使用剩余的(可选的参数)
  * */
 type CurryV1<P extends any[], R> = (
-  arg0: Head<P>,
-  ...rest: Tail<Partial<P>>
+    arg0: Head<P>,
+    ...rest: Tail<Partial<P>>
 ) => HasTail<P> extends true ? CurryV1<Tail<P>, R> : R;
+
 declare function curryV1<P extends any[], R>(
-  f: (...args: P) => R
+    f: (...args: P) => R
 ): CurryV1<P, R>;
+
 const toCurry07 = (name: string, age: number, ...nicknames: string[]) => true;
 const curried07 = curryV1(toCurry06);
 const test27 = curried07("jane", 26, "jj", "jini");
@@ -73,7 +75,7 @@ const test28 = curried07("jane", 26, "jj")(26, "jj"); // should error
  * 完全不能用了 因为函数的入参(T) 完全不受控制了
  * */
 type CurryV2<P extends any[], R> = <T extends any[]>(
-  ...args: T
+    ...args: T
 ) => HasTail<P> extends true ? CurryV2<Tail<T>, R> : R;
 
 /**
@@ -97,8 +99,8 @@ type test32 = Length<[any, any, any]>; // 3
 // prettier-ignore
 type Prepend<E, T extends any[]> =
     ((head: E, ...args: T) => any) extends (...args: infer U) => any
-  ? U
-  : T;
+        ? U
+        : T;
 
 type test34 = Prepend<string, []>; // [string]
 type test35 = Prepend<number, [1, 2]>; // [number,1,2]
@@ -110,8 +112,8 @@ type test35 = Prepend<number, [1, 2]>; // [number,1,2]
  * 我们用 Prepend<any, I> 这样我们就可以像在循环中那样增加计数器。从而， Length<I> 用作递归计数器，
  * */
 type Drop<N extends number, T extends any[], I extends any[] = []> = {
-  0: Drop<N, Tail<T>, Prepend<any, I>>; // I 相当于一个计数器从0 开始没递归一个次(Prepend) 就加1
-  1: T;
+    0: Drop<N, Tail<T>, Prepend<any, I>>; // I 相当于一个计数器从0 开始没递归一个次(Prepend) 就加1
+    1: T;
 }[Length<I> extends N ? 1 : 0];
 
 type test39 = Drop<2, [0, 1, 2, 3]>; // [2,3]
@@ -187,13 +189,11 @@ type test52 = Pos<Prev<iterator>>; // 1
  * It creates an iterator (our counter type) at a position defined by Index and is able to start off from another iterator’s position by using From
  * 从From 的元祖 截取 >= Index 的元祖
  * */
-type Iterator1<
-  Index extends number = 0,
-  From extends any[] = [],
-  I extends any[] = []
-> = {
-  0: Iterator1<Index, Next<From>, Next<I>>;
-  1: From;
+type Iterator1<Index extends number = 0,
+    From extends any[] = [],
+    I extends any[] = []> = {
+    0: Iterator1<Index, Next<From>, Next<I>>;
+    1: From;
 }[Pos<I> extends Index ? 1 : 0];
 
 type test53 = Iterator1<2>; // [any,any]
@@ -209,8 +209,8 @@ export type Extends<A1 extends any, A2 extends any> = [A1] extends [never] ? 0 :
  * 翻转 元祖类型的顺序
  * */
 type Reverse<T extends any[], R extends any[] = [], I extends any[] = []> = {
-  0: Reverse<T, Prepend<T[Pos<I>], R>, Next<I>>;
-  1: R;
+    0: Reverse<T, Prepend<T[Pos<I>], R>, Next<I>>;
+    1: R;
 }[Pos<I> extends Length<T> ? 1 : 0];
 
 type test57 = Reverse<[1, 2, 3]>; // [3,2,1]
@@ -218,13 +218,13 @@ type test58 = Reverse<test57>; // [1,2,3]
 type test59 = Reverse<[2, 1], [3, 4]>; // [1,2,3,4]
 
 
-
 /**
  * Concat
  * */
-type Concat<T1 extends List,T2 extends List> = Reverse<Reverse<T1>,T2>
+type Concat<T1 extends List, T2 extends List> = Reverse<Reverse<T1>, T2>
 
 
-
-Array(20).fill(0).map( v => { /**/})
-Array.from({length:20}).map( v => { /**/})
+Array(20).fill(0).map(v => { /**/
+})
+Array.from({length: 20}).map(v => { /**/
+})

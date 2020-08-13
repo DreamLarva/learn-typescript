@@ -1,2 +1,3 @@
-import { inc } from '../index';
+import {inc} from '../index';
+
 export default inc;

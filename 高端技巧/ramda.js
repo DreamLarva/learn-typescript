@@ -1,9 +1,4 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-const ramda_1 = __importDefault(require("ramda"));
+import R from "ramda";
 const students = ["A", "B", "C", "D", "E"];
 const grades = [80, 100, 90, 99];
 // const smartestStudent =(a:string[],b:number[]) =>  R.compose(
@@ -26,8 +21,17 @@ class Wrapper {
         return new Wrapper(f(this._value));
     }
 }
-const plus = ramda_1.default.curry((a, b) => a + b);
+const plus = R.curry((a, b) => a + b);
 const plus3 = plus(3);
 const two = new Wrapper(2);
 const five = two.fmap(plus3);
+class A {
+    constructor() {
+        this.a = 1;
+    }
+}
+class B extends A {
+}
+let c;
+let fun = () => c;
 //# sourceMappingURL=ramda.js.map

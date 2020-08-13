@@ -45,7 +45,7 @@
 }
 {
     /**  上下文类型 */
-    window.onmousedown = function (mouseEvent:MouseEvent) { // 3.5 版本 还不需要:MouseEvent 3.6 又需要了  vscode 不能检查出问题 但是编译报错 webstorm 在检查时就能知道问题
+    window.onmousedown = function (mouseEvent: MouseEvent) { // 3.5 版本 还不需要:MouseEvent 3.6 又需要了  vscode 不能检查出问题 但是编译报错 webstorm 在检查时就能知道问题
         // 已经推断了为mouse的Event类型
         console.log(mouseEvent.button);
     };

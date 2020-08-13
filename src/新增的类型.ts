@@ -103,7 +103,7 @@
     type c = (...x: string[]) => string;
     let a!: a;
     let b!: b;
-    let c!:c;
+    let c!: c;
     a = b;
     // b = a // Error
     a = c;
@@ -178,7 +178,6 @@
     }
 
 
-
     // Homomorphic mapped type over unknown
     type T50<T> = { [P in keyof T]: number };
     type T51 = T50<any>; // { [x: string]: number }
@@ -238,7 +237,9 @@
 
     // Functions with unknown return type don't need return expressions
     // function f27(): unknown {} // error
-    function f27(): unknown {return}
+    function f27(): unknown {
+        return
+    }
 
     // Rest type cannot be created from unknown
     function f28(x: unknown) {
@@ -252,8 +253,10 @@
         c: any;
     }
 }
+
 // 可以对 unknown 类型的 数据使用 typeof instanceof 和其他 断言保护
 declare function isFunction(x: unknown): x is Function;
+
 function f20(x: unknown) {
     if (typeof x === "string" || typeof x === "number") {
         x; // string | number

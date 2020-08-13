@@ -1,2 +1,3 @@
-import { map } from '../index';
+import {map} from '../index';
+
 export default map;

@@ -1,2 +1,3 @@
-import { min } from '../index';
+import {min} from '../index';
+
 export default min;

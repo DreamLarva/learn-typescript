@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 /** 传递给一个函数的参数个数必须与函数期望的参数个数一致 */
 {
     function buildName0(firstName, lastName) {

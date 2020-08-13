@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * 现在引入的 interface 不再与本地的 interface 合并
  * */

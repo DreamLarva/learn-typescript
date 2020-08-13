@@ -1,9 +1,7 @@
-"use strict";
 /**
  * From Typescript 2.2
  * 个人理解 就是 动态继承 某个类型
  * */
-Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * 混合构造函数类型
  * 指仅有单个构造函数签名，且该签名仅有一个类型为 any[] 的变长参数，

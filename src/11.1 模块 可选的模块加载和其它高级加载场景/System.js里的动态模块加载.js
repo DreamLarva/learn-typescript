@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 if (true) {
     System.import("./ZipCodeValidator").then((ZipCodeValidator) => {
         var x = new ZipCodeValidator();

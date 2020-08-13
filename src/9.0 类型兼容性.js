@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 /** TypeScript里的类型兼容性是基于结构子类型的。 */
 {
     class Person {

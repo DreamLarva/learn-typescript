@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * TypeScript 1.8 为类和接口方法扩展了用户定义的类型收窄函数.
  * this is T 现在是类或接口方法的合法的返回值类型标注. 当在类型收窄的位置使用时 (比如 if 语句), 函数调用表达式的目标对象的类型会被收窄为 T.

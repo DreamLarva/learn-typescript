@@ -1,2 +1,3 @@
-import { any } from '../index';
+import {any} from '../index';
+
 export default any;

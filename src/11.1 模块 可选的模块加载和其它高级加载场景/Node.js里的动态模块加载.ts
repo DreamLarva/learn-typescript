@@ -1,6 +1,6 @@
 declare function require(moduleName: string): any;
 
-import { ZipCodeValidator as Zip } from "./ZipCodeValidator";
+import {ZipCodeValidator as Zip} from "./ZipCodeValidator";
 /**
  * 编译器会检测是否每个模块都会在生成的JavaScript中用到。 如果一个模块标识符只在类型注解部分使用，并且完全没有在表达式中使用时，就不会生成 require这个模块的代码。
  * 这种模式的核心是import id = require("...")语句可以让我们访问模块导出的类型。
@@ -12,5 +12,6 @@ if (true) {
      * */
     let ZipCodeValidator: typeof Zip = require("./ZipCodeValidator");
     let validator = new ZipCodeValidator();
-    if (validator.isAcceptable("...")) { /* ... */ }
+    if (validator.isAcceptable("...")) { /* ... */
+    }
 }

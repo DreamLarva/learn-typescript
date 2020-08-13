@@ -1,18 +1,21 @@
-
 /**
  * 一个对象可以同时做为函数和对象使用，并带有额外的属性。
  * 静态属性
  * */
 interface Counter {
-    (start: number): string;
     interval: number;
+
+    (start: number): string;
+
     reset(): void;
 }
 
 function getCounter(): Counter {
-    let counter = <Counter>function (start: number) { };
+    let counter = <Counter>function (start: number) {
+    };
     counter.interval = 123;
-    counter.reset = function () { };
+    counter.reset = function () {
+    };
     return counter;
 }
 
@@ -24,6 +27,6 @@ c.reset();
 // 所以由编写者 自己保证先初始化
 c.interval = 5.0;
 // c.interval = "string"; // error
-export{}
+export {}
 
 

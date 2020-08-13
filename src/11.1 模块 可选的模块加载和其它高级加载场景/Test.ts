@@ -1,6 +1,6 @@
-import { StringValidator } from "./Validation";
-import { ZipCodeValidator } from "./ZipCodeValidator";
-import { LettersOnlyValidator } from "./LettersOnlyValidator";
+import {LettersOnlyValidator} from "./LettersOnlyValidator";
+import {StringValidator} from "./Validation";
+import {ZipCodeValidator} from "./ZipCodeValidator";
 
 // Some samples to try
 let strings = ["Hello", "98052", "101"];
@@ -13,6 +13,6 @@ validators["Letters only"] = new LettersOnlyValidator();
 // Show whether each string passed each validator
 strings.forEach(s => {
     for (let name in validators) {
-        console.log(`"${ s }" - ${ validators[name].isAcceptable(s) ? "matches" : "does not match" } ${ name }`);
+        console.log(`"${s}" - ${validators[name].isAcceptable(s) ? "matches" : "does not match"} ${name}`);
     }
 });

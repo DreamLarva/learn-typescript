@@ -58,24 +58,21 @@ function animalFunc(x: Animal) {
 function dogFunc(x: Dog) {
     return x
 }
+
 function catFunc(x: Cat) {
     return x
 }
 
-let combined1 = combine(dogFunc,animalFunc);
+let combined1 = combine(dogFunc, animalFunc);
 
-let combined2 = combine(animalFunc,dogFunc);  // 文档上写 (x: Dog) => void 然而实际是 (x:Animal)=>void
-let combined3 = combine(animalFunc,catFunc);
+let combined2 = combine(animalFunc, dogFunc);  // 文档上写 (x: Dog) => void 然而实际是 (x:Animal)=>void
+let combined3 = combine(animalFunc, catFunc);
 // let combined4 = combine(dogFunc,catFunc); // error 参数 x 没有抗变关系
 
 /**
  * 这上面所有 T的推断都来自抗变的位置，由此我们得出 T的 最普遍子类型。
  * 这与从协变位置推导出的结果恰恰相反，从协变位置我们得出的是 最普遍超类型。
  * */
-
-
-
-
 
 
 export {}

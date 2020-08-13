@@ -140,6 +140,7 @@
         subparts: Part[];
 
         updatePart(newName: string): void;
+
         anotherFoo(newName: string): void;
     }
 

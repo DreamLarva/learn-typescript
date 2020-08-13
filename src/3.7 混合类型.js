@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 function getCounter() {
     let counter = function (start) { };
     counter.interval = 123;

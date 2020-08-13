@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * TypeScript 2.0实现了标记（或区分）联合类型。具体而言，
  * TS编译器现在支持类型保护，基于判别属性的检查来缩小联合类型的范围，并且switch语句也支持此特性。

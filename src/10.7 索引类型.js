@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * 使用索引类型，编译器就能够检查使用了动态属性名的代码。
  * 例如，一个常见的JavaScript模式是从对象中选取属性的子集。

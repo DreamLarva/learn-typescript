@@ -4,12 +4,12 @@
  * */
 interface A {
     a: number
-    c:1
+    c: 1
 }
 
 interface B {
     b: string
-    d:2
+    d: 2
 }
 
 function foo(x: A | B) {

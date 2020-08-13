@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * 考虑下面这个 Animal 是 Dog 和 Cat 的父类型的例子
  * */

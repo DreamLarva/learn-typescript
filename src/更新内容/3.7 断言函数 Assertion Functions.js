@@ -1,25 +1,4 @@
-"use strict";
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-const assert_1 = __importStar(require("assert"));
+import assert, { AssertionError } from "assert";
 /**
  * There’s a specific set of functions that throw an error if something unexpected happened.
  * They’re called “assertion” functions. As an example, Node.js has a dedicated function for this called assert.
@@ -28,7 +7,7 @@ const assert_1 = __importStar(require("assert"));
  * */
 {
     let someValue;
-    assert_1.default(someValue === 42);
+    assert(someValue === 42);
 }
 /**
  * 使用node 中的断言函数
@@ -36,8 +15,8 @@ const assert_1 = __importStar(require("assert"));
  * */
 {
     function multiply(x, y) {
-        assert_1.default(typeof x === "number");
-        assert_1.default(typeof y === "number");
+        assert(typeof x === "number");
+        assert(typeof y === "number");
         return x * y; // x,y 这里推断依然 是 any 类型
     }
 }
@@ -54,7 +33,7 @@ const assert_1 = __importStar(require("assert"));
      * */
     function assert(condition, message) {
         if (!condition) {
-            throw new assert_1.AssertionError({ message });
+            throw new AssertionError({ message });
         }
     }
     function yell1(str) {
@@ -73,7 +52,7 @@ const assert_1 = __importStar(require("assert"));
     // 调用这个方法就断言函数,就将之后的作用域中,把传入的参数断言成  string 类型
     function assertIsString(val) {
         if (typeof val !== "string") {
-            throw new assert_1.AssertionError({ message: "Not a string!" });
+            throw new AssertionError({ message: "Not a string!" });
         }
     }
     function yell1(str) {
@@ -88,7 +67,7 @@ const assert_1 = __importStar(require("assert"));
 {
     function assertIsDefined(val) {
         if (val === undefined || val === null) {
-            throw new assert_1.AssertionError({
+            throw new AssertionError({
                 message: `Expected 'val' to be defined, but received ${val}`
             });
         }

@@ -116,16 +116,19 @@
      * 函数重载
      * 对于有重载的函数，源函数的每个重载都要在目标函数上找到对应的函数签名。 这确保了目标函数可以在所有源函数可调用的地方调用。
      * */
-    function foo(a:number):number
-    function foo(a:string,b:string):string
-    function foo(a:boolean,b?:boolean):boolean
-    function foo(a:any,b?:any):any{}
+    function foo(a: number): number
+    function foo(a: string, b: string): string
+    function foo(a: boolean, b?: boolean): boolean
+    function foo(a: any, b?: any): any {
+    }
 
     function invokeLater(args: any[], callback: (x: number, y: number, ...args: number[]) => void) {
         /* ... Invoke callback with 'args' ... */
     }
-    invokeLater([1, 2],foo) // 这里 foo 匹配的是 (a:number):number
+
+    invokeLater([1, 2], foo) // 这里 foo 匹配的是 (a:number):number
 }
+
 /**
  * from 2.4 回调参数的严格抗变
  * TypeScript一直是以双变（bivariant）的方式来比较参数。

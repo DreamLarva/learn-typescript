@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 let passCode = "secret passcode";
 /**
  * 只带有 get不带有 set的存取器自动被推断为 readonly

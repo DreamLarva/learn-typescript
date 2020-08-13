@@ -150,7 +150,7 @@
     let mySquare3 = createSquare1({width: 100, opacity: 0.5} as SquareConfig1);
 
     /** 将字面量赋值给一个变量 再传给函数 也能绕开检查*/
-    const  params = {width: 100, opacity: 0.5};
+    const params = {width: 100, opacity: 0.5};
     let mySquare4 = createSquare1(params); // ok
 
     /**

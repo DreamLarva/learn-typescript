@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 {
     class Greeter {
         constructor(message) {
@@ -14,23 +12,20 @@ Object.defineProperty(exports, "__esModule", { value: true });
     console.log(greeter.greet());
 }
 {
-    let Greeter = /** @class */ (() => {
-        class Greeter {
-            constructor(greeting) {
-                this.greeting = greeting;
+    class Greeter {
+        constructor(greeting) {
+            this.greeting = greeting;
+        }
+        greet() {
+            if (this.greeting) {
+                return "Hello, " + this.greeting;
             }
-            greet() {
-                if (this.greeting) {
-                    return "Hello, " + this.greeting;
-                }
-                else {
-                    return Greeter.standardGreeting;
-                }
+            else {
+                return Greeter.standardGreeting;
             }
         }
-        Greeter.standardGreeting = "Hello, there";
-        return Greeter;
-    })();
+    }
+    Greeter.standardGreeting = "Hello, there";
     let greeter1;
     greeter1 = new Greeter();
     console.log(greeter1.greet());

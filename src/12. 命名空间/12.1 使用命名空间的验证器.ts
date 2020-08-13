@@ -38,8 +38,8 @@ let validators1: { [s: string]: Validation0.StringValidator } = {};
 validators2["ZIP code"] = new Validation0.ZipCodeValidator();
 validators1["Letters only"] = new Validation0.LettersOnlyValidator();
 
-for(let s of strings1){
-    for(let name in validators1){
-        console.log(`"${ s }" - ${ validators2[name].isAcceptable(s) ? "matches" : "does not match" } ${ name }`);
+for (let s of strings1) {
+    for (let name in validators1) {
+        console.log(`"${s}" - ${validators2[name].isAcceptable(s) ? "matches" : "does not match"} ${name}`);
     }
 }

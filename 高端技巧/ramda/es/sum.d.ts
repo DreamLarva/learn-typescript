@@ -1,2 +1,3 @@
-import { sum } from '../index';
+import {sum} from '../index';
+
 export default sum;

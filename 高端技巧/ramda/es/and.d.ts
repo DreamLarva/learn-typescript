@@ -1,2 +1,3 @@
-import { and } from '../index';
+import {and} from '../index';
+
 export default and;

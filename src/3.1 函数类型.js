@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 let mySearch;
 mySearch = function (source, subString) {
     let result = source.search(subString);

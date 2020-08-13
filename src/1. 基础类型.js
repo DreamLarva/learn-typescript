@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 let isDone = false;
 let decLiteral = 6;
 let hexLiteral = 0xf00d;

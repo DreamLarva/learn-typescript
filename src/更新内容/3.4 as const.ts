@@ -12,59 +12,59 @@
  * */
 
 {
-  // Type '"hello"'
-  let x = "hello" as const;
+    // Type '"hello"'
+    let x = "hello" as const;
 
-  // Type 'readonly [10, 20]'
-  let y = [10, 20] as const;
+    // Type 'readonly [10, 20]'
+    let y = [10, 20] as const;
 
-  // Type '{ readonly text: "hello" }'
-  let z = { text: "hello" } as const;
+    // Type '{ readonly text: "hello" }'
+    let z = {text: "hello"} as const;
 }
 // 前置断言
 {
-  // Type '"hello"'
-  let x = "hello" as const;
+    // Type '"hello"'
+    let x = "hello" as const;
 
-  // Type 'readonly [10, 20]'
-  let y = [10, 20] as const;
+    // Type 'readonly [10, 20]'
+    let y = [10, 20] as const;
 
-  // Type '{ readonly text: "hello" }'
-  let z = { text: "hello" } as const;
+    // Type '{ readonly text: "hello" }'
+    let z = {text: "hello"} as const;
 }
 /**
  * 可以省略原本的 完整的字面量类型声明 ,断言成const 后会自动推断
  * */
 {
-  // Works with no types referenced or declared.
-  // We only needed a single const assertion.
-  function getShapes() {
-    const result = [
-      { kind: "circle", radius: 100 },
-      { kind: "square", sideLength: 50 },
-    ] as const;
+    // Works with no types referenced or declared.
+    // We only needed a single const assertion.
+    function getShapes() {
+        const result = [
+            {kind: "circle", radius: 100},
+            {kind: "square", sideLength: 50},
+        ] as const;
 
-    return result;
-  }
-
-  for (const shape of getShapes()) {
-    // Narrows perfectly!
-    if (shape.kind === "circle") {
-      console.log("Circle radius", shape.radius);
-    } else {
-      console.log("Square side length", shape.sideLength);
+        return result;
     }
-  }
+
+    for (const shape of getShapes()) {
+        // Narrows perfectly!
+        if (shape.kind === "circle") {
+            console.log("Circle radius", shape.radius);
+        } else {
+            console.log("Square side length", shape.sideLength);
+        }
+    }
 }
 /**
  * 模仿 ts enum 的行为
  * */
 {
-  const Colors = {
-    red: "RED",
-    blue: "BLUE",
-    green: "GREEN",
-  } as const;
+    const Colors = {
+        red: "RED",
+        blue: "BLUE",
+        green: "GREEN",
+    } as const;
 }
 
 /**
@@ -74,38 +74,38 @@
  * const 断言只会作用于 单独的字面量上
  * */
 {
-  // Error! A 'const' assertion can only be applied to a
-  // to a string, number, boolean, array, or object literal.
-  // let a = (Math.random() < 0.5 ? 0 : 1) as const;
+    // Error! A 'const' assertion can only be applied to a
+    // to a string, number, boolean, array, or object literal.
+    // let a = (Math.random() < 0.5 ? 0 : 1) as const;
 
-  // Works!
-  let b = Math.random() < 0.5 ? (0 as const) : (1 as const);
+    // Works!
+    let b = Math.random() < 0.5 ? (0 as const) : (1 as const);
 }
 /**
  * const断言并不会把 深层的类型 也添加上 readonly
  * */
 {
-  let arr = [1, 2, 3, 4];
+    let arr = [1, 2, 3, 4];
 
-  let foo = {
-    name: "foo",
-    contents: arr, // contents 此处arr 的类型 并不会被 断言成 const
-  } as const;
+    let foo = {
+        name: "foo",
+        contents: arr, // contents 此处arr 的类型 并不会被 断言成 const
+    } as const;
 
-  // foo.name = "bar"; // error!
-  // foo.contents = []; // error!
+    // foo.name = "bar"; // error!
+    // foo.contents = []; // error!
 
-  foo.contents.push(5); // ...works!
+    foo.contents.push(5); // ...works!
 }
 
 {
-  // 推断正确 返回值中的 非字面量依然保持自己的类型不变
-  function foo(a: number) {
-    return {
-      a,
-      b: 1,
-    } as const;
-  }
+    // 推断正确 返回值中的 非字面量依然保持自己的类型不变
+    function foo(a: number) {
+        return {
+            a,
+            b: 1,
+        } as const;
+    }
 }
 
 export {};

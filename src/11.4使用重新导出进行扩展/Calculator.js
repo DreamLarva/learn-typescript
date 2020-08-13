@@ -1,7 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.test = exports.Calculator = void 0;
-class Calculator {
+export class Calculator {
     constructor() {
         this.current = 0;
         this.memory = 0;
@@ -65,12 +62,10 @@ class Calculator {
         this.current = 0;
     }
 }
-exports.Calculator = Calculator;
-function test(c, input) {
+export function test(c, input) {
     for (let i = 0; i < input.length; i++) {
         c.handleChar(input[i]);
     }
     console.log(`result of '${input}' is '${c.getResult()}'`);
 }
-exports.test = test;
 //# sourceMappingURL=Calculator.js.map

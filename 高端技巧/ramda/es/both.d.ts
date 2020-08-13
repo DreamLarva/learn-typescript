@@ -1,2 +1,3 @@
-import { both } from '../index';
+import {both} from '../index';
+
 export default both;

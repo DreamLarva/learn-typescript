@@ -108,6 +108,7 @@
             this.name = name;
         }
     }
+
     class Person2 {
         protected name: string;
 
@@ -118,17 +119,19 @@
 
     class Employee extends Person {
         private readonly department: string;
-        constructor(name:string,department:string){
+
+        constructor(name: string, department: string) {
             super(name);
             this.department = department;
         }
+
         public getElevatorPitch() {
             // 不过我自己还是建议 与来自基类的 成员互动的时候 还是使用 super 前缀更佳
             return `Hello, my name is ${super.name} and I work in ${this.department}.`;
         }
     }
 
-    let howard = new Employee("Howard","Sales");
+    let howard = new Employee("Howard", "Sales");
     console.log(howard.getElevatorPitch())
     // console.log(howard.name) // Error
 
@@ -141,7 +144,10 @@
      * */
     class Person {
         protected name: string;
-        protected constructor(theName: string) { this.name = theName; }
+
+        protected constructor(theName: string) {
+            this.name = theName;
+        }
     }
 
     // Employee 能够继承 Person
@@ -160,7 +166,6 @@
 
     let howard = new Employee("Howard", "Sales");
     // let john = new Person("John"); // 错误: 'Person' 的构造函数是被保护的.
-
 
 
 }

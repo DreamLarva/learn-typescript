@@ -1,2 +1,3 @@
-import { ap } from '../index';
+import {ap} from '../index';
+
 export default ap;

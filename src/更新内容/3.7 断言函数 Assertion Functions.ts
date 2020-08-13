@@ -81,7 +81,7 @@ import assert, {AssertionError} from "assert";
         }
     }
 
-    let someValue!: number | null ;
+    let someValue!: number | null;
     assertIsDefined(someValue);
 
     someValue.toFixed(1) // 推断为 number

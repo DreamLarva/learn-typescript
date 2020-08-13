@@ -47,6 +47,8 @@ abstract class Department {
 
 class AccountingDepartment extends Department {
 
+    B = 1;
+
     constructor() {
         super('Accounting and Auditing'); // 在派生类的构造函数中必须调用 super()
     }
@@ -60,8 +62,8 @@ class AccountingDepartment extends Department {
         console.log('Generating accounting reports...');
     }
 
-    B = 1;
-    A(){}
+    A() {
+    }
 }
 
 class A extends AccountingDepartment {
@@ -89,11 +91,17 @@ department.printMeeting();
 let a = new A();
 a.generateReports();
 
-class A1{}
-abstract class B extends A1{} // 抽象类可以继承 普通类
-interface IB extends B{} // 接口 可以继承 抽象类
-abstract class C extends B{} // 抽象类可以 继承抽象类
-abstract class D extends A1 implements IB{} // 抽象类可以 实现接口
+class A1 {
+}
+
+abstract class B extends A1 {
+} // 抽象类可以继承 普通类
+interface IB extends B {
+} // 接口 可以继承 抽象类
+abstract class C extends B {
+} // 抽象类可以 继承抽象类
+abstract class D extends A1 implements IB {
+} // 抽象类可以 实现接口
 
 
 export {};

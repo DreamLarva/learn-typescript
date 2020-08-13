@@ -155,7 +155,7 @@
 
     let h = new Handler();
     let a = h.onClickGood;
-    a({a:"1"});
+    a({a: "1"});
 
     console.log(h) // h.a => 1
 }

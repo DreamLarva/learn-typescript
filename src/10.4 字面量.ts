@@ -54,6 +54,7 @@
      * 联合类型使用多个 枚举 或者 还有数字的时候
      * 会有冲突 导致不能正确判断是 那个枚举中的 或者 是某个数字
      * */
+
     /** 每个枚举成员都是用字面量初始化的时候枚举成员是具有类型的 */
     enum Aenum {
         a,
@@ -73,15 +74,15 @@
         c
     }
 
-    let test = function (param: Aenum | Benum | Cenum |  "string" | 1,) {
+    let test = function (param: Aenum | Benum | Cenum | "string" | 1,) {
         // 没错这里  Aenum.a  Benum.a Cenum.a 都为 0
-        if(Aenum.a){
+        if (Aenum.a) {
 
         }
-        if(Benum.a){
+        if (Benum.a) {
 
         }
-        if(Cenum.a){
+        if (Cenum.a) {
 
         }
     };

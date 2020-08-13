@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 /**
  *
  * 推断为 对象的时候 要放在靠下的位置

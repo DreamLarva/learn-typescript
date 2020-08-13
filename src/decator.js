@@ -1,4 +1,3 @@
-"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -11,8 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-require("reflect-metadata");
+import "reflect-metadata";
 /**
  * 装饰器
  * tsconfig.json里启用experimentalDecorators编译器选项
@@ -33,23 +31,20 @@ require("reflect-metadata");
             console.log("g(): called");
         };
     }
-    let C = /** @class */ (() => {
-        class C {
-            method() {
-            }
+    class C {
+        method() {
         }
-        __decorate([
-            f(),
-            g(),
-            f(),
-            g(),
-            __metadata("design:type", Function),
-            __metadata("design:paramtypes", []),
-            __metadata("design:returntype", void 0)
-        ], C.prototype, "method", null);
-        return C;
-    })();
-    // new C().method()
+    }
+    __decorate([
+        f(),
+        g(),
+        f(),
+        g(),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", []),
+        __metadata("design:returntype", void 0)
+    ], C.prototype, "method", null);
+    new C().method();
 }
 console.log("----");
 /**
@@ -77,14 +72,11 @@ console.log("----");
     function decorator(target) {
         return target;
     }
-    let Test1 = /** @class */ (() => {
-        let Test1 = class Test1 {
-        };
-        Test1 = __decorate([
-            decorator
-        ], Test1);
-        return Test1;
-    })();
+    let Test1 = class Test1 {
+    };
+    Test1 = __decorate([
+        decorator
+    ], Test1);
     // 相当于
     class Test2 {
     }
@@ -94,21 +86,18 @@ console.log("----");
         Object.seal(constructor);
         Object.seal(constructor.prototype);
     }
-    let Greeter = /** @class */ (() => {
-        let Greeter = class Greeter {
-            constructor(message) {
-                this.greeting = message;
-            }
-            greet() {
-                return "Hello, " + this.greeting;
-            }
-        };
-        Greeter = __decorate([
-            sealed,
-            __metadata("design:paramtypes", [String])
-        ], Greeter);
-        return Greeter;
-    })();
+    let Greeter = class Greeter {
+        constructor(message) {
+            this.greeting = message;
+        }
+        greet() {
+            return "Hello, " + this.greeting;
+        }
+    };
+    Greeter = __decorate([
+        sealed,
+        __metadata("design:paramtypes", [String])
+    ], Greeter);
 }
 {
     // function classDecorator<T extends {new(...args:any[]):{greeting:string,greet:()=>string}}>(constructor:T) {
@@ -124,21 +113,18 @@ console.log("----");
             }
         };
     }
-    let Greeter = /** @class */ (() => {
-        let Greeter = class Greeter {
-            constructor(m) {
-                this.property = "property";
-                this.hello = m;
-            }
-            method() {
-            }
-        };
-        Greeter = __decorate([
-            classDecorator,
-            __metadata("design:paramtypes", [String])
-        ], Greeter);
-        return Greeter;
-    })();
+    let Greeter = class Greeter {
+        constructor(m) {
+            this.property = "property";
+            this.hello = m;
+        }
+        method() {
+        }
+    };
+    Greeter = __decorate([
+        classDecorator,
+        __metadata("design:paramtypes", [String])
+    ], Greeter);
     /**
      * Greeter {
      *     property: 'property',
@@ -177,23 +163,20 @@ console.log("----");
             descriptor.enumerable = value;
         };
     }
-    let Greeter = /** @class */ (() => {
-        class Greeter {
-            constructor(message) {
-                this.greeting = message;
-            }
-            greet() {
-                return "Hello, " + this.greeting;
-            }
+    class Greeter {
+        constructor(message) {
+            this.greeting = message;
         }
-        __decorate([
-            enumerable(false),
-            __metadata("design:type", Function),
-            __metadata("design:paramtypes", []),
-            __metadata("design:returntype", void 0)
-        ], Greeter.prototype, "greet", null);
-        return Greeter;
-    })();
+        greet() {
+            return "Hello, " + this.greeting;
+        }
+    }
+    __decorate([
+        enumerable(false),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", []),
+        __metadata("design:returntype", void 0)
+    ], Greeter.prototype, "greet", null);
 }
 {
     /**
@@ -216,35 +199,32 @@ console.log("----");
             // descriptor.writable = value;
         };
     }
-    let Point = /** @class */ (() => {
-        class Point {
-            constructor(x, y) {
-                this._x = x;
-                this._y = y;
-            }
-            get x() {
-                return this._x;
-            }
-            // @configurable(false) // 报错 不能再同名 的访问器的 get 和 set 都使用装饰器
-            set x(data) {
-                this._x = data;
-            }
-            get y() {
-                return this._y;
-            }
+    class Point {
+        constructor(x, y) {
+            this._x = x;
+            this._y = y;
         }
-        __decorate([
-            configurable(false),
-            __metadata("design:type", Object),
-            __metadata("design:paramtypes", [Object])
-        ], Point.prototype, "x", null);
-        __decorate([
-            configurable(false),
-            __metadata("design:type", Object),
-            __metadata("design:paramtypes", [])
-        ], Point.prototype, "y", null);
-        return Point;
-    })();
+        get x() {
+            return this._x;
+        }
+        // @configurable(false) // 报错 不能再同名 的访问器的 get 和 set 都使用装饰器
+        set x(data) {
+            this._x = data;
+        }
+        get y() {
+            return this._y;
+        }
+    }
+    __decorate([
+        configurable(false),
+        __metadata("design:type", Object),
+        __metadata("design:paramtypes", [Object])
+    ], Point.prototype, "x", null);
+    __decorate([
+        configurable(false),
+        __metadata("design:type", Object),
+        __metadata("design:paramtypes", [])
+    ], Point.prototype, "y", null);
     const sample = new Point(1, 2);
     console.log(sample.x);
     // sample.x = 1234; // error
@@ -270,22 +250,19 @@ console.log("----");
         // console.log(Reflect.getMetadata(formatMetadataKey, target, propertyKey))
         return Reflect.getMetadata(formatMetadataKey, target, propertyKey);
     }
-    let Greeter = /** @class */ (() => {
-        class Greeter {
-            constructor(message) {
-                this.greeting = message;
-            }
-            greet() {
-                let formatString = getFormat(this, "greeting");
-                return formatString.replace("%s", this.greeting);
-            }
+    class Greeter {
+        constructor(message) {
+            this.greeting = message;
         }
-        __decorate([
-            format("Hello, %s"),
-            __metadata("design:type", String)
-        ], Greeter.prototype, "greeting", void 0);
-        return Greeter;
-    })();
+        greet() {
+            let formatString = getFormat(this, "greeting");
+            return formatString.replace("%s", this.greeting);
+        }
+    }
+    __decorate([
+        format("Hello, %s"),
+        __metadata("design:type", String)
+    ], Greeter.prototype, "greeting", void 0);
     const instance = new Greeter("HaHa");
     // 获取挂载 属性 greeting 上面的元数据
     console.log(instance.greet()); // Hello, HaHa
@@ -334,24 +311,21 @@ console.log("----");
             return method.apply(this, args);
         };
     }
-    let Greeter = /** @class */ (() => {
-        class Greeter {
-            constructor(message) {
-                this.greeting = message;
-            }
-            greet(name, other) {
-                return "Hello " + name + ", " + this.greeting;
-            }
+    class Greeter {
+        constructor(message) {
+            this.greeting = message;
         }
-        __decorate([
-            validate,
-            __param(0, required),
-            __metadata("design:type", Function),
-            __metadata("design:paramtypes", [String, String]),
-            __metadata("design:returntype", void 0)
-        ], Greeter.prototype, "greet", null);
-        return Greeter;
-    })();
+        greet(name, other) {
+            return "Hello " + name + ", " + this.greeting;
+        }
+    }
+    __decorate([
+        validate,
+        __param(0, required),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", [String, String]),
+        __metadata("design:returntype", void 0)
+    ], Greeter.prototype, "greet", null);
     const instance = new Greeter("Agent47");
     // console.log(instance); // Greeter { greeting: 'Agent47' }
     // console.log(instance.greet("World","aaaa")); // Hello World, Agent47s
@@ -373,37 +347,34 @@ console.log("----");
             this.y = y;
         }
     }
-    let Line1 = /** @class */ (() => {
-        class Line1 {
-            constructor(_p0, _p1) {
-                this._p0 = _p0;
-                this._p1 = _p1;
-            }
-            get p0() {
-                return this._p0;
-            }
-            set p0(value) {
-                this._p0 = value;
-            }
-            get p1() {
-                return this._p1;
-            }
-            set p1(value) {
-                this._p1 = value;
-            }
+    class Line1 {
+        constructor(_p0, _p1) {
+            this._p0 = _p0;
+            this._p1 = _p1;
         }
-        __decorate([
-            validate,
-            __metadata("design:type", Point),
-            __metadata("design:paramtypes", [Point])
-        ], Line1.prototype, "p0", null);
-        __decorate([
-            validate,
-            __metadata("design:type", Point),
-            __metadata("design:paramtypes", [Point])
-        ], Line1.prototype, "p1", null);
-        return Line1;
-    })();
+        get p0() {
+            return this._p0;
+        }
+        set p0(value) {
+            this._p0 = value;
+        }
+        get p1() {
+            return this._p1;
+        }
+        set p1(value) {
+            this._p1 = value;
+        }
+    }
+    __decorate([
+        validate,
+        __metadata("design:type", Point),
+        __metadata("design:paramtypes", [Point])
+    ], Line1.prototype, "p0", null);
+    __decorate([
+        validate,
+        __metadata("design:type", Point),
+        __metadata("design:paramtypes", [Point])
+    ], Line1.prototype, "p1", null);
     function validate(target, propertyKey, descriptor) {
         // 文档上为 let set = descriptor.set;
         //
@@ -416,38 +387,35 @@ console.log("----");
             set(value);
         };
     }
-    let Line2 = /** @class */ (() => {
-        class Line2 {
-            constructor(_p0, _p1) {
-                this._p0 = _p0;
-                this._p1 = _p1;
-            }
-            get p0() {
-                return this._p0;
-            }
-            set p0(value) {
-                this._p0 = value;
-            }
-            get p1() {
-                return this._p1;
-            }
-            set p1(value) {
-                this._p1 = value;
-            }
+    class Line2 {
+        constructor(_p0, _p1) {
+            this._p0 = _p0;
+            this._p1 = _p1;
         }
-        __decorate([
-            validate,
-            Reflect.metadata("design:type", Point),
-            __metadata("design:type", Point),
-            __metadata("design:paramtypes", [Point])
-        ], Line2.prototype, "p0", null);
-        __decorate([
-            validate,
-            Reflect.metadata("design:type", Point),
-            __metadata("design:type", Point),
-            __metadata("design:paramtypes", [Point])
-        ], Line2.prototype, "p1", null);
-        return Line2;
-    })();
+        get p0() {
+            return this._p0;
+        }
+        set p0(value) {
+            this._p0 = value;
+        }
+        get p1() {
+            return this._p1;
+        }
+        set p1(value) {
+            this._p1 = value;
+        }
+    }
+    __decorate([
+        validate,
+        Reflect.metadata("design:type", Point),
+        __metadata("design:type", Point),
+        __metadata("design:paramtypes", [Point])
+    ], Line2.prototype, "p0", null);
+    __decorate([
+        validate,
+        Reflect.metadata("design:type", Point),
+        __metadata("design:type", Point),
+        __metadata("design:paramtypes", [Point])
+    ], Line2.prototype, "p1", null);
 }
 //# sourceMappingURL=decator.js.map

@@ -1,5 +1,4 @@
-import { StringValidator } from "./Validation";
-import $1 from "./A";
+import {StringValidator} from "./Validation";
 
 const lettersRegexp = /^[A-Za-z]+$/;
 

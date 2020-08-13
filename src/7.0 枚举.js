@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * 使用ts的枚举不可以使用 Symbol类型
  * */

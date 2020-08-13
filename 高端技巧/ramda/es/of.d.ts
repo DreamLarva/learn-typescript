@@ -1,2 +1,3 @@
-import { of } from '../index';
+import {of} from '../index';
+
 export default of;

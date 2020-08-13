@@ -43,27 +43,29 @@
             super(name)
         }
 
-        move(distanceInMeters:number = 5) {
+        move(distanceInMeters: number = 5) {
             console.log("Slithering...");
             super.move(distanceInMeters)
         }
     }
 
-    class Horse extends Animal{
-        constructor(name:string){
+    class Horse extends Animal {
+        constructor(name: string) {
             super(name)
         }
-        move(distanceInMeters = 45){
+
+        move(distanceInMeters = 45) {
             console.log("Galloping...");
             super.move(distanceInMeters)
         }
-        eat(){
+
+        eat() {
 
         }
     }
 
     let sam = new Snake("Sammy the Python");
-    let tom:Animal = new Horse("Tommy the Palomino");
+    let tom: Animal = new Horse("Tommy the Palomino");
     /** ts 认为tom能用的是Animal中的方法 而不是其子类 Horse 中素有的方法*/
     tom.move(23)
     // tom.eat() // 报错

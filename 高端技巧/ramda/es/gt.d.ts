@@ -1,2 +1,3 @@
-import { gt } from '../index';
+import {gt} from '../index';
+
 export default gt;

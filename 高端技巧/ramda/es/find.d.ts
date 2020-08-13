@@ -1,2 +1,3 @@
-import { find } from '../index';
+import {find} from '../index';
+
 export default find;

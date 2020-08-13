@@ -56,18 +56,19 @@ type Record<K extends keyof any, T> = {
     [P in K]: T;
 };
 type Record_1 = Record<"key", sample>
-const record:Record_1 =  {
-    "key":{
+const record: Record_1 = {
+    "key": {
         a: 1,
         b: 1,
         c: "string",
         d: true,
-        e: () => {}
+        e: () => {
+        }
     }
 };
 
 
-    /**
+/**
  * Exclude from T those types that are assignable to U
  * 从T中剔除可以赋值给U的类型
  */

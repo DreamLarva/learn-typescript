@@ -1,2 +1,3 @@
-import { is } from '../index';
+import {is} from '../index';
+
 export default is;

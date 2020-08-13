@@ -1,4 +1,3 @@
-"use strict";
 /**
  * 合并单例类型，联合类型，类型保护和类型别名来创建一个叫做 可辨识联合的高级模式
  * 称做 标签联合或 代数数据类型
@@ -6,7 +5,6 @@
  *  一个类型别名包含了那些类型的联合— 联合。
  *  此属性上的类型保护。
  * */
-Object.defineProperty(exports, "__esModule", { value: true });
 {
     let area = function (s) {
         switch (s.kind) { // 通过kind 辨识

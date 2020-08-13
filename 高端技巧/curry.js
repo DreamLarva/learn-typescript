@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 const toCurry02 = (a, b, C) => true;
 const curried02 = curryV0(toCurry02); // CurryV0<[string,number,boolean],boolean>
 const test23 = curried02("Jane")(26)(true); // boolean

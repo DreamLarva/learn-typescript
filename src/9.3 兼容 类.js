@@ -1,27 +1,19 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * 类与对象字面量和接口差不多，但有一点不同：类有静态部分和实例部分的类型。
  * 比较两个类类型的对象时，只有实例的成员会被比较。
  * 静态成员和构造函数不在比较的范围内。
  * */
 {
-    let Animal = /** @class */ (() => {
-        class Animal {
-            constructor(name, numFeet) {
-            }
+    class Animal {
+        constructor(name, numFeet) {
         }
-        Animal.b = " some text"; // 不参与类型比较
-        return Animal;
-    })();
-    let Size = /** @class */ (() => {
-        class Size {
-            constructor(numFeet) {
-            }
+    }
+    Animal.b = " some text"; // 不参与类型比较
+    class Size {
+        constructor(numFeet) {
         }
-        Size.a = 1; // 不参与类型比较
-        return Size;
-    })();
+    }
+    Size.a = 1; // 不参与类型比较
     let a = new Animal("name", 123);
     let s = new Size(123);
     // 如果都不实例化 就不能这样 兼容赋值
@@ -32,22 +24,16 @@ Object.defineProperty(exports, "__esModule", { value: true });
  * 对于可选属性
  * */
 {
-    let Animal = /** @class */ (() => {
-        class Animal {
-            constructor(name, numFeet) {
-            }
+    class Animal {
+        constructor(name, numFeet) {
         }
-        Animal.b = " some text"; // 不参与类型比较
-        return Animal;
-    })();
-    let Size = /** @class */ (() => {
-        class Size {
-            constructor(numFeet) {
-            }
+    }
+    Animal.b = " some text"; // 不参与类型比较
+    class Size {
+        constructor(numFeet) {
         }
-        Size.a = 1; // 不参与类型比较
-        return Size;
-    })();
+    }
+    Size.a = 1; // 不参与类型比较
     let a = new Animal("name", 123);
     let s = new Size(123);
     // s.feet 兼容 a.feet 反之 不行 因为(s.feet: void | number)

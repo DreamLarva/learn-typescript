@@ -1,6 +1,7 @@
 /**
  * TypeScript 2.9允许传入泛型参数到标记模版字符串。
  * */
+
 /*
 declare function styledComponent<Props>(strs: TemplateStringsArray): Component<Props>;
 
@@ -23,5 +24,5 @@ declare function tag<T>(strs: TemplateStringsArray, ...args: T[]): T;
 // inference fails because 'number' and 'string' are both candidates that conflict
 
 
-let a = tag<string | number> `${100} ${"hello"}`;
+let a = tag<string | number>`${100} ${"hello"}`;
 // let b = tag<string | number> `${true}`; // error

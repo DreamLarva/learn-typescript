@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 /** 字符串字面量类型 */
 {
     class UIElement {

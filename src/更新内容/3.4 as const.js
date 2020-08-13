@@ -1,4 +1,3 @@
-"use strict";
 /**
  * TypeScript 3.4 introduces a new construct for literal values called const assertions. Its syntax is a type assertion with const in place of the type name (e.g. 123 as const). When we construct new literal expressions with const assertions, we can signal to the language that
  * ts3.4 现在就可以 使用 as const 作为字面量断言
@@ -11,7 +10,6 @@
  * 3. array literals become readonly tuples
  * 3. 数组字面量 变为readonly的元组
  * */
-Object.defineProperty(exports, "__esModule", { value: true });
 {
     // Type '"hello"'
     let x = "hello";

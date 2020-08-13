@@ -15,7 +15,7 @@
         return arg;
     }
 
-    function A<T extends Lengthwise>(arg: T): T{
+    function A<T extends Lengthwise>(arg: T): T {
 
         return arg
     }
@@ -41,7 +41,7 @@
  * 可以extends 字面量
  * */
 {
-    function loggingIdentity<T extends ({length:number})>(arg: T): T {
+    function loggingIdentity<T extends ({ length: number })>(arg: T): T {
         console.log(arg.length);
         return arg;
     }
@@ -79,9 +79,10 @@
         return new c();
     }
 
-    class temp{
+    class temp {
 
     }
+
     create(temp)
 }
 {
@@ -109,7 +110,7 @@
      * new () => A 可以实例化为 A的类型(new xxx)
      * */
     //                      泛型A必须是Animal的派生类
-    function createInstance<A extends Animal>(animal: new () => A ): A {
+    function createInstance<A extends Animal>(animal: new () => A): A {
         return new animal()
     }
 

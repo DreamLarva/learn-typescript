@@ -114,7 +114,7 @@
     type E = [1 | 2];
     type F = [1] | [2]
 
-    function fun3(e:E,f:F) {
+    function fun3(e: E, f: F) {
         e = f;
         // f = e // error
     }

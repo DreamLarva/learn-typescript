@@ -100,6 +100,7 @@
 
 namespace Animals {
     let a = 1;
+
     export class Zebra {
     }
 }
@@ -108,7 +109,7 @@ namespace Animals {
     /**
      * 非导出成员仅在其原有的（合并前的）命名空间内可见。这就是说合并之后，从其它命名空间合并进来的成员无法访问非导出成员。
      * */
-    // console.log(a) // error
+        // console.log(a) // error
     export interface Legged {
         numberOfLegs: number;
     }
@@ -132,17 +133,21 @@ namespace Animals {
 /** 命名空间 与 类 合并 */
 class Album {
     label!: Album.AlbumLabel;
-    a(){
+
+    a() {
         console.log(Album.AlbumLabel)
     }
 }
+
 namespace Album {
-    export class AlbumLabel { }
+    export class AlbumLabel {
+    }
 }
 /**
  *  合并结果是一个类并带有一个内部类。
  *  你也可以使用命名空间为类增加一些静态属性。
  * */
+
 /* js
 class Album {
 }
@@ -182,14 +187,11 @@ namespace Color {
     export function mixColor(colorName: string) {
         if (colorName == "yellow") {
             return Color.red + Color.green;
-        }
-        else if (colorName == "white") {
+        } else if (colorName == "white") {
             return Color.red + Color.green + Color.blue;
-        }
-        else if (colorName == "magenta") {
+        } else if (colorName == "magenta") {
             return Color.red + Color.blue;
-        }
-        else if (colorName == "cyan") {
+        } else if (colorName == "cyan") {
             return Color.green + Color.blue;
         }
     }

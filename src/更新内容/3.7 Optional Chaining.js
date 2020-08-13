@@ -1,10 +1,18 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var _a;
 /**
  * ts 会阻止你 获取 null 或 undefined 的上的值
  * 使用 ?. 关键字(这两个字符是必须的 对于 索引是 ?.[xx])
  * */
-let x = foo?.bar.baz();
+let x = foo === null || foo === void 0 ? void 0 : foo.bar.baz();
 // 编译后的结果
 // let x = (_a = foo) === null || _a === void 0 ? void 0 : _a.bar.baz();
 /**
@@ -18,7 +26,7 @@ let x = foo?.bar.baz();
         // ...
     }
     // After-ish
-    if (foo?.bar?.baz) {
+    if ((_a = foo === null || foo === void 0 ? void 0 : foo.bar) === null || _a === void 0 ? void 0 : _a.baz) {
         // ...
     }
 }
@@ -34,7 +42,7 @@ let x = foo?.bar.baz();
      * Otherwise return undefined.
      */
     function tryGetFirstElement(arr) {
-        return arr?.[0]; // 返回的类型正确 为 T | undefined
+        return arr === null || arr === void 0 ? void 0 : arr[0]; // 返回的类型正确 为 T | undefined
         // equivalent to
         //   return (arr === null || arr === undefined) ?
         //       undefined :
@@ -46,15 +54,17 @@ let x = foo?.bar.baz();
  * 当然 new 新建实例 不行 因为 new 在前面呀
  * */
 {
-    async function makeRequest1(url, log) {
-        log?.(`Request started at ${new Date().toISOString()}`);
-        // roughly equivalent to
-        //   if (log != null) {
-        //       log(`Request started at ${new Date().toISOString()}`);
-        //   }
-        const result = (await fetch(url)).json();
-        log?.(`Request finished at at ${new Date().toISOString()}`);
-        return result;
+    function makeRequest1(url, log) {
+        return __awaiter(this, void 0, void 0, function* () {
+            log === null || log === void 0 ? void 0 : log(`Request started at ${new Date().toISOString()}`);
+            // roughly equivalent to
+            //   if (log != null) {
+            //       log(`Request started at ${new Date().toISOString()}`);
+            //   }
+            const result = (yield fetch(url)).json();
+            log === null || log === void 0 ? void 0 : log(`Request finished at at ${new Date().toISOString()}`);
+            return result;
+        });
     }
 }
 /**
@@ -63,7 +73,7 @@ let x = foo?.bar.baz();
 {
     function someComputation() { return 1; }
     // 就算 foo 为空 那么 foo?.bar 为 undefined  但是 触发运算 以及 someComputation方法依然会执行
-    let result = foo?.bar / someComputation();
+    let result = (foo === null || foo === void 0 ? void 0 : foo.bar) / someComputation();
     // 编译的结果是
     // let result = ((_a = foo) === null || _a === void 0 ? void 0 : _a.bar) / someComputation();
 }

@@ -1,2 +1,3 @@
-import { bind } from '../index';
+import {bind} from '../index';
+
 export default bind;

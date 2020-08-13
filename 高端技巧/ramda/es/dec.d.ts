@@ -1,2 +1,3 @@
-import { dec } from '../index';
+import {dec} from '../index';
+
 export default dec;
