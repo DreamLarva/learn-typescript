@@ -5,37 +5,44 @@
 {
     let getSmallPet = function () {
         return {
-            fly() {
-            },
-            layEggs() {
-            }
+            fly() { },
+            layEggs() { },
         };
     };
     let pet = getSmallPet();
     // 每一个成员访问都会报错
     /*if (pet.swim) {
-        pet.swim();
-    } else if (pet.fly) {
-        pet.fly();
-    }*/
+          pet.swim();
+      } else if (pet.fly) {
+          pet.fly();
+      }*/
     /**
      * 使用类型断言
      * 在获取的值是联合类型 或者是 any 的时候 使用类型断言来指定某个类型
      * */
-    if (pet.swim) {
-        pet.swim();
+    // >= 4.0 报错 不再可以直接断言类型
+    /*
+      if ((<Fish>pet).swim) {
+          (<Fish>pet).swim();
+      } else {
+          (<Bird>pet).fly();
+      }
+  */
+    // >= 4.0 写法
+    let fishPet = pet;
+    let birdPet = pet;
+    if (fishPet.swim) {
+        fishPet.swim();
     }
-    else {
-        pet.fly();
+    else if (birdPet.fly) {
+        birdPet.fly();
     }
 }
 /** 用户自定义的类型保护 */
 {
     class Birds {
-        fly() {
-        }
-        layEggs() {
-        }
+        fly() { }
+        layEggs() { }
     }
     /**
      * 谓词为 parameterName is Type这种形式， parameterName必须是来自于当前函数签名里的一个参数名。
@@ -111,8 +118,7 @@
         getPaddingString() {
             return Array(this.numSpace + 1).join(" ");
         }
-        a() {
-        }
+        a() { }
     }
     class StringPadder {
         constructor(values) {
@@ -121,13 +127,12 @@
         getPaddingString() {
             return this.values;
         }
-        b() {
-        }
+        b() { }
     }
     let getRandomPadder = function () {
-        return Math.random() < 0.5 ?
-            new SpaceRepeatingPadder(4) :
-            new StringPadder("  ");
+        return Math.random() < 0.5
+            ? new SpaceRepeatingPadder(4)
+            : new StringPadder("  ");
     };
     // 类型为SpaceRepeatingPadder | stringPadder
     let padder = getRandomPadder();
@@ -141,7 +146,7 @@
 /** in 类型保护 */
 {
     function doStuff(q) {
-        if ('x' in q) {
+        if ("x" in q) {
             // q: A
         }
         else {
@@ -206,11 +211,12 @@
     {
         function fixed(name) {
             function postfix(epithet) {
-                return name.charAt(0) + '.  the ' + epithet; // ok
+                return name.charAt(0) + ".  the " + epithet; // ok
             }
             name = name || "Bob";
             return postfix("great");
         }
     }
 }
+export {};
 //# sourceMappingURL=10.2 高级类型 类型保护与区分类型.js.map

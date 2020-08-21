@@ -3,4 +3,5 @@
  * */
 var re = Enum2.A;
 console.log(re); // 这里就能够正常输出
+export {};
 //# sourceMappingURL=7.5 外部枚举.js.map

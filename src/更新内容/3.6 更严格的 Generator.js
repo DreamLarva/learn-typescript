@@ -126,4 +126,5 @@
     // 5
     // DONE!
 }
+export {};
 //# sourceMappingURL=3.6 更严格的 Generator.js.map

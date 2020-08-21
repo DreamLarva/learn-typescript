@@ -48,4 +48,5 @@ function catFunc(x) {
 let combined1 = combine(dogFunc, animalFunc);
 let combined2 = combine(animalFunc, dogFunc); // 文档上写 (x: Dog) => void 然而实际是 (x:Animal)=>void
 let combined3 = combine(animalFunc, catFunc);
+export {};
 //# sourceMappingURL=2.6 严格函数类型.js.map

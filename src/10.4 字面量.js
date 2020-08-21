@@ -74,4 +74,5 @@
     test(Benum.a);
     test(0 /* a */);
 }
+export {};
 //# sourceMappingURL=10.4 字面量.js.map

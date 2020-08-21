@@ -4,7 +4,8 @@ const record = {
         b: 1,
         c: "string",
         d: true,
-        e: () => { }
+        e: () => {
+        }
     }
 };
 const Parameters_1 = []; // 无参数 就是 空数组
@@ -18,4 +19,5 @@ class C {
     }
 }
 const Omit_1_1 = { d: true }; // 排除了属性 a,b,c,e 现在只能有d
+export {};
 //# sourceMappingURL=常用工具类型.js.map

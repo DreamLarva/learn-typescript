@@ -37,4 +37,5 @@
     s = people.next.next.next.name;
 }
 let Alias = 123;
+export {};
 //# sourceMappingURL=10.3 高级类型 类型别名.js.map

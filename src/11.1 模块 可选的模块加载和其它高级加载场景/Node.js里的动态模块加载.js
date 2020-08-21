@@ -9,6 +9,8 @@ if (true) {
      * */
     let ZipCodeValidator = require("./ZipCodeValidator");
     let validator = new ZipCodeValidator();
-    if (validator.isAcceptable("...")) { /* ... */ }
+    if (validator.isAcceptable("...")) { /* ... */
+    }
 }
+export {};
 //# sourceMappingURL=Node.js里的动态模块加载.js.map

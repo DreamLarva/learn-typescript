@@ -87,7 +87,8 @@
     invokeLater([1, 2], (x, y) => console.log(x + ', ' + y));
 }
 {
-    function foo(a, b) { }
+    function foo(a, b) {
+    }
     function invokeLater(args, callback) {
         /* ... Invoke callback with 'args' ... */
     }
@@ -95,4 +96,5 @@
 }
 // a = b; // error 回调函数 在 参数位置抗变
 b = a;
+export {};
 //# sourceMappingURL=9.1 兼容 比较两个函数.js.map

@@ -35,4 +35,5 @@
     // let result3 = buildName2("Bob", "Adams", "Sr.");     // error, too many parameters
     let result4 = buildName2("Bob", "Adams"); // ah, just right
 }
+export {};
 //# sourceMappingURL=5.1 可选参数 默认参数.js.map

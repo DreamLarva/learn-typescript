@@ -43,4 +43,5 @@
     identity = reverse; // Okay because (x: any)=>any matches (y: any)=>any
     // reverse = identity;  // error
 }
+export {};
 //# sourceMappingURL=9.4  兼容 泛型.js.map

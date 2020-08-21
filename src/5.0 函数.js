@@ -92,4 +92,5 @@
     };
     myAdd2(1, 2); // 之后方法提示为 number 的方法
 }
+export {};
 //# sourceMappingURL=5.0 函数.js.map

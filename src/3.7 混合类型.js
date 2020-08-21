@@ -1,7 +1,9 @@
 function getCounter() {
-    let counter = function (start) { };
+    let counter = function (start) {
+    };
     counter.interval = 123;
-    counter.reset = function () { };
+    counter.reset = function () {
+    };
     return counter;
 }
 let c = getCounter();
@@ -11,4 +13,5 @@ c.reset();
 // c.interval.toFixed() // 不报错
 // 所以由编写者 自己保证先初始化
 c.interval = 5.0;
+export {};
 //# sourceMappingURL=3.7 混合类型.js.map

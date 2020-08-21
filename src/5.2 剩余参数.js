@@ -12,4 +12,5 @@
     }
     let buildNameFun = buildName1;
 }
+export {};
 //# sourceMappingURL=5.2 剩余参数.js.map

@@ -20,4 +20,5 @@ for (let s of strings) {
         console.log(`'${s}' ${isMatch ? "matches" : "does not match"} '${name}'.`);
     }
 }
+export {};
 //# sourceMappingURL=12.0 所有的验证器都放在一个文件里.js.map

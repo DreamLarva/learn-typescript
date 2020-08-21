@@ -35,4 +35,5 @@ else if (fso.isDirectory()) {
 else if (fso.isNetworked()) {
     fso.host; // fso 是 networked
 }
+export {};
 //# sourceMappingURL=1.8 基于 this 的类型收窄.js.map

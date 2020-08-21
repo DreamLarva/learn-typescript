@@ -5,10 +5,10 @@ let defaultValue;
 let element;
 let otherElement;
 /**
-* You can think of this feature - the ?? operator - as a way to “fall back” to a default value when dealing with null or undefined. When we write code like
+ * You can think of this feature - the ?? operator - as a way to “fall back” to a default value when dealing with null or undefined. When we write code like
  * 可以认为 ?? 操作符 是 在处理 null 或 undefined 回退到默认值的方法
  * ?? 操作符 同样只受到  undefined 和 null 的影响 而不受其他 falsy value 的影响
-* */
+ * */
 {
     let x = foo !== null && foo !== void 0 ? foo : bar();
     // 翻译后
@@ -31,4 +31,5 @@ let otherElement;
     // if (element.prepend) element.prepend(otherElement);
     (_d = element.prepend) === null || _d === void 0 ? void 0 : _d.call(element, otherElement);
 }
+export {};
 //# sourceMappingURL=3.7  空值合并 Nullish Coalescing.js.map

@@ -109,4 +109,5 @@
     a({ a: "1" });
     console.log(h); // h.a => 1
 }
+export {};
 //# sourceMappingURL=5.3 this.js.map

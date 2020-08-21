@@ -4,4 +4,5 @@
 function fn(arg) {
     // console.log(arg.x); // Error! 'x' doesn't exist on 'SomeType'
 }
+export {};
 //# sourceMappingURL=myModule.js.map

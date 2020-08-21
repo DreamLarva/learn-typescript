@@ -161,7 +161,9 @@
     }
     // Functions with unknown return type don't need return expressions
     // function f27(): unknown {} // error
-    function f27() { return; }
+    function f27() {
+        return;
+    }
     // Rest type cannot be created from unknown
     function f28(x) {
         // let {...a} = x; // Error
@@ -195,4 +197,5 @@ function f20(x) {
     const g = NaN;
     const h = () => null;
 }
+export {};
 //# sourceMappingURL=新增的类型.js.map

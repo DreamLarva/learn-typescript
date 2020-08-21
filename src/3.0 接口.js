@@ -96,4 +96,5 @@
     let squareOptions = { colour: "red", width: 100, width1: 100 };
     let mySquare = createSquare1(squareOptions);
 }
+export {};
 //# sourceMappingURL=3.0 接口.js.map

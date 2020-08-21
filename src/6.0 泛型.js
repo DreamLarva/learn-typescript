@@ -25,4 +25,5 @@
         b = a; // Ok a 兼容 b
     }
 }
+export {};
 //# sourceMappingURL=6.0 泛型.js.map

@@ -46,4 +46,5 @@
         }
     }
 }
+export {};
 //# sourceMappingURL=2.0 标记联合类型.js.map

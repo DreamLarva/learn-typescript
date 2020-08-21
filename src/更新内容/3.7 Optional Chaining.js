@@ -71,7 +71,9 @@ let x = foo === null || foo === void 0 ? void 0 : foo.bar.baz();
  * optional chaining 只限制了取值的操作 并没有 限制其他的操作
  * */
 {
-    function someComputation() { return 1; }
+    function someComputation() {
+        return 1;
+    }
     // 就算 foo 为空 那么 foo?.bar 为 undefined  但是 触发运算 以及 someComputation方法依然会执行
     let result = (foo === null || foo === void 0 ? void 0 : foo.bar) / someComputation();
     // 编译的结果是
@@ -89,4 +91,5 @@ let x = foo === null || foo === void 0 ? void 0 : foo.bar.baz();
         // Error: Object is possibly undefined.
     }
 }
+export {};
 //# sourceMappingURL=3.7 Optional Chaining.js.map

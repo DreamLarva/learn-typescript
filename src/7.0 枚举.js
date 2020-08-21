@@ -70,4 +70,5 @@
         Direction["Right"] = "RIGHT";
     })(Direction || (Direction = {}));
 }
+export {};
 //# sourceMappingURL=7.0 枚举.js.map

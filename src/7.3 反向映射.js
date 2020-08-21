@@ -20,4 +20,5 @@
     let nameOfA = Enum[a]; // "A"
     console.log(a, nameOfA);
 }
+export {};
 //# sourceMappingURL=7.3 反向映射.js.map

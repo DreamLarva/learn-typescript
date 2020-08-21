@@ -15,4 +15,5 @@
         return arg;
     }
 }
+export {};
 //# sourceMappingURL=6.1 使用泛型变量.js.map

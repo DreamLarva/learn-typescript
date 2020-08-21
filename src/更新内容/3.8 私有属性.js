@@ -98,4 +98,5 @@ const c = new Square(101);
 console.log(a.equals(c)); // ok
 let z = smushObjects(x, y);
 console.log(z.kind);
+export {};
 //# sourceMappingURL=3.8 私有属性.js.map

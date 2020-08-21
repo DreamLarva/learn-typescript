@@ -66,4 +66,5 @@ customer.accountBalance = 0;
     }
     const instance = new (WithLocation(Point))(1, 2);
 }
+export {};
 //# sourceMappingURL=2.2 支持混合类.js.map

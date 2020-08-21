@@ -24,4 +24,5 @@ employee.fullName = "Bob Smith";
 if (employee.fullName) {
     alert(employee.fullName);
 }
+export {};
 //# sourceMappingURL=4.5 存取器.js.map

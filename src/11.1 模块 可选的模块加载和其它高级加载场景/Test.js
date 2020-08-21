@@ -1,5 +1,5 @@
-import { ZipCodeValidator } from "./ZipCodeValidator";
 import { LettersOnlyValidator } from "./LettersOnlyValidator";
+import { ZipCodeValidator } from "./ZipCodeValidator";
 // Some samples to try
 let strings = ["Hello", "98052", "101"];
 // Validators to use

@@ -64,4 +64,5 @@
  * */
 {
 }
+export {};
 //# sourceMappingURL=10.7 索引类型.js.map

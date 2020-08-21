@@ -16,4 +16,5 @@
         penWidth: 5.0
     };
 }
+export {};
 //# sourceMappingURL=3.6 继承接口.js.map

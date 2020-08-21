@@ -79,4 +79,5 @@
     let a = someTest ? { a: 1 } : { a: "string" }; // a 正确推断的类型为 {a:string} | {a:number}
     let b = someTest ? { a: 1 } : { b: 2 }; // a 正确推断的类型为 {a:string} | {b:number}
 }
+export {};
 //# sourceMappingURL=8.0 类型推论.js.map

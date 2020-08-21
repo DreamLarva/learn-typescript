@@ -50,4 +50,5 @@
     }
     let originalProps = unproxify({});
 }
+export {};
 //# sourceMappingURL=10.8 映射类型.js.map

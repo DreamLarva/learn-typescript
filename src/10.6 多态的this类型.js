@@ -54,4 +54,5 @@
      * 然而，使用 this类型， multiply会返回 this，在这里就是 ScientificCalculator。
      * */
 }
+export {};
 //# sourceMappingURL=10.6 多态的this类型.js.map

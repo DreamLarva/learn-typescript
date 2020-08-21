@@ -77,4 +77,5 @@
         // f = e // error
     }
 }
+export {};
 //# sourceMappingURL=10.1 高级类型 联合类型.js.map

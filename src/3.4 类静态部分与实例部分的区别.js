@@ -24,4 +24,5 @@
     let digital = createClock(DigitalClock, 12, 17);
     let analog = createClock(AnalogClock, 7, 32);
 }
+export {};
 //# sourceMappingURL=3.4 类静态部分与实例部分的区别.js.map

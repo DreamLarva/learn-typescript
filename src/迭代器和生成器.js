@@ -36,6 +36,10 @@ var __asyncGenerator = (this && this.__asyncGenerator) || function (thisArg, _ar
     function reject(value) { resume("throw", value); }
     function settle(f, v) { if (f(v), q.shift(), q.length) resume(q[0][0], q[0][1]); }
 };
+/**
+ * for..of 语句
+ * for..of会遍历可迭代的对象，调用对象上的Symbol.iterator方法。 下面是在数组上使用 for..of的简单例子：
+ * */
 {
     let someArray = [1, "string", false];
     for (let entry of someArray) {
@@ -159,4 +163,5 @@ var __asyncGenerator = (this && this.__asyncGenerator) || function (thisArg, _ar
     }
     main();
 }
+export {};
 //# sourceMappingURL=迭代器和生成器.js.map

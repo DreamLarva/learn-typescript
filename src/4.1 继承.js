@@ -56,4 +56,5 @@
     tom.move(23);
     // tom.eat() // 报错
 }
+export {};
 //# sourceMappingURL=4.1 继承.js.map

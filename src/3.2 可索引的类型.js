@@ -25,4 +25,5 @@
     let myArray = ["Alice", "Bob"];
     // myArray[2] = "Mallory"; // error!
 }
+export {};
 //# sourceMappingURL=3.2 可索引的类型.js.map

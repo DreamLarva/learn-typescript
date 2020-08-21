@@ -15,7 +15,10 @@
     };
     let stringNumeric = new GenericNumber();
     stringNumeric.zeroValue = "";
-    stringNumeric.add = function (x, y) { return x + y; };
+    stringNumeric.add = function (x, y) {
+        return x + y;
+    };
     console.log(stringNumeric.add(stringNumeric.zeroValue, "test"));
 }
+export {};
 //# sourceMappingURL=6.3 泛型类.js.map

@@ -29,4 +29,5 @@
     const ins = new Octopus();
     console.log(ins);
 }
+export {};
 //# sourceMappingURL=4.3 readonly 修饰符.js.map

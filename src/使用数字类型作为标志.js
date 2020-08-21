@@ -37,4 +37,5 @@ animal.flags &= ~AnimalFlags.HasClaws;
 printAnimalAbilities(animal); // nothing
 animal.flags |= AnimalFlags.HasClaws | AnimalFlags.CanFly;
 printAnimalAbilities(animal); // animal has claws, animal can fly
+export {};
 //# sourceMappingURL=使用数字类型作为标志.js.map

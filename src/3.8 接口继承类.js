@@ -37,4 +37,5 @@
         }
     }
 }
+export {};
 //# sourceMappingURL=3.8 接口继承类.js.map

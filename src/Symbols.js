@@ -42,4 +42,5 @@ class C {
 }
 let c = new C();
 let className = c[getClassNameSymbol](); // "C"
+export {};
 //# sourceMappingURL=Symbols.js.map

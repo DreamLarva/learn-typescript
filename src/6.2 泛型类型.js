@@ -22,4 +22,5 @@ let myIdentity3 = identity;
     let myIdentity2 = identity;
     myIdentity2(1);
 }
+export {};
 //# sourceMappingURL=6.2 泛型类型.js.map

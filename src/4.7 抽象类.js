@@ -41,7 +41,8 @@ class AccountingDepartment extends Department {
     generateReports() {
         console.log('Generating accounting reports...');
     }
-    A() { }
+    A() {
+    }
 }
 class A extends AccountingDepartment {
     constructor() {
@@ -71,4 +72,5 @@ class C extends B {
 } // 抽象类可以 继承抽象类
 class D extends A1 {
 } // 抽象类可以 实现接口
+export {};
 //# sourceMappingURL=4.7 抽象类.js.map

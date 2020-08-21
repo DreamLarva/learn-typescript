@@ -107,7 +107,9 @@
      * 这意味着这个类不能在包含它的类外被实例化，但是能被继承。
      * */
     class Person {
-        constructor(theName) { this.name = theName; }
+        constructor(theName) {
+            this.name = theName;
+        }
     }
     // Employee 能够继承 Person
     class Employee extends Person {
@@ -122,4 +124,5 @@
     let howard = new Employee("Howard", "Sales");
     // let john = new Person("John"); // 错误: 'Person' 的构造函数是被保护的.
 }
+export {};
 //# sourceMappingURL=4.2 公共，私有与受保护的修饰符.js.map

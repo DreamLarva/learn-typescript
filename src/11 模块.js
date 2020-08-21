@@ -1,11 +1,5 @@
-/**
- * 导出声明
- * 任何声明（比如变量，函数，类，类型别名或接口）都能够通过添加export关键字来导出。
- * */
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.mainValidator = exports.ZipCodeValidator1 = exports.ZipCodeValidator = exports.numberRegexp = void 0;
-exports.numberRegexp = /^[0-9]+$/;
-class ZipCodeValidator {
+export const numberRegexp = /^[0-9]+$/;
+export class ZipCodeValidator {
     isAcceptable(s) {
         return s.length === 5 && numberRegexp.test(s);
     }

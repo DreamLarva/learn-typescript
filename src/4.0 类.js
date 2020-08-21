@@ -25,4 +25,5 @@
     instance.name = "some string";
     instance.greet(); // 由使用这保证
 }
+export {};
 //# sourceMappingURL=4.0 类.js.map

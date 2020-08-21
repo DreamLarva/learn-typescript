@@ -15,6 +15,9 @@ const curried07 = curryV1(toCurry06);
 const test27 = curried07("jane", 26, "jj", "jini");
 // 设计上有问题 参数没有按照次序消耗
 const test28 = curried07("jane", 26, "jj")(26, "jj"); // should error
-Array(20).fill(0).map(v => { });
-Array.from({ length: 20 }).map(v => { });
+Array(20).fill(0).map(v => {
+});
+Array.from({ length: 20 }).map(v => {
+});
+export {};
 //# sourceMappingURL=curry.js.map

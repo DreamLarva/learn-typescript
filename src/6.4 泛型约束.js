@@ -89,4 +89,5 @@
     createInstance(Lion).numLegs = 4;
     createInstance(Bee).keeper.hasMask = true;
 }
+export {};
 //# sourceMappingURL=6.4 泛型约束.js.map

@@ -46,4 +46,5 @@
     console.log(jim.a);
     // jim.log(); // 编译不报错 运行时报错 因为log 是class上prototype的方法
 }
+export {};
 //# sourceMappingURL=10.0 高级类型 交叉类型.js.map

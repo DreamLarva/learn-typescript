@@ -6,4 +6,5 @@ function foo(x) {
     }
     return x.b; // 推断为 B
 }
+export {};
 //# sourceMappingURL=2.7 in操作符细化和精确的 instanceof.js.map

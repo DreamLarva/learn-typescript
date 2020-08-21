@@ -33,4 +33,5 @@
         // }
     }
 }
+export {};
 //# sourceMappingURL=7.2 联合枚举与枚举成员的类型.js.map

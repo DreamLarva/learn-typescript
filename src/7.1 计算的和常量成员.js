@@ -50,4 +50,5 @@
         ReadWrite: 6,
         G: 3 }*/
 }
+export {};
 //# sourceMappingURL=7.1 计算的和常量成员.js.map

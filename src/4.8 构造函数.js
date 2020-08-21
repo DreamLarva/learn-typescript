@@ -45,4 +45,5 @@
     let greeter2 = new greeterMaker();
     console.log(greeter2.greet());
 }
+export {};
 //# sourceMappingURL=4.8 构造函数.js.map

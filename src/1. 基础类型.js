@@ -51,7 +51,8 @@ _name = "smith";
     let y2 = [1, "string"];
     let y3 = Math.random() > 0.5 ? [1, "string"] : [1];
     let y4 = Math.random() > 0.5 ? [1, "string"] : [1];
-    function fun1(a, b) { }
+    function fun1(a, b) {
+    }
     fun1(...y2); // ok
     // fun1(...y3) // error 不行
     fun1(...y4); // ok
@@ -139,7 +140,8 @@ _name = "smith";
     }
     // 返回never的函数必须存在无法达到的终点
     function infiniteLoop() {
-        while (true) { }
+        while (true) {
+        }
     }
 }
 {
@@ -171,4 +173,5 @@ _name = "smith";
     // // let c: Dog = new Animal(); // error
     // let d: Animal = new Dog()
 }
+export {};
 //# sourceMappingURL=1. 基础类型.js.map

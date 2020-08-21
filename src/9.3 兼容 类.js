@@ -130,4 +130,5 @@
     a = s; // 父类可以兼容子类
     // s = a;  // 子类不能兼容父类
 }
+export {};
 //# sourceMappingURL=9.3 兼容 类.js.map

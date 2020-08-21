@@ -20,4 +20,5 @@ mySearch = function (src, sub) {
     let result = src.search(sub);
     return result > -1;
 };
+export {};
 //# sourceMappingURL=3.1 函数类型.js.map
