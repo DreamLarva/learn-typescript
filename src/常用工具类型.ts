@@ -158,4 +158,18 @@ type Omit_1 = Omit<sample, "a" | "b" | "c" | "e">;
 const Omit_1_1: Omit_1 = {d: true}; // 排除了属性 a,b,c,e 现在只能有d
 
 
+/**
+ * airbnb 的类型
+ * */
+// 定义类型必须不包含 undefined
+type Defined<T> = T extends undefined ? never : T;
+
+// 对象默认值
+type WithDefaultProps<P, DP extends Partial<P>> = Omit<P, keyof DP> & {
+    [K in Extract<keyof DP, keyof P>]:
+    DP[K] extends Defined<P[K]>
+        ? Defined<P[K]>
+        : Defined<P[K]> | DP[K];
+};
+
 export {}

@@ -93,7 +93,7 @@
    * 返回的一定是个布尔值
    * */
   let isFish = function (pet: Fish | BirdType): pet is Fish {
-    return (<Fish>pet).swim !== undefined;
+    return (pet as Fish).swim !== undefined;
     // return (<Fish>pet).swim !== undefined;
   };
 
