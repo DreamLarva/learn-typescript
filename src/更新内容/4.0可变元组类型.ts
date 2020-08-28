@@ -230,13 +230,11 @@ In the context of inference for a call of a generic function with a rest paramet
   type First<T extends readonly unknown[]> = T[0];
   type DropFirst<T extends readonly unknown[]> = T extends readonly [
     any?,
-    /* prettier-ignore */
     ...infer U // 不能有括号否则报错
   ]
     ? U
     : [...T];
   type Last<T extends readonly unknown[]> = T extends readonly [
-    /* prettier-ignore */
     ...infer _,
     infer U
   ]
@@ -245,7 +243,6 @@ In the context of inference for a call of a generic function with a rest paramet
     ? U | undefined
     : undefined;
   type DropLast<T extends readonly unknown[]> = T extends readonly [
-    /* prettier-ignore */
     ...infer U,
     any?
   ]
