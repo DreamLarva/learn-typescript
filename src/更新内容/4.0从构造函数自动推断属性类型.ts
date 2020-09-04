@@ -7,6 +7,7 @@
     area;
     // ^ = (property) Square.area: number
     sideLength;
+
     // ^ = (property) Square.sideLength: number
     constructor(sideLength: number) {
       this.sideLength = sideLength;
@@ -21,6 +22,7 @@
 {
   class Square {
     sideLength;
+
     // ^ = (property) Square.sideLength: number | undefined
 
     constructor(sideLength: number) {

@@ -10,23 +10,23 @@
  *      3.使用类型断言（比如opts as Options）
  * */
 {
-    interface Options {
-        data?: string,
-        timeout?: number,
-        maxRetries?: number,
-    }
+  interface Options {
+    data?: string;
+    timeout?: number;
+    maxRetries?: number;
+  }
 
-    function sendMessage(options: Options) {
-        // ...
-    }
+  function sendMessage(options: Options) {
+    // ...
+  }
 
-    const opts = {
-        payload: "hello world!",
-        retryOnFail: true,
-    };
+  const opts = {
+    payload: "hello world!",
+    retryOnFail: true,
+  };
 
-    sendMessage({data: "1"});
-    sendMessage({});
-    // sendMessage(opts); // error  'opts' 和 'Options' 没有重叠的属性
-    // 可能我们想要用'data'/'maxRetries'来代替'payload'/'retryOnFail'
+  sendMessage({ data: "1" });
+  sendMessage({});
+  // sendMessage(opts); // error  'opts' 和 'Options' 没有重叠的属性
+  // 可能我们想要用'data'/'maxRetries'来代替'payload'/'retryOnFail'
 }

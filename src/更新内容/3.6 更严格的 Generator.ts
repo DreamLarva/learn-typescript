@@ -3,28 +3,28 @@
  * 在早期版本中，生成器的用户无法区分是从生成yield的值还return 的值。
  * */
 {
-    function* foo() {
-        if (Math.random() < 0.5) yield 100;
-        return "Finished!"
-    }
+  function* foo() {
+    if (Math.random() < 0.5) yield 100;
+    return "Finished!";
+  }
 
-    let iter = foo();
-    let curr = iter.next();
-    if (curr.done) {
-        // TypeScript 3.5 and prior thought this was a 'string | number'.
-        // It should know it's 'string' since 'done' was 'true'!
-        curr.value // 3.6 确定类型为 string
-    }
+  let iter = foo();
+  let curr = iter.next();
+  if (curr.done) {
+    // TypeScript 3.5 and prior thought this was a 'string | number'.
+    // It should know it's 'string' since 'done' was 'true'!
+    curr.value; // 3.6 确定类型为 string
+  }
 }
 {
-    function* bar() {
-        let x: { hello(): void } = yield;
-        x.hello();
-    }
+  function* bar() {
+    let x: { hello(): void } = yield;
+    x.hello();
+  }
 
-    let iter = bar();
-    iter.next();
-    // iter.next(123); // 3.6 类型错误
+  let iter = bar();
+  iter.next();
+  // iter.next(123); // 3.6 类型错误
 }
 /**
  * 在TypeScript 3.6中，检查器现在知道在第一个示例中curr.value应为正确的类型string，
@@ -36,133 +36,134 @@
  * Iterator 类型,现在允许用户 指明 yield 的类型 和 return 的类型,以及 next 可以接受的类型.
  * */
 {
-    // T 是yield 的类型; TReturn 返回的类型, TNext next 方法可以接受的可接受的类型
-    interface Iterator<T, TReturn = any, TNext = undefined> {
-        // Takes either 0 or 1 arguments - doesn't accept 'undefined'
-        next(...args: [] | [TNext]): IteratorResult<T, TReturn>;
+  // T 是yield 的类型; TReturn 返回的类型, TNext next 方法可以接受的可接受的类型
+  interface Iterator<T, TReturn = any, TNext = undefined> {
+    // Takes either 0 or 1 arguments - doesn't accept 'undefined'
+    next(...args: [] | [TNext]): IteratorResult<T, TReturn>;
 
-        return?(value?: TReturn): IteratorResult<T, TReturn>;
+    return?(value?: TReturn): IteratorResult<T, TReturn>;
 
-        throw?(e?: any): IteratorResult<T, TReturn>;
-    }
+    throw?(e?: any): IteratorResult<T, TReturn>;
+  }
 }
 /**
  * 在此基础上 新的Generator 类型就是 Iterator 类型额外拥有 return 和 throw 方法,
  * 并且可迭代
  * */
 {
-    interface Generator<T = unknown, TReturn = any, TNext = unknown>
-        extends Iterator<T, TReturn, TNext> {
-        next(...args: [] | [TNext]): IteratorResult<T, TReturn>;
+  interface Generator<T = unknown, TReturn = any, TNext = unknown>
+    extends Iterator<T, TReturn, TNext> {
+    next(...args: [] | [TNext]): IteratorResult<T, TReturn>;
 
-        return(value: TReturn): IteratorResult<T, TReturn>;
+    return(value: TReturn): IteratorResult<T, TReturn>;
 
-        throw(e: any): IteratorResult<T, TReturn>;
+    throw(e: any): IteratorResult<T, TReturn>;
 
-        [Symbol.iterator](): Generator<T, TReturn, TNext>;
-    }
+    [Symbol.iterator](): Generator<T, TReturn, TNext>;
+  }
 }
 /**
  * 为了区分返回值和产生值，TypeScript 3.6将IteratorResult类型转换为已区分联合类型
  * 所以 返回类型在 done 为true 的情况下 是能绝对确定 的
  * */
 {
-    type IteratorResult<T, TReturn = any> = IteratorYieldResult<T> | IteratorReturnResult<TReturn>;
+  type IteratorResult<T, TReturn = any> =
+    | IteratorYieldResult<T>
+    | IteratorReturnResult<TReturn>;
 
-    interface IteratorYieldResult<TYield> {
-        done?: false;
-        value: TYield;
-    }
+  interface IteratorYieldResult<TYield> {
+    done?: false;
+    value: TYield;
+  }
 
-    interface IteratorReturnResult<TReturn> {
-        done: true;
-        value: TReturn;
-    }
+  interface IteratorReturnResult<TReturn> {
+    done: true;
+    value: TReturn;
+  }
 }
 
 /**
  * 为了正确表示可以从调用传递给生成器的类型next()，TypeScript 3.6还可以推断yield生成器函数体内的某些用法。
  * */
 {
-    function* foo() {
-        let x: string = yield; // 希望传入的值是 string
-        console.log(x.toUpperCase());
-    }
+  function* foo() {
+    let x: string = yield; // 希望传入的值是 string
+    console.log(x.toUpperCase());
+  }
 
-    let x = foo();
-    x.next(); // first call to 'next' is always ignored
-    // x.next(42); // error! 'number' is not assignable to 'string'
+  let x = foo();
+  x.next(); // first call to 'next' is always ignored
+  // x.next(42); // error! 'number' is not assignable to 'string'
 }
 /**
  * 如果 yield 可接受的方法 可接受的值能 有多种,却不显示 声明 就是认定是 never
  * */
 {
-    function* foo() {
-        let x: string = yield; // 希望传入的值是 string
-        let y: number = yield; // 希望传入的值是 number
-        console.log(x.toUpperCase().repeat(y));
-    }
+  function* foo() {
+    let x: string = yield; // 希望传入的值是 string
+    let y: number = yield; // 希望传入的值是 number
+    console.log(x.toUpperCase().repeat(y));
+  }
 
-    let x = foo();
-    x.next(); // first call to 'next' is always ignored
-    // x.next("123"); // error
-    // x.next(456); // error
+  let x = foo();
+  x.next(); // first call to 'next' is always ignored
+  // x.next("123"); // error
+  // x.next(456); // error
 }
 {
-    function* foo(): Generator<void, string, string | number> {
-        let x = yield; // 希望传入的值是 string
-        let y = yield; // 希望传入的值是 number
-        if (typeof x === "string" && typeof y === "number") {
-            const txt = x.toUpperCase().repeat(y);
-            console.log(txt);
-            return txt
-        }
-        // 确保 else 分支的返回值
-        throw new Error("error")
+  function* foo(): Generator<void, string, string | number> {
+    let x = yield; // 希望传入的值是 string
+    let y = yield; // 希望传入的值是 number
+    if (typeof x === "string" && typeof y === "number") {
+      const txt = x.toUpperCase().repeat(y);
+      console.log(txt);
+      return txt;
     }
+    // 确保 else 分支的返回值
+    throw new Error("error");
+  }
 
-    let x = foo();
-    x.next(); // first call to 'next' is always ignored
-    // x.next("123"); // error
-    // x.next(456); // error
+  let x = foo();
+  x.next(); // first call to 'next' is always ignored
+  // x.next("123"); // error
+  // x.next(456); // error
 }
 /**
  * 如果您希望是显式的，则还可以强制声明return值的类型,yield类型 和 从 用显式yield 表达式返回的值的类型
  * */
 {
-    /**
-     * - yields numbers
-     * - returns strings
-     * - can be passed in booleans
-     */
-    function* counter(): Generator<number, string, boolean> {
-        let i = 0;
-        while (true) {
-            if (yield i++) {
-                break;
-            }
-        }
-        return "done!";
+  /**
+   * - yields numbers
+   * - returns strings
+   * - can be passed in booleans
+   */
+  function* counter(): Generator<number, string, boolean> {
+    let i = 0;
+    while (true) {
+      if (yield i++) {
+        break;
+      }
     }
+    return "done!";
+  }
 
-    var iter = counter();
-    var curr = iter.next();
-    while (!curr.done) {
-        console.log(curr.value);
-        curr = iter.next(curr.value === 5)
-    }
-    console.log(curr.value.toUpperCase());
+  var iter = counter();
+  var curr = iter.next();
+  while (!curr.done) {
+    console.log(curr.value);
+    curr = iter.next(curr.value === 5);
+  }
+  console.log(curr.value.toUpperCase());
 
-// prints:
-//
-// 0
-// 1
-// 2
-// 3
-// 4
-// 5
-// DONE!
+  // prints:
+  //
+  // 0
+  // 1
+  // 2
+  // 3
+  // 4
+  // 5
+  // DONE!
 }
 
-export {}
-
+export {};

@@ -1,4 +1,4 @@
 // ./someOtherModule.ts
 export interface SomeType {
-    y: string;
+  y: string;
 }

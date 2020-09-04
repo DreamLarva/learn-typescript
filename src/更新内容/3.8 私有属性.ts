@@ -8,15 +8,15 @@
  * */
 
 class Person {
-    #name: string;
+  #name: string;
 
-    constructor(name: string) {
-        this.#name = name;
-    }
+  constructor(name: string) {
+    this.#name = name;
+  }
 
-    greet() {
-        console.log(`Hello, my name is ${this.#name}!`);
-    }
+  greet() {
+    console.log(`Hello, my name is ${this.#name}!`);
+  }
 }
 
 let jeremy = new Person("Jeremy Bearimy");
@@ -24,19 +24,19 @@ let jeremy = new Person("Jeremy Bearimy");
 // jeremy.#name; // error
 
 class C {
-    foo = 10;
+  foo = 10;
 
-    cHelper() {
-        return this.foo;
-    }
+  cHelper() {
+    return this.foo;
+  }
 }
 
 class D extends C {
-    foo = 20;
+  foo = 20;
 
-    dHelper() {
-        return this.foo;
-    }
+  dHelper() {
+    return this.foo;
+  }
 }
 
 let instance = new D();
@@ -45,19 +45,19 @@ console.log(instance.cHelper()); // prints '20'
 console.log(instance.dHelper()); // prints '20'
 
 class E {
-    #foo = 10;
+  #foo = 10;
 
-    cHelper() {
-        return this.#foo;
-    }
+  cHelper() {
+    return this.#foo;
+  }
 }
 
 class F extends E {
-    #foo = 20;
+  #foo = 20;
 
-    dHelper() {
-        return this.#foo;
-    }
+  dHelper() {
+    return this.#foo;
+  }
 }
 
 let instance1 = new F();
@@ -67,20 +67,20 @@ console.log(instance1.cHelper()); // prints '10'
 console.log(instance1.dHelper()); // prints '20'
 
 class Square {
-    #sideLength: number;
+  #sideLength: number;
 
-    constructor(sideLength: number) {
-        this.#sideLength = sideLength;
-    }
+  constructor(sideLength: number) {
+    this.#sideLength = sideLength;
+  }
 
-    equals(other: any) {
-        return this.#sideLength === other.#sideLength;
-    }
+  equals(other: any) {
+    return this.#sideLength === other.#sideLength;
+  }
 }
 
 //
 const a = new Square(100);
-const b = {sideLength: 100};
+const b = { sideLength: 100 };
 const c = new Square(101);
 
 // 运行时报错
@@ -90,17 +90,16 @@ const c = new Square(101);
 
 console.log(a.equals(c)); // ok
 
-
 declare function smushObjects<T, U>(x: T, y: U): T & U;
 
 interface Circle {
-    // kind: "circle";
-    radius: number;
+  // kind: "circle";
+  radius: number;
 }
 
 interface Square {
-    kind: "square";
-    sideLength: number;
+  kind: "square";
+  sideLength: number;
 }
 
 declare let x: Circle;
@@ -108,6 +107,5 @@ declare let y: Square;
 
 let z = smushObjects(x, y);
 console.log(z.kind);
-
 
 export {};

@@ -4,10 +4,9 @@
  * */
 type MapToPromise<T> = { [K in keyof T]: Promise<T[K]> };
 
-type Coordinate = [number, number]
+type Coordinate = [number, number];
 
 // 最终索引类型 依然是 个数组 或是 元组
 type PromiseCoordinate = MapToPromise<Coordinate>; // [Promise<number>, Promise<number>]
 
-
-export {}
+export {};

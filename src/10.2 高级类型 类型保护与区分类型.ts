@@ -27,10 +27,10 @@
 
   // 每一个成员访问都会报错
   /*if (pet.swim) {
-        pet.swim();
-    } else if (pet.fly) {
-        pet.fly();
-    }*/
+          pet.swim();
+      } else if (pet.fly) {
+          pet.fly();
+      }*/
 
   /**
    * 使用类型断言
@@ -39,12 +39,12 @@
 
   // >= 4.0 报错 不再可以直接断言类型
   /*
-    if ((<Fish>pet).swim) {
-        (<Fish>pet).swim();
-    } else {
-        (<Bird>pet).fly();
-    }
-*/
+      if ((<Fish>pet).swim) {
+          (<Fish>pet).swim();
+      } else {
+          (<Bird>pet).fly();
+      }
+  */
 
   // >= 4.0 写法
   let fishPet = pet as Fish;

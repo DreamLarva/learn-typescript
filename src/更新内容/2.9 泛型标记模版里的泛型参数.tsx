@@ -23,6 +23,5 @@ declare function tag<T>(strs: TemplateStringsArray, ...args: T[]): T;
 
 // inference fails because 'number' and 'string' are both candidates that conflict
 
-
 let a = tag<string | number>`${100} ${"hello"}`;
 // let b = tag<string | number> `${true}`; // error

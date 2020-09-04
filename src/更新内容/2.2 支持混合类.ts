@@ -27,29 +27,27 @@
  * */
 
 class Point {
-    constructor(public x: number, public y: number) {
-    }
+  constructor(public x: number, public y: number) {}
 }
 
 class Person {
-    constructor(public name: string) {
-    }
+  constructor(public name: string) {}
 }
 
 /**
  * 通用的包装 一个生成 T 类型 实例 的 构造函数的类型
  * */
-type Constructor<T> = new(...args: any[]) => T;
+type Constructor<T> = new (...args: any[]) => T;
 
 function Tagged<T extends Constructor<{}>>(Base: T) {
-    return class extends Base {
-        _tag: string;
+  return class extends Base {
+    _tag: string;
 
-        constructor(...args: any[]) {
-            super(...args);
-            this._tag = "";
-        }
+    constructor(...args: any[]) {
+      super(...args);
+      this._tag = "";
     }
+  };
 }
 
 const TaggedPoint = Tagged(Point);
@@ -58,7 +56,7 @@ let point = new TaggedPoint(10, 20);
 point._tag = "hello";
 
 class Customer extends Tagged(Person) {
-    accountBalance!: number;
+  accountBalance!: number;
 }
 
 let customer = new Customer("Joe");
@@ -69,28 +67,23 @@ customer.accountBalance = 0;
  * 另一个例子
  * */
 {
-    interface Point {
-        x: number;
-        y: number;
-    }
+  interface Point {
+    x: number;
+    y: number;
+  }
 
-    const WithLocation = <T extends Constructor<Point>>(Base: T) =>
-        class extends Base {
-            getLocation(): [number, number] {
-                return [this.x, this.y];
-            }
-        };
+  const WithLocation = <T extends Constructor<Point>>(Base: T) =>
+    class extends Base {
+      getLocation(): [number, number] {
+        return [this.x, this.y];
+      }
+    };
 
-    class Point {
-        constructor(public x: number, public y: number) {
+  class Point {
+    constructor(public x: number, public y: number) {}
+  }
 
-        }
-
-    }
-
-    const instance = new (WithLocation(Point))(1, 2)
-
-
+  const instance = new (WithLocation(Point))(1, 2);
 }
 
-export {}
+export {};

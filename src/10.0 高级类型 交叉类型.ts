@@ -6,52 +6,50 @@
  * 我们大多是在混入（mixins）或其它不适合典型面向对象模型的地方看到交叉类型的使用。
  * */
 {
-    /**
-     * 浅克隆两个对象 为一个新对象
-     * */
-    function extend<T extends {}, U extends {}>(first: T, second: U): T & U {
-        let result = <T & U>{};
-        for (let id in first) {
-            (<any>result)[id] = (<any>first)[id];
-        }
-        for (let id in second) {
-            /**
-             * 版本 3.5 以后无约束的泛型 默认为 unknown(unknown 不能 访问 成员)
-             * 解决 :
-             *  1. 这里也要加上 <any>
-             *  2. T extends {} U extends {} 这样就保证  泛型 必须传入一个 对象才行
-             * */
-            if (!result.hasOwnProperty(id)) {
-                (<any>result)[id] = (<any>second)[id]
-            }
-        }
-        return result;
+  /**
+   * 浅克隆两个对象 为一个新对象
+   * */
+  function extend<T extends {}, U extends {}>(first: T, second: U): T & U {
+    let result = <T & U>{};
+    for (let id in first) {
+      (<any>result)[id] = (<any>first)[id];
+    }
+    for (let id in second) {
+      /**
+       * 版本 3.5 以后无约束的泛型 默认为 unknown(unknown 不能 访问 成员)
+       * 解决 :
+       *  1. 这里也要加上 <any>
+       *  2. T extends {} U extends {} 这样就保证  泛型 必须传入一个 对象才行
+       * */
+      if (!result.hasOwnProperty(id)) {
+        (<any>result)[id] = (<any>second)[id];
+      }
+    }
+    return result;
+  }
+
+  class Person {
+    constructor(public name: string) {}
+  }
+
+  interface Loggable {
+    log(): void;
+  }
+
+  class ConsoleLogger implements Loggable {
+    constructor(public a: string) {
+      this.a = "some text";
     }
 
-    class Person {
-        constructor(public name: string) {
-
-        }
+    log() {
+      console.log("some text");
     }
+  }
 
-    interface Loggable {
-        log(): void
-    }
-
-    class ConsoleLogger implements Loggable {
-        constructor(public a: string) {
-            this.a = "some text"
-        }
-
-        log() {
-            console.log("some text")
-        }
-    }
-
-    const jim = extend(new Person("Jim"), new ConsoleLogger("a"));
-    console.log(jim.name);
-    console.log(jim.a);
-    // jim.log(); // 编译不报错 运行时报错 因为log 是class上prototype的方法
+  const jim = extend(new Person("Jim"), new ConsoleLogger("a"));
+  console.log(jim.name);
+  console.log(jim.a);
+  // jim.log(); // 编译不报错 运行时报错 因为log 是class上prototype的方法
 }
 
-export {}
+export {};

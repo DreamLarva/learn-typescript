@@ -11,10 +11,9 @@ type ValueOrArray<T> = T | Array<ValueOrArray<T>>;
  * ??
  * */
 {
-    type ValueOrArray<T> = T | ArrayOfValueOrArray<T>;
+  type ValueOrArray<T> = T | ArrayOfValueOrArray<T>;
 
-    interface ArrayOfValueOrArray<T> extends Array<ValueOrArray<T>> {
-    }
+  interface ArrayOfValueOrArray<T> extends Array<ValueOrArray<T>> {}
 }
 /**
  * Because interfaces (and other object types) introduce a level of indirection and their full structure doesn’t need
@@ -29,14 +28,13 @@ type ValueOrArray<T> = T | Array<ValueOrArray<T>>;
  * 表示JSON 的类型
  * */
 {
-    type Json = string | number | boolean | null | JsonObject | JsonArray;
+  type Json = string | number | boolean | null | JsonObject | JsonArray;
 
-    interface JsonObject {
-        [property: string]: Json;
-    }
+  interface JsonObject {
+    [property: string]: Json;
+  }
 
-    interface JsonArray extends Array<Json> {
-    }
+  interface JsonArray extends Array<Json> {}
 }
 
 /**
@@ -44,14 +42,14 @@ type ValueOrArray<T> = T | Array<ValueOrArray<T>>;
  * 现在下面代码不会报错
  * */
 {
-    type VirtualNode =
-        | string
-        | [string, { [key: string]: any }, ...VirtualNode[]];
+  type VirtualNode =
+    | string
+    | [string, { [key: string]: any }, ...VirtualNode[]];
 
-    const myNode: VirtualNode = [
-        "div",
-        {id: "parent"},
-        ["div", {id: "first-child"}, "I'm the first child"],
-        ["div", {id: "second-child"}, "I'm the second child"]
-    ];
+  const myNode: VirtualNode = [
+    "div",
+    { id: "parent" },
+    ["div", { id: "first-child" }, "I'm the first child"],
+    ["div", { id: "second-child" }, "I'm the second child"],
+  ];
 }

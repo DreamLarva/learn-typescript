@@ -3,18 +3,17 @@
  * 注意收集的变量一定是一个 数组
  * */
 {
-    function buildName(firstName: string, ...restOfName: string[]) {
-        return firstName + " " + restOfName.join(" ")
-    }
+  function buildName(firstName: string, ...restOfName: string[]) {
+    return firstName + " " + restOfName.join(" ");
+  }
 
-    console.log(buildName("Joseph", "Samuel", "Lucas", "MacKinzie"));
+  console.log(buildName("Joseph", "Samuel", "Lucas", "MacKinzie"));
 
+  function buildName1(firstName: string, ...restOfName: string[]) {
+    return firstName + " " + restOfName.join(" ");
+  }
 
-    function buildName1(firstName: string, ...restOfName: string[]) {
-        return firstName + " " + restOfName.join(" ");
-    }
-
-    let buildNameFun: (fname: string, ...rest: string[]) => string = buildName1;
+  let buildNameFun: (fname: string, ...rest: string[]) => string = buildName1;
 }
 
-export {}
+export {};

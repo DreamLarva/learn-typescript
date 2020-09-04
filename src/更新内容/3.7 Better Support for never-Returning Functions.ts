@@ -12,17 +12,17 @@
  * */
 declare function doThingWithString(x: string): string;
 
-declare function doThingWithNumber(x: number): number;;
+declare function doThingWithNumber(x: number): number;
 {
-    /**
-     * 正确推断了 返回值的类型
-     * */
-    function dispatch(x: string | number) {
-        if (typeof x === "string") {
-            return doThingWithString(x);
-        } else if (typeof x === "number") {
-            return doThingWithNumber(x);
-        }
-        process.exit(1); // process.exit(1)方法返回never
+  /**
+   * 正确推断了 返回值的类型
+   * */
+  function dispatch(x: string | number) {
+    if (typeof x === "string") {
+      return doThingWithString(x);
+    } else if (typeof x === "number") {
+      return doThingWithNumber(x);
     }
+    process.exit(1); // process.exit(1)方法返回never
+  }
 }

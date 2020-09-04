@@ -19,47 +19,50 @@
  *      4. 否则，这个条件依赖于一个或多个类型变量，有条件的类型解析被推迟进行。
  * */
 {
-    type TypeName<T> =
-        T extends string ? "string" :
-            T extends number ? "number" :
-                T extends boolean ? "boolean" :
-                    T extends undefined ? "undefined" :
-                        T extends Function ? "function" :
-                            "object";
+  type TypeName<T> = T extends string
+    ? "string"
+    : T extends number
+    ? "number"
+    : T extends boolean
+    ? "boolean"
+    : T extends undefined
+    ? "undefined"
+    : T extends Function
+    ? "function"
+    : "object";
 
-    type T0 = TypeName<string>;  // "string"
-    type T1 = TypeName<"a">;  // "string"
-    type T2 = TypeName<true>;  // "boolean"
-    type T3 = TypeName<() => void>;  // "function"
-    type T4 = TypeName<string[]>;  // "object"
+  type T0 = TypeName<string>; // "string"
+  type T1 = TypeName<"a">; // "string"
+  type T2 = TypeName<true>; // "boolean"
+  type T3 = TypeName<() => void>; // "function"
+  type T4 = TypeName<string[]>; // "object"
 }
 {
-    class Animal {
-        a!: 1
-    }
+  class Animal {
+    a!: 1;
+  }
 
-    class Dog extends Animal {
-        b!: 2
-    }
+  class Dog extends Animal {
+    b!: 2;
+  }
 
-    class Corgi extends Dog {
-        c!: 3
-    }
+  class Corgi extends Dog {
+    c!: 3;
+  }
 
-    type TypeName<T> =
-        T extends (x: Dog) => Dog ? true : false
+  type TypeName<T> = T extends (x: Dog) => Dog ? true : false;
 
-    type T0 = TypeName<(x: Dog) => Dog>  // true
-    type T1 = TypeName<(x: Animal) => any>  // true 参数抗变
-    type T2 = TypeName<(x: any) => Corgi> // true 返回值 协变
-    type T3 = TypeName<(x: Animal) => Corgi> // true
+  type T0 = TypeName<(x: Dog) => Dog>; // true
+  type T1 = TypeName<(x: Animal) => any>; // true 参数抗变
+  type T2 = TypeName<(x: any) => Corgi>; // true 返回值 协变
+  type T3 = TypeName<(x: Animal) => Corgi>; // true
 
-    type T4 = TypeName<(x: Animal, y: number) => Corgi> // false 参数抗变 只能少不能多
-    type T6 = TypeName<(...x: Animal[]) => any> // 同上
+  type T4 = TypeName<(x: Animal, y: number) => Corgi>; // false 参数抗变 只能少不能多
+  type T6 = TypeName<(...x: Animal[]) => any>; // 同上
 
-    type T5 = TypeName<(x: Animal) => Corgi & { a: 1 }> // true 返回值 可以 原类型的交叉类型
+  type T5 = TypeName<(x: Animal) => Corgi & { a: 1 }>; // true 返回值 可以 原类型的交叉类型
 
-    type T7 = TypeName<(x: Animal) => { a: 1 }> // false
+  type T7 = TypeName<(x: Animal) => { a: 1 }>; // false
 }
 
 /**
@@ -70,90 +73,102 @@
  * 也就是如果 T 为联合类型 就会 联合的每个类型 都会分别判断 然后 在联合在一起
  * */
 {
-    type TypeName<T> =
-        T extends string ? "string" :
-            T extends number ? "number" :
-                T extends boolean ? "boolean" :
-                    T extends undefined ? "undefined" :
-                        T extends Function ? "function" :
-                            "object";
-    type T10 = TypeName<string | (() => void)>;  // "string" | "function"
-    type T12 = TypeName<string | string[] | undefined>;  // "string" | "object" | "undefined"
-    type T11 = TypeName<string[] | number[]>;  // "object"
+  type TypeName<T> = T extends string
+    ? "string"
+    : T extends number
+    ? "number"
+    : T extends boolean
+    ? "boolean"
+    : T extends undefined
+    ? "undefined"
+    : T extends Function
+    ? "function"
+    : "object";
+  type T10 = TypeName<string | (() => void)>; // "string" | "function"
+  type T12 = TypeName<string | string[] | undefined>; // "string" | "object" | "undefined"
+  type T11 = TypeName<string[] | number[]>; // "object"
 }
 /**
  * 在T extends U ? X : Y的实例化里，对T的引用被解析为联合类型的一部分（比如，T指向某一单个部分，在有条件类型分布到联合类型之后）。
  * 此外，在X内(也就是 true 的分支内 使用的T 是被 U 类型所约束的) 对T的引用有一个附加的类型参数约束U（例如，T被当成在X内可赋值给U）。
  * */
 {
-    type BoxedValue<T> = { value: T };
-    type BoxedArray<T> = { array: T[] };
-    // 如果 T 是 数组
-    type Boxed<T> = T extends any[] ? BoxedArray<T[number]> : BoxedValue<T>;
+  type BoxedValue<T> = { value: T };
+  type BoxedArray<T> = { array: T[] };
+  // 如果 T 是 数组
+  type Boxed<T> = T extends any[] ? BoxedArray<T[number]> : BoxedValue<T>;
+  type T20 = Boxed<string>; // BoxedValue<string>;
+  type T21 = Boxed<number[]>; // BoxedArray<number>;
+  type T22 = Boxed<string | number[]>; // BoxedValue<string> | BoxedArray<number>;
 
-    type T20 = Boxed<string>;  // BoxedValue<string>;
-    type T21 = Boxed<number[]>;  // BoxedArray<number>;
-    type T22 = Boxed<string | number[]>;  // BoxedValue<string> | BoxedArray<number>;
+  type Boxed2<T> = T extends (infer R)[] ? BoxedArray<R> : BoxedValue<T>;
+  type T20_2 = Boxed2<string>; // BoxedValue<string>;
+  type T21_2 = Boxed2<number[]>; // BoxedArray<number>;
+  type Ta3_2 = Boxed2<string | number[]>; // BoxedValue<string> | BoxedArray<number>;
 }
 /**
  * 有条件类型的分布式的属性可以方便地用来过滤联合类型
  * */
 {
-    type Diff<T, U> = T extends U ? never : T;  // 从 T 中移除 符合 U 的类型
-    type Filter<T, U> = T extends U ? T : never;  // 从 T 中移除 不符合 U 的类型
+  type Diff<T, U> = T extends U ? never : T; // 从 T 中移除 符合 U 的类型
+  type Filter<T, U> = T extends U ? T : never; // 从 T 中移除 不符合 U 的类型
 
-    type T30 = Diff<"a" | "b" | "c" | "d", "a" | "c" | "f">;  // "b" | "d"
-    type T31 = Filter<"a" | "b" | "c" | "d", "a" | "c" | "f">;  // "a" | "c"
-    type T32 = Diff<string | number | (() => void), Function>;  // string | number
-    type T33 = Filter<string | number | (() => void), Function>;  // () => void
+  type T30 = Diff<"a" | "b" | "c" | "d", "a" | "c" | "f">; // "b" | "d"
+  type T31 = Filter<"a" | "b" | "c" | "d", "a" | "c" | "f">; // "a" | "c"
+  type T32 = Diff<string | number | (() => void), Function>; // string | number
+  type T33 = Filter<string | number | (() => void), Function>; // () => void
 
-    type NonNullable<T> = Diff<T, null | undefined>;  // 筛选掉 T 泛型中的 null 和 undefined 类型
+  type NonNullable<T> = Diff<T, null | undefined>; // 筛选掉 T 泛型中的 null 和 undefined 类型
 
-    type T34 = NonNullable<string | number | undefined>;  // string | number
-    type T35 = NonNullable<string | string[] | null | undefined>;  // string | string[]
-    type T36 = NonNullable<string | null | undefined | void>;  // string | void   ........
+  type T34 = NonNullable<string | number | undefined>; // string | number
+  type T35 = NonNullable<string | string[] | null | undefined>; // string | string[]
+  type T36 = NonNullable<string | null | undefined | void>; // string | void   ........
 
-    function f1<T>(x: T, y: NonNullable<T>) {
-        x = y;  // Ok
-        // y = x;  // Error
-    }
+  function f1<T>(x: T, y: NonNullable<T>) {
+    x = y; // Ok
+    // y = x;  // Error
+  }
 
-    function f2<T extends string | undefined>(x: T, y: NonNullable<T>) {
-        x = y;  // Ok
-        // y = x;  // Error
-        // let s1: string = x;  // Error
-    }
+  function f2<T extends string | undefined>(x: T, y: NonNullable<T>) {
+    x = y; // Ok
+    // y = x;  // Error
+    // let s1: string = x;  // Error
+  }
 }
 /**
  * 有条件类型与映射类型结合时特别有用
  * */
 {
-    type FunctionPropertyNames<T> = { [K in keyof T]: T[K] extends Function ? K : never }[keyof T]; // 所有实例 T 中 方法的索引(key)的联合
-    type FunctionProperties<T> = Pick<T, FunctionPropertyNames<T>>; // 所有实例 T 中 方法的类型的联合
+  type FunctionPropertyNames<T> = {
+    [K in keyof T]: T[K] extends Function ? K : never;
+  }[keyof T]; // 所有实例 T 中 方法的索引(key)的联合
+  type FunctionProperties<T> = Pick<T, FunctionPropertyNames<T>>; // 所有实例 T 中 方法的类型的联合
 
-    type NonFunctionPropertyNames<T> = { [K in keyof T]: T[K] extends Function ? never : K }[keyof T]; // 所有实例 T 中 属性的索引(key)的联合
-    type NonFunctionProperties<T> = Pick<T, NonFunctionPropertyNames<T>>; // 所有实例 T 中 属性的类型的联合
+  type NonFunctionPropertyNames<T> = {
+    [K in keyof T]: T[K] extends Function ? never : K;
+  }[keyof T]; // 所有实例 T 中 属性的索引(key)的联合
+  type NonFunctionProperties<T> = Pick<T, NonFunctionPropertyNames<T>>; // 所有实例 T 中 属性的类型的联合
 
-    interface Part {
-        id: number;
-        name: string;
-        subparts: Part[];
+  interface Part {
+    id: number;
+    name: string;
+    subparts: Part[];
 
-        updatePart(newName: string): void;
+    updatePart(newName: string): void;
 
-        anotherFoo(newName: string): void;
-    }
+    anotherFoo(newName: string): void;
+  }
 
-    type T40 = FunctionPropertyNames<Part>;  // "updatePart"
-    type T41 = NonFunctionPropertyNames<Part>;  // "id" | "name" | "subparts"
-    type T42 = FunctionProperties<Part>;  // { updatePart(newName: string): void }
-    type T43 = NonFunctionProperties<Part>;  // { id: number, name: string, subparts: Part[] }
+  type T40 = FunctionPropertyNames<Part>; // "updatePart"
+  type T41 = NonFunctionPropertyNames<Part>; // "id" | "name" | "subparts"
+  type T42 = FunctionProperties<Part>; // { updatePart(newName: string): void }
+  type T43 = NonFunctionProperties<Part>; // { id: number, name: string, subparts: Part[] }
 }
 /**
  * 与联合类型和交叉类型相似，有条件类型不允许递归地引用自己。比如下面的错误。
  * */
 {
-    // type ElementType<T> = T extends any[] ? ElementType<T[number]> : T;  // Error 不允许递归自己
+  // type ElementType<T> = T extends any[] ? ElementType<T[number]> : T;  // Error 不允许递归自己
 }
 /**
  * 有条件类型中的类型推断
@@ -163,41 +178,43 @@
  * 允许出现多个同类型变量的infer。
  * */
 {
-    // 返回 传入函数的 返回值的类型
-    type ReturnType<T> = T extends (...args: any[]) => infer R ? R : any;
-    type T0 = ReturnType<() => number> // 推断为 number
-    type T1<T> = ReturnType<() => T> // 推断为 {}
+  // 返回 传入函数的 返回值的类型
+  type ReturnType<T> = T extends (...args: any[]) => infer R ? R : any;
+  type T0 = ReturnType<() => number>; // 推断为 number
+  type T1<T> = ReturnType<() => T>; // 推断为 {}
 }
 {
-    type Unpacked<T> =
-        T extends (infer U)[] ? U :
-            T extends (...args: any[]) => infer U ? U :
-                T extends Promise<infer U> ? U :
-                    T;
+  type Unpacked<T> = T extends (infer U)[]
+    ? U
+    : T extends (...args: any[]) => infer U
+    ? U
+    : T extends Promise<infer U>
+    ? U
+    : T;
 
-    type T0 = Unpacked<string>;  // string
-    type T1 = Unpacked<string[]>;  // string
-    type T2 = Unpacked<() => string>;  // string
-    type T3 = Unpacked<Promise<string>>;  // string
-    type T4 = Unpacked<Promise<string>[]>;  // Promise<string>
-    type T5 = Unpacked<Unpacked<Promise<string>[]>>;  // string
-    type T6 = Unpacked<{ a: number }>;  // {a:number}
+  type T0 = Unpacked<string>; // string
+  type T1 = Unpacked<string[]>; // string
+  type T2 = Unpacked<() => string>; // string
+  type T3 = Unpacked<Promise<string>>; // string
+  type T4 = Unpacked<Promise<string>[]>; // Promise<string>
+  type T5 = Unpacked<Unpacked<Promise<string>[]>>; // string
+  type T6 = Unpacked<{ a: number }>; // {a:number}
 
-    /**
-     * 下面的例子解释了在协变位置上，同一个类型变量的多个候选类型会被推断为联合类型
-     * */
-    type Foo<T> = T extends { a: infer U, b: infer U } ? U : never;
-    type T10 = Foo<{ a: string, b: string }>;  // string
-    type T11 = Foo<{ a: string, b: number }>;  // string | number
-    type T12 = Foo<{ a: { a: string }, b: { b: number } }>;  // {a:string} | {b:number}
-    /**
-     * 相似地，在 ** 抗变位置 ** 上，同一个类型变量的多个候选类型会被推断为交叉类型：
-     * */
-    type Bar<T> = T extends { a: (x: infer U) => void, b: (x: infer U) => void } ? U : never;
-    type T20 = Bar<{ a: (x: string) => void, b: (x: string) => void }>;  // string
-    type T21 = Bar<{ a: (x: string) => void, b: (x: number) => void }>;  // string & number
-
+  /**
+   * 下面的例子解释了在协变位置上，同一个类型变量的多个候选类型会被推断为联合类型
+   * */
+  type Foo<T> = T extends { a: infer U; b: infer U } ? U : never;
+  type T10 = Foo<{ a: string; b: string }>; // string
+  type T11 = Foo<{ a: string; b: number }>; // string | number
+  type T12 = Foo<{ a: { a: string }; b: { b: number } }>; // {a:string} | {b:number}
+  /**
+   * 相似地，在 ** 抗变位置 ** 上，同一个类型变量的多个候选类型会被推断为交叉类型：
+   * */
+  type Bar<T> = T extends { a: (x: infer U) => void; b: (x: infer U) => void }
+    ? U
+    : never;
+  type T20 = Bar<{ a: (x: string) => void; b: (x: string) => void }>; // string
+  type T21 = Bar<{ a: (x: string) => void; b: (x: number) => void }>; // string & number
 }
-
 
 export {};

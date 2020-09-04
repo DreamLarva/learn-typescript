@@ -14,15 +14,15 @@ let x = foo?.bar.baz();
  * ?. 只受 undefined 和 null 的影响
  * */
 {
-    // Before
-    if (foo && foo.bar && foo.bar.baz) {
-        // ...
-    }
+  // Before
+  if (foo && foo.bar && foo.bar.baz) {
+    // ...
+  }
 
-    // After-ish
-    if (foo?.bar?.baz) {
-        // ...
-    }
+  // After-ish
+  if (foo?.bar?.baz) {
+    // ...
+  }
 }
 
 /**
@@ -32,49 +32,49 @@ let x = foo?.bar.baz();
  * (e.g. arbitrary strings, numbers, and symbols):
  * */
 {
-    /**
-     * Get the first element of the array if we have an array.
-     * Otherwise return undefined.
-     */
-    function tryGetFirstElement<T>(arr?: T[]) {
-        return arr?.[0]; // 返回的类型正确 为 T | undefined
-        // equivalent to
-        //   return (arr === null || arr === undefined) ?
-        //       undefined :
-        //       arr[0];
-    }
+  /**
+   * Get the first element of the array if we have an array.
+   * Otherwise return undefined.
+   */
+  function tryGetFirstElement<T>(arr?: T[]) {
+    return arr?.[0]; // 返回的类型正确 为 T | undefined
+    // equivalent to
+    //   return (arr === null || arr === undefined) ?
+    //       undefined :
+    //       arr[0];
+  }
 }
 /**
  * 同样可以使用在 调用方法
  * 当然 new 新建实例 不行 因为 new 在前面呀
  * */
 {
-    async function makeRequest1(url: string, log?: (msg: string) => void) {
-        log?.(`Request started at ${new Date().toISOString()}`);
-        // roughly equivalent to
-        //   if (log != null) {
-        //       log(`Request started at ${new Date().toISOString()}`);
-        //   }
+  async function makeRequest1(url: string, log?: (msg: string) => void) {
+    log?.(`Request started at ${new Date().toISOString()}`);
+    // roughly equivalent to
+    //   if (log != null) {
+    //       log(`Request started at ${new Date().toISOString()}`);
+    //   }
 
-        const result = (await fetch(url)).json();
+    const result = (await fetch(url)).json();
 
-        log?.(`Request finished at at ${new Date().toISOString()}`);
+    log?.(`Request finished at at ${new Date().toISOString()}`);
 
-        return result;
-    }
+    return result;
+  }
 }
 /**
  * optional chaining 只限制了取值的操作 并没有 限制其他的操作
  * */
 {
-    function someComputation() {
-        return 1
-    }
+  function someComputation() {
+    return 1;
+  }
 
-    // 就算 foo 为空 那么 foo?.bar 为 undefined  但是 触发运算 以及 someComputation方法依然会执行
-    let result = foo?.bar / someComputation()
-    // 编译的结果是
-    // let result = ((_a = foo) === null || _a === void 0 ? void 0 : _a.bar) / someComputation();
+  // 就算 foo 为空 那么 foo?.bar 为 undefined  但是 触发运算 以及 someComputation方法依然会执行
+  let result = foo?.bar / someComputation();
+  // 编译的结果是
+  // let result = ((_a = foo) === null || _a === void 0 ? void 0 : _a.bar) / someComputation();
 }
 
 /**
@@ -83,13 +83,11 @@ let x = foo?.bar.baz();
  * 比如 数学运算 还是要确保数字类型
  * */
 {
-    function barPercentage(foo?: { bar: number }) {
-        // return foo?.bar / 100;
-        //     ~~~~~~~~
-        // Error: Object is possibly undefined.
-    }
-
+  function barPercentage(foo?: { bar: number }) {
+    // return foo?.bar / 100;
+    //     ~~~~~~~~
+    // Error: Object is possibly undefined.
+  }
 }
-
 
 export {};

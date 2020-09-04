@@ -1,7 +1,7 @@
 // ./myModule.ts
 // import { SomeType } from "./someOtherModule"; // error
 export interface SomeType {
-    x: number;
+  x: number;
 }
 
 /**
@@ -9,5 +9,5 @@ export interface SomeType {
  * */
 
 function fn(arg: SomeType) {
-    // console.log(arg.x); // Error! 'x' doesn't exist on 'SomeType'
+  // console.log(arg.x); // Error! 'x' doesn't exist on 'SomeType'
 }
