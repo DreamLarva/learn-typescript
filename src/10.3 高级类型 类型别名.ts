@@ -81,7 +81,7 @@
   let u5_1: u5 = { a: 1 };
   // let u5_2: u5 = { a: 3 }; // error
 
-  type u6 = o6 & o3; // 有交集 取交集
+  type u6 = o6 & o3; // {a:1} 有交集 取交集
   let u6_1: u6 = { a: 1 };
   // let u6_2:u6 = {a:3}
 }
