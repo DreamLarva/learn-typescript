@@ -178,4 +178,4 @@ type WithDefaultProps<P, DP extends Partial<P>> = Omit<P, keyof DP> &
       : Defined<P[K]> | DP[K];
   };
 
-export {}
+export {};

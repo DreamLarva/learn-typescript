@@ -1,3 +1,3 @@
 export interface SomeType {
-    x: number;
+  x: number;
 }

@@ -4,15 +4,15 @@
  * */
 
 {
-    function identity0<T>(arg: T): T {
-        return arg;
-    }
+  function identity0<T>(arg: T): T {
+    return arg;
+  }
 
-    /** 我们定义了泛型函数后，可以用两种方法使用。 第一种是，传入所有的参数，包含类型参数：*/
-    let output1 = identity0<string>("myString");  // output提示的字符串的方法
+  /** 我们定义了泛型函数后，可以用两种方法使用。 第一种是，传入所有的参数，包含类型参数：*/
+  let output1 = identity0<string>("myString"); // output提示的字符串的方法
 
-    /** 利用了类型推论 -- 即编译器会根据传入的参数自动地帮助我们确定T的类型 */
-    let output2 = identity0("myString");  //  类型推断 output依然提示的字符串的方法
+  /** 利用了类型推论 -- 即编译器会根据传入的参数自动地帮助我们确定T的类型 */
+  let output2 = identity0("myString"); //  类型推断 output依然提示的字符串的方法
 }
 
 /**
@@ -24,15 +24,13 @@
  * 且每个 不同名的泛型 是不能兼容的
  * */
 {
-    type A = <T, U>(x: T, y: U) => [T, U];
-    type B = <S>(x: S, y: S) => [S, S];
+  type A = <T, U>(x: T, y: U) => [T, U];
+  type B = <S>(x: S, y: S) => [S, S];
 
-
-    function f(a: A, b: B) {
-        // a = b;  // Error  b 不兼容 a
-        b = a;  // Ok a 兼容 b
-    }
+  function f(a: A, b: B) {
+    // a = b;  // Error  b 不兼容 a
+    b = a; // Ok a 兼容 b
+  }
 }
 
-
-export {}
+export {};

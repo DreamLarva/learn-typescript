@@ -68,4 +68,4 @@
   // tom.eat() // 报错
 }
 
-export {}
+export {};

@@ -7,84 +7,85 @@
  * */
 
 {
-    interface Square {
-        kind: "square";
-        size: number;
+  interface Square {
+    kind: "square";
+    size: number;
+  }
+
+  interface Rectangle {
+    kind: "rectangle";
+    width: number;
+    height: number;
+  }
+
+  interface Circle {
+    kind: "circle";
+    radius: number;
+  }
+
+  /**
+   * 每个接口都有 kind属性但有不同的字符串字面量类型。 kind属性称做 可辨识的特征或 标签。
+   *  其它的属性则特定于各个接口。 注意，目前各个接口间是没有联系的。
+   * */
+
+  type Shape = Square | Rectangle | Circle;
+
+  let area = function (s: Shape) {
+    switch (
+      s.kind // 通过kind 辨识
+    ) {
+      case "square":
+        return s.size * s.size;
+      case "rectangle":
+        return s.height * s.width;
+      case "circle":
+        return Math.PI * s.radius ** 2;
     }
-
-    interface Rectangle {
-        kind: "rectangle";
-        width: number;
-        height: number;
-    }
-
-    interface Circle {
-        kind: "circle";
-        radius: number;
-    }
-
-    /**
-     * 每个接口都有 kind属性但有不同的字符串字面量类型。 kind属性称做 可辨识的特征或 标签。
-     *  其它的属性则特定于各个接口。 注意，目前各个接口间是没有联系的。
-     * */
-
-    type Shape = Square | Rectangle | Circle;
-
-    let area = function (s: Shape) {
-        switch (s.kind) { // 通过kind 辨识
-            case "square":
-                return s.size * s.size;
-            case "rectangle":
-                return s.height * s.width;
-            case "circle":
-                return Math.PI * s.radius ** 2;
-        }
-    }
+  };
 }
 {
-    /** 完整性检查 */
-    interface Square {
-        kind: "square";
-        size: number;
-    }
+  /** 完整性检查 */
+  interface Square {
+    kind: "square";
+    size: number;
+  }
 
-    interface Rectangle {
-        kind: "rectangle";
-        width: number;
-        height: number;
-    }
+  interface Rectangle {
+    kind: "rectangle";
+    width: number;
+    height: number;
+  }
 
-    interface Circle {
-        kind: "circle";
-        radius: number;
-    }
+  interface Circle {
+    kind: "circle";
+    radius: number;
+  }
 
-    interface Triangle {
-        kind: "triangle";
-        radius: number;
-    }
+  interface Triangle {
+    kind: "triangle";
+    radius: number;
+  }
 
-    type Shape = Square | Rectangle | Circle | Triangle;
-    let assertNever = function (x: Shape): never {
-        throw new Error("Unexpected object: " + x);
-    };
-    let area = function (s: Shape): number {
-        switch (s.kind) {
-            case "square":
-                return s.size * s.size;
-            case "rectangle":
-                return s.height * s.width;
-            case "circle":
-                return Math.PI * s.radius ** 2;
-            /**
-             * 没有Triangle 的类型方法 可能会返回 undefined
-             * 需要一个 default 来确保类型
-             * */
-            default:
-                return assertNever(s)
-
-        }
+  type Shape = Square | Rectangle | Circle | Triangle;
+  let assertNever = function (x: Shape): never {
+    throw new Error("Unexpected object: " + x);
+  };
+  let area = function (s: Shape): number {
+    switch (s.kind) {
+      case "square":
+        return s.size * s.size;
+      case "rectangle":
+        return s.height * s.width;
+      case "circle":
+        return Math.PI * s.radius ** 2;
+      /**
+       * 没有Triangle 的类型方法 可能会返回 undefined
+       * 需要一个 default 来确保类型
+       * */
+      default:
+        return assertNever(s);
     }
+  };
 }
 
-export {}
+export {};

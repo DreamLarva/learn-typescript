@@ -6,35 +6,33 @@
  * 不能当接口 或者 class 使用 不能使用在 泛型<>中
  * */
 {
-    class A {
+  class A {}
+  function getName(n) {
+    if (typeof n === "string") {
+      return n;
+    } else {
+      return n();
     }
-    function getName(n) {
-        if (typeof n === "string") {
-            return n;
-        }
-        else {
-            return n();
-        }
-    }
+  }
 }
 /** 泛型 */
 {
-    let temp;
-    temp = {
-        value: "text",
-        left: { value: "text" }
-    };
+  let temp;
+  temp = {
+    value: "text",
+    left: { value: "text" },
+  };
 }
 /** 交叉类型  */
 {
-    let people;
-    people = {
-        name: "1",
-    };
-    let s = people.name;
-    s = people.next.name;
-    s = people.next.next.name;
-    s = people.next.next.next.name;
+  let people;
+  people = {
+    name: "1",
+  };
+  let s = people.name;
+  s = people.next.name;
+  s = people.next.next.name;
+  s = people.next.next.next.name;
 }
 let Alias = 123;
 export {};

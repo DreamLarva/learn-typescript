@@ -10,7 +10,7 @@
  * import * as URL from "url"
  * */
 
-import URL from "url" // ok
+import URL from "url"; // ok
 
 // import * as URL from "url"; // ok
 

@@ -161,4 +161,4 @@
   let mySquare = createSquare1(squareOptions);
 }
 
-export {}
+export {};

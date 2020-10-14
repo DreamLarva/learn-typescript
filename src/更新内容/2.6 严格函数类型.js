@@ -2,21 +2,21 @@
  * 考虑下面这个 Animal 是 Dog 和 Cat 的父类型的例子
  * */
 class Animal {
-    constructor() {
-        this.a = 1;
-    }
+  constructor() {
+    this.a = 1;
+  }
 }
 class Dog extends Animal {
-    constructor() {
-        super(...arguments);
-        this.b = 2;
-    }
+  constructor() {
+    super(...arguments);
+    this.b = 2;
+  }
 }
 class Cat extends Animal {
-    constructor() {
-        super(...arguments);
-        this.c = 3;
-    }
+  constructor() {
+    super(...arguments);
+    this.c = 3;
+  }
 }
 /**
  * 还有一点就是 因为这里的匹配是鸭子辩型
@@ -31,19 +31,18 @@ dogComparer = animalComparer; // 正确
  * 修改 自 2.6 更新文档的 示例
  * */
 function combine(...funcs) {
-    return x => {
-        for (const f of funcs)
-            f(x);
-    };
+  return (x) => {
+    for (const f of funcs) f(x);
+  };
 }
 function animalFunc(x) {
-    return x;
+  return x;
 }
 function dogFunc(x) {
-    return x;
+  return x;
 }
 function catFunc(x) {
-    return x;
+  return x;
 }
 let combined1 = combine(dogFunc, animalFunc);
 let combined2 = combine(animalFunc, dogFunc); // 文档上写 (x: Dog) => void 然而实际是 (x:Animal)=>void

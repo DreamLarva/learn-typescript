@@ -4,13 +4,12 @@
 
 // 外部枚举用来描述已经存在的枚举类型的形状。
 declare enum Enum2 {
-    A = 1,
-    B,
-    C = 2
+  A = 1,
+  B,
+  C = 2,
 }
 
 var re = Enum2.A;
 console.log(re); // 这里就能够正常输出
 
-
-export {}
+export {};

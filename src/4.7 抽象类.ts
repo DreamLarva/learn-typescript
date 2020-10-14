@@ -90,8 +90,6 @@ class A1 {}
 abstract class B extends A1 {} // 抽象类可以继承 普通类
 interface IB extends B {} // 接口 可以继承 抽象类
 abstract class C extends B {} // 抽象类可以 继承抽象类
-abstract class D extends A1 implements IB {
-} // 抽象类可以 实现接口
-
+abstract class D extends A1 implements IB {} // 抽象类可以 实现接口
 
 export {};

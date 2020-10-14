@@ -11,12 +11,11 @@
  * 因此，下面的调用都是等价的：
  * */
 {
-    function foo(a, b, c) {
-    }
-    const args = [42, "hello", true];
-    foo(42, "hello", true);
-    foo(args[0], args[1], args[2]);
-    foo(...args);
+  function foo(a, b, c) {}
+  const args = [42, "hello", true];
+  foo(42, "hello", true);
+  foo(args[0], args[1], args[2]);
+  foo(...args);
 }
 const f2 = bind(f3, 42); // (y: string, z: boolean) => void
 const f1 = bind(f2, "hello"); // (z: boolean) => void

@@ -23,29 +23,28 @@
  * 比如，交叉类型{ new(...args: any[]) => A } & { new(s: string) => B }仅有一个构造函数签名new(s: string) => A & B。
  * */
 class Point {
-    constructor(x, y) {
-        this.x = x;
-        this.y = y;
-    }
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+  }
 }
 class Person {
-    constructor(name) {
-        this.name = name;
-    }
+  constructor(name) {
+    this.name = name;
+  }
 }
 function Tagged(Base) {
-    return class extends Base {
-        constructor(...args) {
-            super(...args);
-            this._tag = "";
-        }
-    };
+  return class extends Base {
+    constructor(...args) {
+      super(...args);
+      this._tag = "";
+    }
+  };
 }
 const TaggedPoint = Tagged(Point);
 let point = new TaggedPoint(10, 20);
 point._tag = "hello";
-class Customer extends Tagged(Person) {
-}
+class Customer extends Tagged(Person) {}
 let customer = new Customer("Joe");
 customer._tag = "test";
 customer.accountBalance = 0;
@@ -53,18 +52,19 @@ customer.accountBalance = 0;
  * 另一个例子
  * */
 {
-    const WithLocation = (Base) => class extends Base {
-        getLocation() {
-            return [this.x, this.y];
-        }
+  const WithLocation = (Base) =>
+    class extends Base {
+      getLocation() {
+        return [this.x, this.y];
+      }
     };
-    class Point {
-        constructor(x, y) {
-            this.x = x;
-            this.y = y;
-        }
+  class Point {
+    constructor(x, y) {
+      this.x = x;
+      this.y = y;
     }
-    const instance = new (WithLocation(Point))(1, 2);
+  }
+  const instance = new (WithLocation(Point))(1, 2);
 }
 export {};
 //# sourceMappingURL=2.2 支持混合类.js.map

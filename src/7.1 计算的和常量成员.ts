@@ -50,4 +50,4 @@
         G: 3 }*/
 }
 
-export {}
+export {};

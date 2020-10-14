@@ -54,4 +54,4 @@
   console.log(greeter2.greet());
 }
 
-export {}
+export {};

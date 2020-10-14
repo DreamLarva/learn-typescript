@@ -6,37 +6,39 @@
  *  此属性上的类型保护。
  * */
 {
-    let area = function (s) {
-        switch (s.kind) { // 通过kind 辨识
-            case "square":
-                return s.size * s.size;
-            case "rectangle":
-                return s.height * s.width;
-            case "circle":
-                return Math.PI * s.radius ** 2;
-        }
-    };
+  let area = function (s) {
+    switch (
+      s.kind // 通过kind 辨识
+    ) {
+      case "square":
+        return s.size * s.size;
+      case "rectangle":
+        return s.height * s.width;
+      case "circle":
+        return Math.PI * s.radius ** 2;
+    }
+  };
 }
 {
-    let assertNever = function (x) {
-        throw new Error("Unexpected object: " + x);
-    };
-    let area = function (s) {
-        switch (s.kind) {
-            case "square":
-                return s.size * s.size;
-            case "rectangle":
-                return s.height * s.width;
-            case "circle":
-                return Math.PI * s.radius ** 2;
-            /**
-             * 没有Triangle 的类型方法 可能会返回 undefined
-             * 需要一个 default 来确保类型
-             * */
-            default:
-                return assertNever(s);
-        }
-    };
+  let assertNever = function (x) {
+    throw new Error("Unexpected object: " + x);
+  };
+  let area = function (s) {
+    switch (s.kind) {
+      case "square":
+        return s.size * s.size;
+      case "rectangle":
+        return s.height * s.width;
+      case "circle":
+        return Math.PI * s.radius ** 2;
+      /**
+       * 没有Triangle 的类型方法 可能会返回 undefined
+       * 需要一个 default 来确保类型
+       * */
+      default:
+        return assertNever(s);
+    }
+  };
 }
 export {};
 //# sourceMappingURL=10.5 可辨识联合.js.map

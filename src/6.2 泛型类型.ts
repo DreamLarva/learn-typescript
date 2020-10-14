@@ -46,4 +46,4 @@ let myIdentity3: { <T>(arg: T): T } = identity;
   myIdentity2(1);
 }
 
-export {}
+export {};

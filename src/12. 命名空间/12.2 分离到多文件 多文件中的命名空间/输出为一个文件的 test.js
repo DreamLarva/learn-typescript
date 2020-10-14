@@ -3,14 +3,13 @@ var Validation1;
 (function (Validation1) {
   var lettersRegexp = /^[A-Za-z]+$/;
   var LettersOnlyValidator = /** @class */ (function () {
-    function LettersOnlyValidator() {
-    }
+    function LettersOnlyValidator() {}
 
     LettersOnlyValidator.prototype.isAcceptable = function (s) {
       return lettersRegexp.test(s);
     };
     return LettersOnlyValidator;
-  }());
+  })();
   Validation1.LettersOnlyValidator = LettersOnlyValidator;
 })(Validation1 || (Validation1 = {}));
 /// <reference path="Validation1.ts" />
@@ -18,14 +17,13 @@ var Validation1;
 (function (Validation1) {
   var numberRegexp = /^[0-9]+$/;
   var ZipCodeValidator = /** @class */ (function () {
-    function ZipCodeValidator() {
-    }
+    function ZipCodeValidator() {}
 
     ZipCodeValidator.prototype.isAcceptable = function (s) {
       return s.length === 5 && numberRegexp.test(s);
     };
     return ZipCodeValidator;
-  }());
+  })();
   Validation1.ZipCodeValidator = ZipCodeValidator;
 })(Validation1 || (Validation1 = {}));
 /// <reference path="Validation1.ts" />
@@ -44,6 +42,13 @@ validators2["Letters only"] = new Validation1.LettersOnlyValidator();
 for (var _i = 0, strings2_1 = strings2; _i < strings2_1.length; _i++) {
   var s = strings2_1[_i];
   for (var name_1 in validators2) {
-    console.log("\"" + s + "\" - " + (validators2[name_1].isAcceptable(s) ? "matches" : "does not match") + " " + name_1);
+    console.log(
+      '"' +
+        s +
+        '" - ' +
+        (validators2[name_1].isAcceptable(s) ? "matches" : "does not match") +
+        " " +
+        name_1
+    );
   }
 }

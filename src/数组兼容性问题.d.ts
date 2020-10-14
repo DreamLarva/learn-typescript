@@ -4,13 +4,13 @@
  * 如果类似的情况 就不能保证类型的安全了
  * */
 declare class Animal {
-    a: number;
+  a: number;
 }
 declare class Dog extends Animal {
-    b: number;
+  b: number;
 }
 declare class Cat extends Animal {
-    c: number;
+  c: number;
 }
 declare const dog_list: Dog[];
 declare const animal_list: Animal[];

@@ -33,4 +33,4 @@
   console.log(ins);
 }
 
-export {}
+export {};

@@ -11,20 +11,20 @@
  * */
 var Validation0;
 (function (Validation0) {
-    const lettersRegexp = /^[A-Za-z]+$/;
-    const numberRegexp = /^[0-9]+$/;
-    class LettersOnlyValidator {
-        isAcceptable(s) {
-            return lettersRegexp.test(s);
-        }
+  const lettersRegexp = /^[A-Za-z]+$/;
+  const numberRegexp = /^[0-9]+$/;
+  class LettersOnlyValidator {
+    isAcceptable(s) {
+      return lettersRegexp.test(s);
     }
-    Validation0.LettersOnlyValidator = LettersOnlyValidator;
-    class ZipCodeValidator {
-        isAcceptable(s) {
-            return s.length === 5 && numberRegexp.test(s);
-        }
+  }
+  Validation0.LettersOnlyValidator = LettersOnlyValidator;
+  class ZipCodeValidator {
+    isAcceptable(s) {
+      return s.length === 5 && numberRegexp.test(s);
     }
-    Validation0.ZipCodeValidator = ZipCodeValidator;
+  }
+  Validation0.ZipCodeValidator = ZipCodeValidator;
 })(Validation0 || (Validation0 = {}));
 // Some samples to try
 let strings1 = ["Hello", "98052", "101"];
@@ -32,8 +32,12 @@ let validators1 = {};
 validators2["ZIP code"] = new Validation0.ZipCodeValidator();
 validators1["Letters only"] = new Validation0.LettersOnlyValidator();
 for (let s of strings1) {
-    for (let name in validators1) {
-        console.log(`"${s}" - ${validators2[name].isAcceptable(s) ? "matches" : "does not match"} ${name}`);
-    }
+  for (let name in validators1) {
+    console.log(
+      `"${s}" - ${
+        validators2[name].isAcceptable(s) ? "matches" : "does not match"
+      } ${name}`
+    );
+  }
 }
 //# sourceMappingURL=12.1 使用命名空间的验证器.js.map

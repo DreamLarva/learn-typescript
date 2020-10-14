@@ -30,4 +30,4 @@ if (employee.fullName) {
   alert(employee.fullName);
 }
 
-export {}
+export {};

@@ -21,12 +21,9 @@
 {
 }
 {
-    class Animal {
-    }
-    class Dog extends Animal {
-    }
-    class Corgi extends Dog {
-    }
+  class Animal {}
+  class Dog extends Animal {}
+  class Corgi extends Dog {}
 }
 /**
  * 分布式有条件类型
@@ -47,15 +44,15 @@
  * 有条件类型的分布式的属性可以方便地用来过滤联合类型
  * */
 {
-    function f1(x, y) {
-        x = y; // Ok
-        // y = x;  // Error
-    }
-    function f2(x, y) {
-        x = y; // Ok
-        // y = x;  // Error
-        // let s1: string = x;  // Error
-    }
+  function f1(x, y) {
+    x = y; // Ok
+    // y = x;  // Error
+  }
+  function f2(x, y) {
+    x = y; // Ok
+    // y = x;  // Error
+    // let s1: string = x;  // Error
+  }
 }
 /**
  * 有条件类型与映射类型结合时特别有用
@@ -66,7 +63,7 @@
  * 与联合类型和交叉类型相似，有条件类型不允许递归地引用自己。比如下面的错误。
  * */
 {
-    // type ElementType<T> = T extends any[] ? ElementType<T[number]> : T;  // Error 不允许递归自己
+  // type ElementType<T> = T extends any[] ? ElementType<T[number]> : T;  // Error 不允许递归自己
 }
 /**
  * 有条件类型中的类型推断

@@ -93,4 +93,4 @@
   let b = someTest ? { a: 1 } : { b: 2 }; // a 正确推断的类型为 {a:string} | {b:number}
 }
 
-export {}
+export {};

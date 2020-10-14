@@ -7,6 +7,6 @@ let directions = [0 /* Up */, 1 /* Down */, 2 /* Left */, 3 /* Right */];
 // let directions = [0 /* Up */, 1 /* Down */, 2 /* Left */, 3 /* Right */];
 const a = 1;
 // const b:Directions = ""; // error
-const c = 1 /* Down */;
+const c = 1; /* Down */
 export {};
 //# sourceMappingURL=7.4 const枚举.js.map

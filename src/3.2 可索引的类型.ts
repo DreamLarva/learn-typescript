@@ -57,4 +57,4 @@
   let myArray: ReadonlyStringArray = ["Alice", "Bob"];
   // myArray[2] = "Mallory"; // error!
 }
-export {}
+export {};

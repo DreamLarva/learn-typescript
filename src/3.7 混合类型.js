@@ -1,10 +1,8 @@
 function getCounter() {
-    let counter = function (start) {
-    };
-    counter.interval = 123;
-    counter.reset = function () {
-    };
-    return counter;
+  let counter = function (start) {};
+  counter.interval = 123;
+  counter.reset = function () {};
+  return counter;
 }
 let c = getCounter();
 c(10);

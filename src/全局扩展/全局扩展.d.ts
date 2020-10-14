@@ -3,14 +3,14 @@
  * 在项目的任何一个地方 都有效果
  * */
 export declare class Observable<T> {
-    val: number;
-    constructor(val: number);
+  val: number;
+  constructor(val: number);
 }
 /**
  * 在 .ts 文件中
  * */
 declare global {
-    interface Array<T> {
-        toObservable(): Observable<T>;
-    }
+  interface Array<T> {
+    toObservable(): Observable<T>;
+  }
 }

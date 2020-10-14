@@ -33,4 +33,4 @@
   instance.greet(); // 由使用这保证
 }
 
-export {}
+export {};

@@ -4,13 +4,11 @@
  * 你可以用这种方法为任意标识符创建别名，也包括导入的模块中的对象。
  * */
 namespace Shapes {
-    export namespace Polygons {
-        export class Triangle {
-        }
+  export namespace Polygons {
+    export class Triangle {}
 
-        export class Square {
-        }
-    }
+    export class Square {}
+  }
 }
 console.log(Shapes);
 import polygons = Shapes.Polygons;
