@@ -166,16 +166,75 @@ const Omit_1_1: Omit_1 = { d: true }; // 排除了属性 a,b,c,e 现在只能有
 
 /**
  * airbnb 的类型
+ * react 设置对象默认值的类型
  * */
 // 定义类型必须不包含 undefined
 type Defined<T> = T extends undefined ? never : T;
+{
+  type a = Defined<undefined>; // never
+  type b = Defined<undefined | number>; // number
+}
 
-// 对象默认值
+// 如果 P 中的可选 在DP 中有则变成 required
 type WithDefaultProps<P, DP extends Partial<P>> = Omit<P, keyof DP> &
   {
     [K in Extract<keyof DP, keyof P>]: DP[K] extends Defined<P[K]>
       ? Defined<P[K]>
       : Defined<P[K]> | DP[K];
   };
+{
+  type a = Defined<undefined | number> | 1; // number
+  type b = WithDefaultProps<{ a: 1; b?: number }, { b: 2 }>;
+  function test(t: b) {
+    t.b; // number
+    t.a; // 1
+  }
+}
+
+/**
+ * {} 和 所有属性都是可选的对象 可兼容
+ * */
+{
+  type a = {} extends undefined ? true : false; // false
+  type b = {} extends null ? true : false; // false
+  type c = {} extends { a: 1 } ? true : false; // false
+  type d = {} extends { a?: 1 } ? true : false; // true
+}
+/**
+ * 获取 所有必选项 的 key 的联合类型
+ * */
+type RequiredKeys<T> = {
+  [K in keyof T]-?: {} extends Pick<T, K> ? never : K;
+}[keyof T];
+/**
+ * 获取 所有非必选项 的 key 的联合类型
+ * */
+type OptionalKeys<T> = {
+  [K in keyof T]-?: {} extends Pick<T, K> ? K : never;
+}[keyof T];
+{
+  type a = RequiredKeys<{ a?: 1; b: 2 }>; // "b"
+  type b = OptionalKeys<{ a?: 1; b: 2 }>; // "a"
+}
+
+/**
+ * 判断两个类型是不是 相互兼容
+ * Returns true if X and Y are equal types, otherwise false
+ * @author Matt McCutchen
+ */
+type Equals<X, Y> = (<T>() => T extends X ? 1 : 2) extends <T>() => T extends Y
+  ? 1
+  : 2
+  ? true
+  : false;
+{
+  type a = Equals<{},{}> // true
+  type b = Equals<{},{a:1}> // false
+  type c = Equals<number,1> // false
+  type d = Equals<RequiredKeys<any>, OptionalKeys<any>> // false
+
+}
+
+
 
 export {};
