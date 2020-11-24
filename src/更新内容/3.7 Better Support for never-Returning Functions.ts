@@ -13,6 +13,9 @@
 declare function doThingWithString(x: string): string;
 
 declare function doThingWithNumber(x: number): number;
+
+export {}
+
 {
   /**
    * 正确推断了 返回值的类型

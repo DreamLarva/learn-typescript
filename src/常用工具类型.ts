@@ -235,6 +235,37 @@ type Equals<X, Y> = (<T>() => T extends X ? 1 : 2) extends <T>() => T extends Y
 
 }
 
+/**
+ * From 4.1
+ * */
+{
+  // type Uppercase<S extends string> = intrinsic;
+  // type Lowercase<S extends string> = intrinsic;
+  // type Capitalize<S extends string> = intrinsic;
+  // type Uncapitalize<S extends string> = intrinsic;
+
+  type T10 = Uppercase<'hello'>;  // 转小写 "HELLO"
+  type T11 = Lowercase<'HELLO'>;  // 转大写 "hello"
+  type T12 = Capitalize<'hello'>;  // 转首字母大写 "Hello"
+  type T13 = Uncapitalize<'Hello'>;  // 转首字母小写 "hello"
+
+  type T20 = Uppercase<'foo' | 'bar'>;  // "FOO" | "BAR"
+  type T21 = Lowercase<'FOO' | 'BAR'>;  // "foo" | "bar"
+  type T22 = Capitalize<'foo' | 'bar'>;  // "Foo" | "Bar"
+  type T23 = Uncapitalize<'Foo' | 'Bar'>;  // "foo" | "bar"
+
+  type T30<S extends string> = Uppercase<`aB${S}`>;
+  type T31 = T30<'xYz'>;  // "ABXYZ"
+  type T32<S extends string> = Lowercase<`aB${S}`>;
+  type T33 = T32<'xYz'>;  // "abxyz"
+  type T34 = `${Uppercase<'abc'>}${Lowercase<'XYZ'>}`;  // "ABCxyz"
+
+  type T40 = Uppercase<string>;  // string
+  type T41 = Uppercase<any>;  // any
+  type T42 = Uppercase<never>;  // never
+  // type T43 = Uppercase<42>;  // Error, type 'number' does not satisfy the constraint 'string'
+}
+
 
 
 export {};

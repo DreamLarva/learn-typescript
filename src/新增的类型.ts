@@ -275,4 +275,5 @@ function f20(x: unknown) {
   const h: {} = () => null;
 }
 
+
 export {};

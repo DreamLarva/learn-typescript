@@ -99,7 +99,7 @@ _name = "smith";
       Blue,
     }
 
-    let colorName: string = Color[2]; // warn 可能index 越界
+    let colorName: string = Color[2]!; // warn 可能index 越界
     console.log(colorName); // 显示'Green'因为上面代码里它的值是2
   }
 }

@@ -92,5 +92,23 @@
   let a = someTest ? { a: 1 } : { a: "string" }; // a 正确推断的类型为 {a:string} | {a:number}
   let b = someTest ? { a: 1 } : { b: 2 }; // a 正确推断的类型为 {a:string} | {b:number}
 }
+/**
+ * From 4.1
+ * unknown 和 any 在类型推断时被认为是 falsy类型
+ * 修复这个类型判断的方法 就是强制转成 boolean 类型
+ * */
+{
+  let foo!: unknown;
+  let somethingElse!: { someProp: string };
+  let x = foo && somethingElse; // unknown
+  let y = !!foo && somethingElse; // false | somethingElse
+}
+{
+  let foo!: any;
+  let somethingElse!: { someProp: string };
+  let x = foo && somethingElse; // any
+  let y = !!foo && somethingElse; // false | somethingElse
+
+}
 
 export {};

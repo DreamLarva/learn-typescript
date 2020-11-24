@@ -33,7 +33,7 @@
     { suit: "hearts", card: 4 },
   ];
   let pickedCard1 = myDeck[pickCard(myDeck)];
-  console.log("card: " + pickedCard1.card + " of " + pickedCard1.suit);
+  console.log("card: " + pickedCard1!.card + " of " + pickedCard1!.suit);
 
   let pickedCard2 = pickCard(15);
   console.log("card: " + pickedCard2.card + " of " + pickedCard2.suit);

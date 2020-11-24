@@ -37,17 +37,18 @@
 }
 /**
  * 注意 如果展开的内容没有 确切的长度, 那么产生的类型就会没有边界
+ * 现在 数组类型 只能出出现在 元组的最后一个位置 否则报错
  * */
 {
   type Strings = [string, string];
   type Numbers = number[];
   type Unions = (number | null)[];
 
-  type Unbounded1 = [...Strings, ...Numbers, boolean];
-  //   ^ = type Unbounded = [string, string, ...(number | boolean)[]]
+  // type Unbounded1 = [...Strings, ...Numbers, boolean]; // error
 
-  type Unbounded2 = [...Strings, ...Unions, boolean];
-  //   ^ = type Unbounded = [string, string, ...(number | boolean | null)[]]
+  // type Unbounded2 = [...Strings, ...Unions, boolean]; // error
+
+  // type Unbounded3 = [...Unions,...Numbers] // error
 }
 {
   type Arr = readonly any[];
