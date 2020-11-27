@@ -29,6 +29,7 @@
   },
   "dependencies": {
     "core-decorators": "latest",
+    "csstype": "^3.0.5",
     "lodash": "^4.17.20",
     "redux": "latest",
     "reflect-metadata": "latest"

@@ -12,17 +12,17 @@
   function extend<T extends {}, U extends {}>(first: T, second: U): T & U {
     let result = <T & U>{};
     for (let id in first) {
-      (<any>result)[id] = (<any>first)[id];
+      (result as any)[id] = (first as any)[id];
     }
     for (let id in second) {
       /**
        * 版本 3.5 以后无约束的泛型 默认为 unknown(unknown 不能 访问 成员)
        * 解决 :
-       *  1. 这里也要加上 <any>
+       *  1. 这里也要加上 as any
        *  2. T extends {} U extends {} 这样就保证  泛型 必须传入一个 对象才行
        * */
       if (!result.hasOwnProperty(id)) {
-        (<any>result)[id] = (<any>second)[id];
+        (result as any)[id] = (second as any)[id]; // result 前可不用<any> ?
       }
     }
     return result;

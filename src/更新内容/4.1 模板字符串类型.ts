@@ -1,3 +1,84 @@
+/**
+ * 现在所有的 字符串字面量的类型 默认的不再是是string 而是它本身
+ * */
+import {type} from "os";
+
+{
+  const T1 = "abc"; // "abc"
+  const T2: string = "abc"; // string
+  let l1 = "abc"; // string 可变所以没问题
+  function fun1<T extends string>(a: T) {
+    return a;
+  }
+  fun1("abc"); // 返回类型 "abc
+  function fun2(a: string) {
+    return a;
+  }
+  fun2("abc"); // 返回类型 string
+  const c1 = { a: "abc" }; // {a:string} a 的值可以改这也很合理
+}
+
+{
+  // 判断目标字符串 是否 以 另一个字符串开头
+  type IsInStart<
+    T extends string, S extends string> = T extends `${S}${string}`
+    ? true
+    : false;
+
+  // 判断目标字符串 是否 以 另一个字符串结尾
+  type IsInEnd<T extends string, S extends string> = T extends `${string}${S}`
+    ? true
+    : false;
+
+  // 判断目标字符串 是否 以 另一个字符串结尾
+  // 然而 string 可以 指代 '' 空字符串
+  // 所以指代 另一个字符串是否在出现在 目标字符串额任意位置
+  type IsContain<
+    T extends string,
+    S extends string
+    > = T extends `${string}${S}${string}` ? true : false;
+
+  type T5 = IsInStart<"123", "1"> // true
+  type T6 = IsInEnd<"123", "3">  // true
+  type T7 = IsContain<"123", "2"> // true
+  type T8 = IsContain<"123", "1"> // true
+  type T9 = IsContain<"123", ""> // true
+
+  // 一个匹配 就成功
+  // 因为 是在 `${string}${S}${string}` 展开成 xxxx | xxxx 所以是正确的
+  type T10 = IsContain<"123", "1" | "2"> // true
+  type T11 = IsContain<"123", "1" | "a"> // true
+  type T12 = IsContain<"123", "a" | "b"> // false
+
+  type T13 = IsContain<"123" | "345", "3"> // true
+  type T14 = IsContain<"123" | "345", "1"> // boolean 因为结果是 true | false
+  type T15 = IsContain<"123" | "345", "6"> // false
+
+  type T16 = IsContain<"123" | "234", "2" | "3"> // true 和上面 单个的差不多 只是 联合更多的类型而已
+}
+
+/**
+ * 兼容关系
+ * */
+{
+  type T1 = `${"a" | "b"}`;
+  type T2 = `${"c" | "d"}`;
+  type T3 = `${"c"}`;
+
+  type T4 = T2 extends T3 ? true : false; // false
+  type T5 = T3 extends T2 ? true : false; // true
+
+  type T6 = `${T1}${T2}`;
+  type T7 = `${T1}${T3}`;
+
+  // 完全展开 再匹配所以没有问题
+  type T8 = T6 extends T7 ? true : false; // false
+  type T9 = T7 extends T6 ? true : false; // true
+
+}
+
+
+
 {
   type World = "world";
 
@@ -30,6 +111,22 @@
   setAlignment("top-left");   // works!
   // setAlignment("top-middel"); // error!
   // setAlignment("top-pot");    // error! but good doughnuts if you're ever in Seattle
+}
+/**
+ * 如果 placeholder 中传入的是number 类型 ,则匹配的位置 一定是数字类型
+ * */
+{
+  type MustBeNumber<T extends string> = T extends `${number}` ? true : false;
+  type T1 = MustBeNumber<"any">; // false
+  type T2 = MustBeNumber<"">; // false
+  type T3 = MustBeNumber<"1234">; // true
+  type T4 = MustBeNumber<"1234a">; // false 必输完全匹配 之后也不能有非数字
+
+  type MustBeString<T extends string> = T extends `${string}` ? true : false;
+  type T5 = MustBeString<"any">; // true
+  type T6 = MustBeString<"">; // true
+  type T7 = MustBeString<"1">; // true 数字字符串 匹配 string
+  type T8 = MustBeString<"a1">; // true 先字符串后数字 也匹配string
 }
 
 /**

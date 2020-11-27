@@ -266,6 +266,69 @@ type Equals<X, Y> = (<T>() => T extends X ? 1 : 2) extends <T>() => T extends Y
   // type T43 = Uppercase<42>;  // Error, type 'number' does not satisfy the constraint 'string'
 }
 
+/**
+ * 联合类型 转 元组
+ * 太牛逼了
+ * */
+{
+  type UnionToTuple<T> = ((T extends any ? (t: T) => T : never) extends infer U
+    ? (U extends any ? (u: U) => any : never) extends (v: infer V) => any
+      ? V
+      : never
+    : never
+    ) extends (_: any) => infer W
+    ? [...UnionToTuple<Exclude<T, W>>, W]
+    : [];
+
+  class BHAAL {
+    private isBhaal = true;
+  }
+
+  type Tuple = UnionToTuple<
+    | 2
+    | 1
+    | 3
+    | 5
+    | 10
+    | -9
+    | 100
+    | 1001
+    | 102
+    | 123456
+    | 100000000
+    | "alice"
+    | [[[BHAAL]]]
+    | "charlie"
+  >;
+  //     ^? = [2, 1, 3, 5, 10, -9, 100, 1001, 102, 123456, 100000000, "alice", [[[BHAAL]]], "charlie"]
+}
+/**
+ * 元组类型 转联合 类型
+ * */
+{
+  type TupleToUnion<T extends any[]> = T extends (infer A)[] ? A : never;
+  class BHAAL {
+    private isBhaal = true;
+  }
+  type T1 = TupleToUnion<
+    [
+      2,
+      1,
+      3,
+      5,
+      10,
+      -9,
+      100,
+      1001,
+      102,
+      123456,
+      100000000,
+      "alice",
+      [[[BHAAL]]],
+      "charlie"
+    ]
+  >;
+}
 
 
 export {};
