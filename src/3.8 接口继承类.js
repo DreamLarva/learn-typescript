@@ -4,36 +4,37 @@
  * 这意味着当你创建了一个接口继承了一个拥有私有或受保护的成员的类时，这个接口类型只能被这个类或其子类(需要 extends)所实现（implement）。
  * */
 {
-  class Control {}
-  class Button extends Control {
-    select() {
-      console.log(this.props);
-      // this.state // error
+    class Control {
     }
-  }
-  class TextBox extends Control {
-    constructor() {
-      super();
-      this.props = 12345;
+    class Button extends Control {
+        select() {
+            console.log(this.props);
+            // this.state // error
+        }
     }
-    select() {
-      console.log(this.props); // 可以使用 Control 类型中的 属性props
-      // this.state // error 但不能使用 state
+    class TextBox extends Control {
+        constructor() {
+            super();
+            this.props = 12345;
+        }
+        select() {
+            console.log(this.props); // 可以使用 Control 类型中的 属性props
+            // this.state // error 但不能使用 state
+        }
     }
-  }
-  /** 错误：“Image”类型缺少“state”属性。 必须extends Control 才行*/
-  // class Image implements SelectableControl {
-  //     public props: any;
-  //     private state: any;
-  //
-  //     select() {
-  //
-  //     }
-  // }
-  //  可以 因为继承里 拥有私有属性的 Control 类
-  class inheritControl extends Control {
-    select() {}
-  }
+    /** 错误：“Image”类型缺少“state”属性。 必须extends Control 才行*/
+    // class Image implements SelectableControl {
+    //     public props: any;
+    //     private state: any;
+    //
+    //     select() {
+    //
+    //     }
+    // }
+    //  可以 因为继承里 拥有私有属性的 Control 类
+    class inheritControl extends Control {
+        select() { }
+    }
 }
 export {};
-//# sourceMappingURL=3.8 接口继承类.js.map
+//# sourceMappingURL=3.8%20%E6%8E%A5%E5%8F%A3%E7%BB%A7%E6%89%BF%E7%B1%BB.js.map

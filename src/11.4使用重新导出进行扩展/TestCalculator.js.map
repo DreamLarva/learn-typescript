@@ -1,1 +1,1 @@
-{"version":3,"file":"TestCalculator.js","sourceRoot":"./","sources":["src/11.4使用重新导出进行扩展/TestCalculator.ts"],"names":[],"mappings":"AAAA,OAAO,EAAC,UAAU,EAAE,IAAI,EAAC,MAAM,cAAc,CAAC;AAG9C,IAAI,CAAC,GAAG,IAAI,UAAU,EAAE,CAAC;AACzB,IAAI,CAAC,CAAC,EAAE,YAAY,CAAC,CAAC,CAAC,WAAW"}
+{"version":3,"file":"TestCalculator.js","sourceRoot":"./","sources":["src/11.4使用重新导出进行扩展/TestCalculator.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,UAAU,EAAE,IAAI,EAAE,MAAM,cAAc,CAAC;AAEhD,IAAI,CAAC,GAAG,IAAI,UAAU,EAAE,CAAC;AACzB,IAAI,CAAC,CAAC,EAAE,YAAY,CAAC,CAAC,CAAC,WAAW"}

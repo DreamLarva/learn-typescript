@@ -16,5 +16,5 @@
  * */
 declare let strings2: string[];
 declare let validators2: {
-  [s: string]: Validation1.StringValidator;
+    [s: string]: Validation1.StringValidator;
 };

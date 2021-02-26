@@ -28,7 +28,7 @@ for (let s of strings2) {
   for (let name in validators2) {
     console.log(
       `"${s}" - ${
-        validators2[name].isAcceptable(s) ? "matches" : "does not match"
+        validators2[name]!.isAcceptable(s) ? "matches" : "does not match"
       } ${name}`
     );
   }

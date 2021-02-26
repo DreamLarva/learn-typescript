@@ -1,8 +1,8 @@
 declare type Arrayish<T> = {
-  length: number;
-  [x: number]: T;
+    length: number;
+    [x: number]: T;
 };
 declare type ReadonlyArrayish<T> = Readonly<Arrayish<T>>;
 declare const map1: ReadonlyArrayish<string>;
 declare let n: number;
-declare let x: string;
+declare let x: string | undefined;

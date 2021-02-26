@@ -1,5 +1,5 @@
 function identity(arg) {
-  return arg;
+    return arg;
 }
 /** 泛型类型 */
 let myIdentity1 = identity;
@@ -8,19 +8,19 @@ let myIdentity2 = identity;
 /** 使用带有调用签名的对象字面量来定义泛型函数 */
 let myIdentity3 = identity;
 {
-  let myIdentity = identity;
+    let myIdentity = identity;
 }
 {
-  /**
-   * 将泛型定为<number>类型
-   * */
-  let myIdentity = identity;
-  myIdentity(1);
-  let myIdentity1 = identity;
-  myIdentity1(1);
-  /** 使用类型推断 泛型中的类型推断为参数的类型为number */
-  let myIdentity2 = identity;
-  myIdentity2(1);
+    /**
+     * 将泛型定为<number>类型
+     * */
+    let myIdentity = identity;
+    myIdentity(1);
+    let myIdentity1 = identity;
+    myIdentity1(1);
+    /** 使用类型推断 泛型中的类型推断为参数的类型为number */
+    let myIdentity2 = identity;
+    myIdentity2(1);
 }
 export {};
-//# sourceMappingURL=6.2 泛型类型.js.map
+//# sourceMappingURL=6.2%20%E6%B3%9B%E5%9E%8B%E7%B1%BB%E5%9E%8B.js.map

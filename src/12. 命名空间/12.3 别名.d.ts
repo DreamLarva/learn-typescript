@@ -4,10 +4,12 @@
  * 你可以用这种方法为任意标识符创建别名，也包括导入的模块中的对象。
  * */
 declare namespace Shapes {
-  namespace Polygons {
-    class Triangle {}
-    class Square {}
-  }
+    namespace Polygons {
+        class Triangle {
+        }
+        class Square {
+        }
+    }
 }
 import polygons = Shapes.Polygons;
 declare let sq: polygons.Square;

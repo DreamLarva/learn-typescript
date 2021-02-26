@@ -5,21 +5,21 @@
  * 如果类似的情况 就不能保证类型的安全了
  * */
 class Animal {
-  constructor() {
-    this.a = 1;
-  }
+    constructor() {
+        this.a = 1;
+    }
 }
 class Dog extends Animal {
-  constructor() {
-    super(...arguments);
-    this.b = 2;
-  }
+    constructor() {
+        super(...arguments);
+        this.b = 2;
+    }
 }
 class Cat extends Animal {
-  constructor() {
-    super(...arguments);
-    this.c = 3;
-  }
+    constructor() {
+        super(...arguments);
+        this.c = 3;
+    }
 }
 const dog_list = [new Dog(), new Dog()];
 // 全是狗的数组 赋值给 动物(狗的父类型) 数组的类型 ts 能够接受
@@ -36,4 +36,4 @@ animal_list.push(new Cat());
  * 如果 这个引用类型 非只读
  * 在 引用类型 赋值的时候 等号左侧的类型 只能收窄 不能放宽
  * */
-//# sourceMappingURL=数组兼容性问题.js.map
+//# sourceMappingURL=%E6%95%B0%E7%BB%84%E5%85%BC%E5%AE%B9%E6%80%A7%E9%97%AE%E9%A2%98.js.map

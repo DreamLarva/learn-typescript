@@ -27,11 +27,11 @@
  * 现在下面代码不会报错
  * */
 {
-  const myNode = [
-    "div",
-    { id: "parent" },
-    ["div", { id: "first-child" }, "I'm the first child"],
-    ["div", { id: "second-child" }, "I'm the second child"],
-  ];
+    const myNode = [
+        "div",
+        { id: "parent" },
+        ["div", { id: "first-child" }, "I'm the first child"],
+        ["div", { id: "second-child" }, "I'm the second child"],
+    ];
 }
-//# sourceMappingURL=3.7 (More) Recursive Type Aliases.js.map
+//# sourceMappingURL=3.7%20(More)%20Recursive%20Type%20Aliases.js.map

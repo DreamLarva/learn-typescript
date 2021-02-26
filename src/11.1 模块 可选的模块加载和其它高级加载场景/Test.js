@@ -8,12 +8,8 @@ validators["ZIP code"] = new ZipCodeValidator();
 validators["Letters only"] = new LettersOnlyValidator();
 // Show whether each string passed each validator
 strings.forEach((s) => {
-  for (let name in validators) {
-    console.log(
-      `"${s}" - ${
-        validators[name].isAcceptable(s) ? "matches" : "does not match"
-      } ${name}`
-    );
-  }
+    for (let name in validators) {
+        console.log(`"${s}" - ${validators[name].isAcceptable(s) ? "matches" : "does not match"} ${name}`);
+    }
 });
 //# sourceMappingURL=Test.js.map

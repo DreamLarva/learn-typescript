@@ -1,2 +1,2 @@
 export {};
-//# sourceMappingURL=3.1 元组和数组上的映射类型.js.map
+//# sourceMappingURL=3.1%20%E5%85%83%E7%BB%84%E5%92%8C%E6%95%B0%E7%BB%84%E4%B8%8A%E7%9A%84%E6%98%A0%E5%B0%84%E7%B1%BB%E5%9E%8B.js.map

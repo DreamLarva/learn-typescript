@@ -1,6 +1,6 @@
 declare module "./observable" {
-  interface Observable<T> {
-    map<U>(f: (x: T) => U): Observable<U>;
-  }
+    interface Observable<T> {
+        map<U>(f: (x: T) => U): Observable<U>;
+    }
 }
 export {};

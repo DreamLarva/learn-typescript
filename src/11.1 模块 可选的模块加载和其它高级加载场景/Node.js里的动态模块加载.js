@@ -4,14 +4,14 @@
  *
  * */
 if (true) {
-  /**
-   * 为了确保类型安全性，我们可以使用typeof关键字。 typeof关键字，当在表示类型的地方使用时，会得出一个类型值，这里就表示模块的类型。
-   * */
-  let ZipCodeValidator = require("./ZipCodeValidator");
-  let validator = new ZipCodeValidator();
-  if (validator.isAcceptable("...")) {
-    /* ... */
-  }
+    /**
+     * 为了确保类型安全性，我们可以使用typeof关键字。 typeof关键字，当在表示类型的地方使用时，会得出一个类型值，这里就表示模块的类型。
+     * */
+    let ZipCodeValidator = require("./ZipCodeValidator");
+    let validator = new ZipCodeValidator();
+    if (validator.isAcceptable("...")) {
+        /* ... */
+    }
 }
 export {};
-//# sourceMappingURL=Node.js里的动态模块加载.js.map
+//# sourceMappingURL=Node.js%E9%87%8C%E7%9A%84%E5%8A%A8%E6%80%81%E6%A8%A1%E5%9D%97%E5%8A%A0%E8%BD%BD.js.map

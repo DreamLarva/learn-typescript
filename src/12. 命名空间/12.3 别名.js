@@ -6,15 +6,17 @@
  * */
 var Shapes;
 (function (Shapes) {
-  let Polygons;
-  (function (Polygons) {
-    class Triangle {}
-    Polygons.Triangle = Triangle;
-    class Square {}
-    Polygons.Square = Square;
-  })((Polygons = Shapes.Polygons || (Shapes.Polygons = {})));
+    let Polygons;
+    (function (Polygons) {
+        class Triangle {
+        }
+        Polygons.Triangle = Triangle;
+        class Square {
+        }
+        Polygons.Square = Square;
+    })(Polygons = Shapes.Polygons || (Shapes.Polygons = {}));
 })(Shapes || (Shapes = {}));
 console.log(Shapes);
 var polygons = Shapes.Polygons;
 let sq = new polygons.Square(); // Same as "new Shapes.Polygons.Square()"
-//# sourceMappingURL=12.3 别名.js.map
+//# sourceMappingURL=12.3%20%E5%88%AB%E5%90%8D.js.map

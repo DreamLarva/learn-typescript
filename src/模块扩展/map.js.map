@@ -1,1 +1,1 @@
-{"version":3,"file":"map.js","sourceRoot":"./","sources":["src/模块扩展/map.ts"],"names":[],"mappings":"AAAA,OAAO,EAAC,UAAU,EAAC,MAAM,cAAc,CAAC;AAUxC,UAAU,CAAC,SAAS,CAAC,GAAG,GAAG,UAAa,CAAgB;IACpD,OAAO,IAAI,UAAU,CAAI,CAAC,CAAC,IAAI,CAAC,GAAG,CAAC,CAAC,CAAA;AACzC,CAAC,CAAC"}
+{"version":3,"file":"map.js","sourceRoot":"./","sources":["src/模块扩展/map.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,UAAU,EAAE,MAAM,cAAc,CAAC;AAU1C,UAAU,CAAC,SAAS,CAAC,GAAG,GAAG,UAAa,CAAgB;IACtD,OAAO,IAAI,UAAU,CAAI,CAAC,CAAC,IAAI,CAAC,GAAG,CAAC,CAAC,CAAC;AACxC,CAAC,CAAC"}

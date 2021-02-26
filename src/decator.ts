@@ -1,5 +1,11 @@
 import "reflect-metadata";
-
+/**
+ * 装饰器使用 是作用于类
+ * 也就是整个类 以及每个子类,或者属性方法等的约束和使用,或者在某处对所有相同装饰器的统一处理(各种nest.js 路由这种)
+ * 如果是针对每个 实例,还是应该对单个方法 或者 属性做操作
+ *
+ * 因为无论怎么搞(?) 多个实例用的一定用的都是一个修饰符 没法针对每个实例有设置不同的标志, 同时在 类的构造方法上使用设置属性 不知可不可以
+ * */
 /**
  * 装饰器
  * tsconfig.json里启用experimentalDecorators编译器选项
@@ -178,7 +184,8 @@ console.log("----");
     }
 
     @enumerable(false)
-    greet() {
+    greet()
+    {
       return "Hello, " + this.greeting;
     }
   }
@@ -305,8 +312,7 @@ console.log("----");
     propertyKey: string | symbol,
     parameterIndex: number
   ) {
-    let existingRequiredParameters: number[] =
-      Reflect.getOwnMetadata(requiredMetadataKey, target, propertyKey) || [];
+    let existingRequiredParameters: number[] = Reflect.getOwnMetadata(requiredMetadataKey, target, propertyKey) || [];
     existingRequiredParameters.push(parameterIndex);
     Reflect.defineMetadata(
       requiredMetadataKey,

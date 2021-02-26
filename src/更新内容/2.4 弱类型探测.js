@@ -11,16 +11,16 @@
  *      3.使用类型断言（比如opts as Options）
  * */
 {
-  function sendMessage(options) {
-    // ...
-  }
-  const opts = {
-    payload: "hello world!",
-    retryOnFail: true,
-  };
-  sendMessage({ data: "1" });
-  sendMessage({});
-  // sendMessage(opts); // error  'opts' 和 'Options' 没有重叠的属性
-  // 可能我们想要用'data'/'maxRetries'来代替'payload'/'retryOnFail'
+    function sendMessage(options) {
+        // ...
+    }
+    const opts = {
+        payload: "hello world!",
+        retryOnFail: true,
+    };
+    sendMessage({ data: "1" });
+    sendMessage({});
+    // sendMessage(opts); // error  'opts' 和 'Options' 没有重叠的属性
+    // 可能我们想要用'data'/'maxRetries'来代替'payload'/'retryOnFail'
 }
-//# sourceMappingURL=2.4 弱类型探测.js.map
+//# sourceMappingURL=2.4%20%E5%BC%B1%E7%B1%BB%E5%9E%8B%E6%8E%A2%E6%B5%8B.js.map

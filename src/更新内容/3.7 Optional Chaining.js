@@ -1,36 +1,3 @@
-var __awaiter =
-  (this && this.__awaiter) ||
-  function (thisArg, _arguments, P, generator) {
-    function adopt(value) {
-      return value instanceof P
-        ? value
-        : new P(function (resolve) {
-            resolve(value);
-          });
-    }
-    return new (P || (P = Promise))(function (resolve, reject) {
-      function fulfilled(value) {
-        try {
-          step(generator.next(value));
-        } catch (e) {
-          reject(e);
-        }
-      }
-      function rejected(value) {
-        try {
-          step(generator["throw"](value));
-        } catch (e) {
-          reject(e);
-        }
-      }
-      function step(result) {
-        result.done
-          ? resolve(result.value)
-          : adopt(result.value).then(fulfilled, rejected);
-      }
-      step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-  };
 var _a;
 /**
  * ts 会阻止你 获取 null 或 undefined 的上的值
@@ -45,19 +12,14 @@ let x = foo === null || foo === void 0 ? void 0 : foo.bar.baz();
  * ?. 只受 undefined 和 null 的影响
  * */
 {
-  // Before
-  if (foo && foo.bar && foo.bar.baz) {
-    // ...
-  }
-  // After-ish
-  if (
-    (_a = foo === null || foo === void 0 ? void 0 : foo.bar) === null ||
-    _a === void 0
-      ? void 0
-      : _a.baz
-  ) {
-    // ...
-  }
+    // Before
+    if (foo && foo.bar && foo.bar.baz) {
+        // ...
+    }
+    // After-ish
+    if ((_a = foo === null || foo === void 0 ? void 0 : foo.bar) === null || _a === void 0 ? void 0 : _a.baz) {
+        // ...
+    }
 }
 /**
  * Optional chaining also includes two other operations.
@@ -66,52 +28,45 @@ let x = foo === null || foo === void 0 ? void 0 : foo.bar.baz();
  * (e.g. arbitrary strings, numbers, and symbols):
  * */
 {
-  /**
-   * Get the first element of the array if we have an array.
-   * Otherwise return undefined.
-   */
-  function tryGetFirstElement(arr) {
-    return arr === null || arr === void 0 ? void 0 : arr[0]; // 返回的类型正确 为 T | undefined
-    // equivalent to
-    //   return (arr === null || arr === undefined) ?
-    //       undefined :
-    //       arr[0];
-  }
+    /**
+     * Get the first element of the array if we have an array.
+     * Otherwise return undefined.
+     */
+    function tryGetFirstElement(arr) {
+        return arr === null || arr === void 0 ? void 0 : arr[0]; // 返回的类型正确 为 T | undefined
+        // equivalent to
+        //   return (arr === null || arr === undefined) ?
+        //       undefined :
+        //       arr[0];
+    }
 }
 /**
  * 同样可以使用在 调用方法
  * 当然 new 新建实例 不行 因为 new 在前面呀
  * */
 {
-  function makeRequest1(url, log) {
-    return __awaiter(this, void 0, void 0, function* () {
-      log === null || log === void 0
-        ? void 0
-        : log(`Request started at ${new Date().toISOString()}`);
-      // roughly equivalent to
-      //   if (log != null) {
-      //       log(`Request started at ${new Date().toISOString()}`);
-      //   }
-      const result = (yield fetch(url)).json();
-      log === null || log === void 0
-        ? void 0
-        : log(`Request finished at at ${new Date().toISOString()}`);
-      return result;
-    });
-  }
+    async function makeRequest1(url, log) {
+        log === null || log === void 0 ? void 0 : log(`Request started at ${new Date().toISOString()}`);
+        // roughly equivalent to
+        //   if (log != null) {
+        //       log(`Request started at ${new Date().toISOString()}`);
+        //   }
+        const result = (await fetch(url)).json();
+        log === null || log === void 0 ? void 0 : log(`Request finished at at ${new Date().toISOString()}`);
+        return result;
+    }
 }
 /**
  * optional chaining 只限制了取值的操作 并没有 限制其他的操作
  * */
 {
-  function someComputation() {
-    return 1;
-  }
-  // 就算 foo 为空 那么 foo?.bar 为 undefined  但是 触发运算 以及 someComputation方法依然会执行
-  let result =
-    (foo === null || foo === void 0 ? void 0 : foo.bar) / someComputation();
-  // 编译的结果是
-  // let result = ((_a = foo) === null || _a === void 0 ? void 0 : _a.bar) / someComputation();
+    function someComputation() {
+        return 1;
+    }
+    // 就算 foo 为空 那么 foo?.bar 为 undefined  但是 触发运算 以及 someComputation方法依然会执行
+    let result = (foo === null || foo === void 0 ? void 0 : foo.bar) / someComputation();
+    // 编译的结果是
+    // let result = ((_a = foo) === null || _a === void 0 ? void 0 : _a.bar) / someComputation();
 }
 /**
  * 有这个 编译参数的时候 -strictNullChecks
@@ -119,11 +74,11 @@ let x = foo === null || foo === void 0 ? void 0 : foo.bar.baz();
  * 比如 数学运算 还是要确保数字类型
  * */
 {
-  function barPercentage(foo) {
-    // return foo?.bar / 100;
-    //     ~~~~~~~~
-    // Error: Object is possibly undefined.
-  }
+    function barPercentage(foo) {
+        // return foo?.bar / 100;
+        //     ~~~~~~~~
+        // Error: Object is possibly undefined.
+    }
 }
 export {};
-//# sourceMappingURL=3.7 Optional Chaining.js.map
+//# sourceMappingURL=3.7%20Optional%20Chaining.js.map

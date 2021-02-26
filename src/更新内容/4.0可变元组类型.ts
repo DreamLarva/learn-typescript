@@ -359,7 +359,7 @@ function fr2<U extends unknown[]>(u: U) {
   fr1(1, "hello", true, 2); // [string, boolean]
   fr1(1, ...u, "hi", 2); // [...U, string]
   // 然而这里没有报错 ???
-  fr1(1); //  Error: Expected 2 arguments, but got 1
+  // fr1(1); //  Error: Expected 2 arguments, but got 1
 }
 
 /**

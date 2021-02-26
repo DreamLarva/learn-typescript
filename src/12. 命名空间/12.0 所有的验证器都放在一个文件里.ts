@@ -26,7 +26,7 @@ validators["Letters only"] = new LettersOnlyValidator();
 
 for (let s of strings) {
   for (let name in validators) {
-    let isMatch = validators[name].isAcceptable(s);
+    let isMatch = validators[name]!.isAcceptable(s);
     console.log(`'${s}' ${isMatch ? "matches" : "does not match"} '${name}'.`);
   }
 }

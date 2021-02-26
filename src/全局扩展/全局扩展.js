@@ -4,14 +4,14 @@
  * */
 // observable.ts
 export class Observable {
-  // ... still no implementation ...
-  constructor(val) {
-    this.val = val;
-    this.val = val;
-  }
+    // ... still no implementation ...
+    constructor(val) {
+        this.val = val;
+        this.val = val;
+    }
 }
 Array.prototype.toObservable = function () {
-  return new Observable(1);
+    return new Observable(1);
 };
 [].toObservable();
 /**
@@ -23,4 +23,4 @@ window.helloWorld = () => console.log("hello world");
 window.helloWorld();
 // 滥用会导致错误
 // window.helloWorld('gracius'); // Error: 提供的参数与目标不匹配
-//# sourceMappingURL=全局扩展.js.map
+//# sourceMappingURL=%E5%85%A8%E5%B1%80%E6%89%A9%E5%B1%95.js.map

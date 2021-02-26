@@ -9,17 +9,17 @@
  * 在文件末尾的测试代码里，由于是在命名空间之外访问，因此需要限定类型的名称，比如 Validation0.LettersOnlyValidator。
  * */
 declare namespace Validation0 {
-  interface StringValidator {
-    isAcceptable(s: string): boolean;
-  }
-  class LettersOnlyValidator implements StringValidator {
-    isAcceptable(s: string): boolean;
-  }
-  class ZipCodeValidator implements StringValidator {
-    isAcceptable(s: string): boolean;
-  }
+    interface StringValidator {
+        isAcceptable(s: string): boolean;
+    }
+    class LettersOnlyValidator implements StringValidator {
+        isAcceptable(s: string): boolean;
+    }
+    class ZipCodeValidator implements StringValidator {
+        isAcceptable(s: string): boolean;
+    }
 }
 declare let strings1: string[];
 declare let validators1: {
-  [s: string]: Validation0.StringValidator;
+    [s: string]: Validation0.StringValidator;
 };

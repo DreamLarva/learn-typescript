@@ -10,25 +10,24 @@
  * */
 var AnimalFlags;
 (function (AnimalFlags) {
-  AnimalFlags[(AnimalFlags["None"] = 0)] = "None";
-  AnimalFlags[(AnimalFlags["HasClaws"] = 1)] = "HasClaws";
-  AnimalFlags[(AnimalFlags["CanFly"] = 2)] = "CanFly";
-  AnimalFlags[(AnimalFlags["EatsFish"] = 4)] = "EatsFish";
-  AnimalFlags[(AnimalFlags["Endangered"] = 8)] = "Endangered";
-  AnimalFlags[(AnimalFlags["EndangeredFlyingClawedFishEating"] = 15)] =
-    "EndangeredFlyingClawedFishEating";
+    AnimalFlags[AnimalFlags["None"] = 0] = "None";
+    AnimalFlags[AnimalFlags["HasClaws"] = 1] = "HasClaws";
+    AnimalFlags[AnimalFlags["CanFly"] = 2] = "CanFly";
+    AnimalFlags[AnimalFlags["EatsFish"] = 4] = "EatsFish";
+    AnimalFlags[AnimalFlags["Endangered"] = 8] = "Endangered";
+    AnimalFlags[AnimalFlags["EndangeredFlyingClawedFishEating"] = 15] = "EndangeredFlyingClawedFishEating";
 })(AnimalFlags || (AnimalFlags = {}));
 function printAnimalAbilities(animal) {
-  var animalFlags = animal.flags;
-  if (animalFlags & AnimalFlags.HasClaws) {
-    console.log("animal has claws");
-  }
-  if (animalFlags & AnimalFlags.CanFly) {
-    console.log("animal can fly");
-  }
-  if (animalFlags == AnimalFlags.None) {
-    console.log("nothing");
-  }
+    var animalFlags = animal.flags;
+    if (animalFlags & AnimalFlags.HasClaws) {
+        console.log("animal has claws");
+    }
+    if (animalFlags & AnimalFlags.CanFly) {
+        console.log("animal can fly");
+    }
+    if (animalFlags == AnimalFlags.None) {
+        console.log("nothing");
+    }
 }
 var animal = { flags: AnimalFlags.None };
 printAnimalAbilities(animal); // nothing
@@ -39,4 +38,4 @@ printAnimalAbilities(animal); // nothing
 animal.flags |= AnimalFlags.HasClaws | AnimalFlags.CanFly;
 printAnimalAbilities(animal); // animal has claws, animal can fly
 export {};
-//# sourceMappingURL=使用数字类型作为标志.js.map
+//# sourceMappingURL=%E4%BD%BF%E7%94%A8%E6%95%B0%E5%AD%97%E7%B1%BB%E5%9E%8B%E4%BD%9C%E4%B8%BA%E6%A0%87%E5%BF%97.js.map
