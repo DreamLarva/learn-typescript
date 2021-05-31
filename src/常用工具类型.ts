@@ -103,9 +103,8 @@ const Parameters_1: Parameters<() => void> = []; // 无参数 就是 空数组
  * Obtain the parameters of a constructor function type in a tuple
  * 获取构造函数的 参数类型
  */
-type ConstructorParameters<
-  T extends new (...args: any) => any
-> = T extends new (...args: infer P) => any ? P : never;
+type ConstructorParameters<T extends new (...args: any) => any> =
+  T extends new (...args: infer P) => any ? P : never;
 
 /**
  * Obtain the return type of a function type
@@ -228,11 +227,10 @@ type Equals<X, Y> = (<T>() => T extends X ? 1 : 2) extends <T>() => T extends Y
   ? true
   : false;
 {
-  type a = Equals<{},{}> // true
-  type b = Equals<{},{a:1}> // false
-  type c = Equals<number,1> // false
-  type d = Equals<RequiredKeys<any>, OptionalKeys<any>> // false
-
+  type a = Equals<{}, {}>; // true
+  type b = Equals<{}, { a: 1 }>; // false
+  type c = Equals<number, 1>; // false
+  type d = Equals<RequiredKeys<any>, OptionalKeys<any>>; // false
 }
 
 /**
@@ -244,25 +242,25 @@ type Equals<X, Y> = (<T>() => T extends X ? 1 : 2) extends <T>() => T extends Y
   // type Capitalize<S extends string> = intrinsic;
   // type Uncapitalize<S extends string> = intrinsic;
 
-  type T10 = Uppercase<'hello'>;  // 转小写 "HELLO"
-  type T11 = Lowercase<'HELLO'>;  // 转大写 "hello"
-  type T12 = Capitalize<'hello'>;  // 转首字母大写 "Hello"
-  type T13 = Uncapitalize<'Hello'>;  // 转首字母小写 "hello"
+  type T10 = Uppercase<"hello">; // 转小写 "HELLO"
+  type T11 = Lowercase<"HELLO">; // 转大写 "hello"
+  type T12 = Capitalize<"hello">; // 转首字母大写 "Hello"
+  type T13 = Uncapitalize<"Hello">; // 转首字母小写 "hello"
 
-  type T20 = Uppercase<'foo' | 'bar'>;  // "FOO" | "BAR"
-  type T21 = Lowercase<'FOO' | 'BAR'>;  // "foo" | "bar"
-  type T22 = Capitalize<'foo' | 'bar'>;  // "Foo" | "Bar"
-  type T23 = Uncapitalize<'Foo' | 'Bar'>;  // "foo" | "bar"
+  type T20 = Uppercase<"foo" | "bar">; // "FOO" | "BAR"
+  type T21 = Lowercase<"FOO" | "BAR">; // "foo" | "bar"
+  type T22 = Capitalize<"foo" | "bar">; // "Foo" | "Bar"
+  type T23 = Uncapitalize<"Foo" | "Bar">; // "foo" | "bar"
 
   type T30<S extends string> = Uppercase<`aB${S}`>;
-  type T31 = T30<'xYz'>;  // "ABXYZ"
+  type T31 = T30<"xYz">; // "ABXYZ"
   type T32<S extends string> = Lowercase<`aB${S}`>;
-  type T33 = T32<'xYz'>;  // "abxyz"
-  type T34 = `${Uppercase<'abc'>}${Lowercase<'XYZ'>}`;  // "ABCxyz"
+  type T33 = T32<"xYz">; // "abxyz"
+  type T34 = `${Uppercase<"abc">}${Lowercase<"XYZ">}`; // "ABCxyz"
 
-  type T40 = Uppercase<string>;  // string
-  type T41 = Uppercase<any>;  // any
-  type T42 = Uppercase<never>;  // never
+  type T40 = Uppercase<string>; // string
+  type T41 = Uppercase<any>; // any
+  type T42 = Uppercase<never>; // never
   // type T43 = Uppercase<42>;  // Error, type 'number' does not satisfy the constraint 'string'
 }
 
@@ -271,12 +269,13 @@ type Equals<X, Y> = (<T>() => T extends X ? 1 : 2) extends <T>() => T extends Y
  * 太牛逼了
  * */
 {
-  type UnionToTuple<T> = ((T extends any ? (t: T) => T : never) extends infer U
-    ? (U extends any ? (u: U) => any : never) extends (v: infer V) => any
-      ? V
+  type UnionToTuple<T> = (
+    (T extends any ? (t: T) => T : never) extends infer U
+      ? (U extends any ? (u: U) => any : never) extends (v: infer V) => any
+        ? V
+        : never
       : never
-    : never
-    ) extends (_: any) => infer W
+  ) extends (_: any) => infer W
     ? [...UnionToTuple<Exclude<T, W>>, W]
     : [];
 
