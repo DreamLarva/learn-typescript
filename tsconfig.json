@@ -67,5 +67,6 @@
 
     "incremental": true,
     "locale": "zh-cn",
+    "exactOptionalPropertyTypes": true
   }
 }
