@@ -32,7 +32,7 @@ class C {
 }
 
 class D extends C {
-  foo = 20;
+  override foo = 20;
 
   dHelper() {
     return this.foo;

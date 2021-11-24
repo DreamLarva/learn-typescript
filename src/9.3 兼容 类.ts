@@ -150,13 +150,13 @@
   }
 
   class BlackPanther extends Animal {
-    feet!: number;
+    override feet!: number;
 
     constructor(name: string, numFeet: number, other: any) {
       super(name, numFeet);
     }
 
-    protected a() {}
+     protected override a() {}
   }
 
   let a: Animal = new Animal("name", 123);

@@ -8,7 +8,7 @@ class Employee {
     this._fullName = fullName;
   }
 
-  private _fullName?: string;
+  private _fullName: string | undefined; //  ? 可以去掉
 
   get fullName(): string {
     return <string>this._fullName;

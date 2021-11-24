@@ -42,7 +42,7 @@
       super(name);
     }
 
-    move(distanceInMeters: number = 5) {
+    override move(distanceInMeters: number = 5) {
       console.log("Slithering...");
       super.move(distanceInMeters);
     }
@@ -53,12 +53,13 @@
       super(name);
     }
 
-    move(distanceInMeters = 45) {
+    override move(distanceInMeters = 45) {
       console.log("Galloping...");
       super.move(distanceInMeters);
     }
 
-    eat() {}
+    eat() {
+    }
   }
 
   let sam = new Snake("Sammy the Python");

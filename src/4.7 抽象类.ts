@@ -66,7 +66,7 @@ class A extends AccountingDepartment {
     super();
   }
 
-  generateReports(): void {
+  override generateReports(): void {
     super.name;
     super.generateReports();
     super.printMeeting();
