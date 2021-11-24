@@ -175,12 +175,11 @@ type Defined<T> = T extends undefined ? never : T;
 }
 
 // 如果 P 中的可选 在DP 中有则变成 required
-type WithDefaultProps<P, DP extends Partial<P>> = Omit<P, keyof DP> &
-  {
-    [K in Extract<keyof DP, keyof P>]: DP[K] extends Defined<P[K]>
-      ? Defined<P[K]>
-      : Defined<P[K]> | DP[K];
-  };
+type WithDefaultProps<P, DP extends Partial<P>> = Omit<P, keyof DP> & {
+  [K in Extract<keyof DP, keyof P>]: DP[K] extends Defined<P[K]>
+    ? Defined<P[K]>
+    : Defined<P[K]> | DP[K];
+};
 {
   type a = Defined<undefined | number> | 1; // number
   type b = WithDefaultProps<{ a: 1; b?: number }, { b: 2 }>;
@@ -329,6 +328,31 @@ type Equals<X, Y> = (<T>() => T extends X ? 1 : 2) extends <T>() => T extends Y
   >;
 }
 
+/**
+ * from 4.5
+ * Awaited 类型
+ * 常用于 Promise.all,Promise.race 等情况
+ * */
+{
+  // A = string
+  type A = Awaited<Promise<string>>;
+
+  // B = number
+  type B = Awaited<Promise<Promise<number>>>;
+
+  // C = boolean | number
+  type C = Awaited<boolean | Promise<number>>;
+}
+
+declare function MaybePromise<T>(value: T): T | Promise<T> | PromiseLike<T>;
+  
+{
+  // 正确推断了 async function
+  async function doSomething(): Promise<[number, number]> {
+    const result = await Promise.all([MaybePromise(100), MaybePromise(200)]);
+
+    return result;
+  }
+}
 
 export {};
-
