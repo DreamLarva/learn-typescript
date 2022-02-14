@@ -222,10 +222,9 @@ function Test(){
 
 // You'd probably use JSX instead of this
 const Link = <T>({ route, params, children }: LinkProps<T>) => {
-
   // href 这个属性报错
   // return `<a
-  //    href="${urlFor(route, params || {})}"
+  //    href="${urlFor(route, params || {} as)}"
   //    onclick="navigate(this); event.preventDefault()"
   //  >${children}</a>`;
 };
