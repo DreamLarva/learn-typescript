@@ -6,8 +6,8 @@ function makeBox<T>(value: T) {
   return { value };
 }
 
-interface Hammer {}
-interface Wrench {}
+interface Hammer{}
+interface Wrench{}
 
 // 直接定下 泛型 T
 const makeHammerBox = makeBox<Hammer>;
