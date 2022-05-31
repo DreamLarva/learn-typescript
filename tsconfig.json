@@ -67,6 +67,8 @@
 
     "incremental": true,
     "locale": "zh-cn",
-    "exactOptionalPropertyTypes": true        /* 严格检查 通过 赋值undefined的属性 和未赋值而导致的undefined 视为不同的类型 */
+    "exactOptionalPropertyTypes": true,        /* 严格检查 通过 赋值undefined的属性 和未赋值而导致的undefined 视为不同的类型 */
+
+    "module": "node16"
   }
 }
