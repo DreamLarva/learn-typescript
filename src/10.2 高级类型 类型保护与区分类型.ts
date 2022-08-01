@@ -264,7 +264,7 @@
     c.a = 12;
     // c.a = undefined; // error, 'undefined' is not assignable to 'number'
     c.b = 13;
-    c.b = undefined; // ok
+    // c.b = undefined; // exactOptionalPropertyTypes设置为 true 时 报错,不能手动设置为 undefined
     // c.b = null; // error, 'null' is not assignable to 'number | undefined'
   }
 

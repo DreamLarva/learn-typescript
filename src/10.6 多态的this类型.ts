@@ -40,7 +40,7 @@
       return this;
     }
 
-    public minus(operand: number): this {
+     public override minus(operand: number): this {
       super.minus(operand);
       return this;
     }
