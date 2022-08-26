@@ -263,6 +263,7 @@ function f20(x: unknown) {
 /**
  * 特别的提示
  * {} 类型 就是 任意 可以 用 .xxx 的类型 也就是 除 null 和 undefined 的类型
+ * 没有约束的 T 是不能传递给 {} 的 from TS 4.8
  * */
 {
   const a: {} = { a: { b: {} } };
@@ -273,7 +274,30 @@ function f20(x: unknown) {
   // const f: {} = undefined // error
   const g: {} = NaN;
   const h: {} = () => null;
-}
 
+  function bar(value: {}) {
+    Object.keys(value); // This call throws on null/undefined at runtime.
+  }
+
+  interface Bar<T extends {}> {}
+
+  // Unconstrained type parameter T...
+  function foo<T>(x: T) {
+    // bar(x); // Used to be allowed, now is an error in 4.8.
+    // error: Argument of type 'T' is not assignable to parameter of type '{}'.
+
+    if (x != null) {
+      bar(x); // ok
+    }
+
+    bar(x!); // ok
+  }
+
+  foo(undefined);
+
+  function foo1<T extends {}>(x: T) {
+    bar(x); // ok
+  }
+}
 
 export {};

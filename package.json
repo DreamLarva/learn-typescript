@@ -22,7 +22,7 @@
   "homepage": "https://github.com/DreamLarva/my_ts_starter#readme",
   "devDependencies": {
     "@types/lodash-es": "^4.17.6",
-    "@types/node": "^16.11.47",
+    "@types/node": "^16.11.56",
     "prettier": "^2.7.1",
     "ts-node": "^10.9.1"
   },

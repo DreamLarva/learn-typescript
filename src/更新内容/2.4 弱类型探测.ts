@@ -30,3 +30,89 @@
   // sendMessage(opts); // error  'opts' 和 'Options' 没有重叠的属性
   // 可能我们想要用'data'/'maxRetries'来代替'payload'/'retryOnFail'
 }
+
+{
+  type MyType =
+    | string
+    | {
+        b: { b: number };
+        StartType?: string;
+        StartContext?: string;
+        StartDate?: string;
+        StartFalg?: string;
+      }
+    | {
+        a: { a: number };
+        EndType?: string;
+        EndContext?: string;
+        EndDate?: string;
+        EndFalg?: string;
+      };
+
+  const x: MyType = {
+    // OK
+    StartDate: "1",
+    a: { a: 1 },
+  };
+}
+
+{
+  type MyType =
+    | {
+        b: { b: number };
+      }
+    | {
+        a: { a: number };
+      };
+
+  const x: MyType = {
+    // OK
+    b: { b: 1 },
+    a: { a: 1 },
+  };
+
+  console.log(x);
+}
+
+{
+  class A {
+    a?: number;
+  }
+
+  class B {
+    b?: string;
+  }
+
+  class E {
+    a: number = 1;
+    b: string = "2";
+  }
+
+  const e: A | B = { a: 1, b: "2" };
+  const f: E = { a: 1, b: "2" };
+
+  function D(p: A | B) {}
+
+  D(e);
+  D(f);
+}
+{
+  type A = {
+    a: "1";
+    b?: number;
+  };
+  type B = {
+    a: "2";
+    c?: string;
+  };
+
+  // Error
+  // const C: A | B = {
+  //   a: "2",
+  //   b: 1,
+  // };
+
+}
+
+export {};
+
