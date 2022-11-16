@@ -22,13 +22,13 @@
   "homepage": "https://github.com/DreamLarva/my_ts_starter#readme",
   "devDependencies": {
     "@types/lodash-es": "^4.17.6",
-    "@types/node": "^16.11.56",
+    "@types/node": "^16.18.3",
     "prettier": "^2.7.1",
     "ts-node": "^10.9.1"
   },
   "dependencies": {
     "core-decorators": "latest",
-    "csstype": "^3.1.0",
+    "csstype": "^3.1.1",
     "lodash": "^4.17.21",
     "redux": "^4.2.0",
     "reflect-metadata": "^0.1.13",

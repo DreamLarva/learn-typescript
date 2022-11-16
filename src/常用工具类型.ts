@@ -345,7 +345,7 @@ type Equals<X, Y> = (<T>() => T extends X ? 1 : 2) extends <T>() => T extends Y
 }
 
 declare function MaybePromise<T>(value: T): T | Promise<T> | PromiseLike<T>;
-  
+
 {
   // 正确推断了 async function
   async function doSomething(): Promise<[number, number]> {
@@ -353,6 +353,38 @@ declare function MaybePromise<T>(value: T): T | Promise<T> | PromiseLike<T>;
 
     return result;
   }
+}
+
+/**
+ * 互斥工具类型 XOR
+ * 只能满足其一
+ * */
+{
+  // 从 U 中 剔除 T和U的交集
+  type Without<T, U> = { [P in Exclude<keyof T, keyof U>]?: never };
+  type XOR<T, U> = (Without<T, U> & U) | (Without<U, T> & T);
+
+  interface Foo {
+    foo: string;
+    a?: number;
+  }
+  interface Bar {
+    bar: string;
+    a?: number;
+  }
+  type FooOrBar = XOR<Foo, Bar>;
+
+  const fooOrBar1: FooOrBar = { foo: "string" };
+  const fooOrBar2: FooOrBar = { bar: "string" };
+  const fooOrBar5: FooOrBar = { bar: "string", a: 1 };
+
+  // const fooOrBar3: FooOrBar = { baz: "string" }; // error
+  // const fooOrBar4: FooOrBar = { foo: "string", bar: "bar" }; // error
+
+  type FooOrBar2 = Foo | Bar;
+  const fooOrBar4: FooOrBar2 = { foo: "string" };
+  const fooOrBar6: FooOrBar2 = { bar: "string" };
+  const fooOrBar7: FooOrBar2 = { foo: "string", bar: "string" }; // Ok 但是没有互斥 可以是都含有
 }
 
 export {};
