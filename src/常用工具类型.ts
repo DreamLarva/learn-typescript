@@ -387,4 +387,34 @@ declare function MaybePromise<T>(value: T): T | Promise<T> | PromiseLike<T>;
   const fooOrBar7: FooOrBar2 = { foo: "string", bar: "string" }; // Ok 但是没有互斥 可以是都含有
 }
 
+/**
+ * 联合类型转交叉类型
+ * */
+{
+  type UnionToIntersection<U> = (
+    U extends any ? (k: U) => void : never
+  ) extends (k: infer R) => void
+    ? R
+    : never;
+
+  type A = UnionToIntersection<{ a: 1 } | { b: 2 }>; // { a: 1 } & { b: 2 }
+}
+
+/**
+ * 让两个相同的类型不兼容
+ * */
+{
+  type PositiveNumber = number & { readonly __type: unique symbol };
+  type PositiveNumber2 = number & { readonly __type: unique symbol };
+
+  const isPositiveNumber = (x: A): x is PositiveNumber => {
+    return x >= 1;
+  };
+
+  let x = 2 as PositiveNumber;
+  let y = 2 as PositiveNumber2;
+
+  // x = y; // error
+}
+
 export {};

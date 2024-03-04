@@ -133,3 +133,15 @@
 }
 
 export {};
+
+function a(b: {
+  answer: string;
+  options:
+    | { name: string; answerScore: string; id: string; value: string }[]
+    | { name: string; id: string; value: string }[];
+  id: string;
+  title: string;
+  type: number;
+}) {
+  b.options.map((v) => v);
+}
