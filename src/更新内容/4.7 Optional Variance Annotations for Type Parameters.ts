@@ -9,7 +9,7 @@ class Dog extends Animal {
   type Getter<T> = () => T;
   // Getter<Dog> 给 Getter<Animal> 赋值 是ok 的, T应该符合协变(子类型都符合)
   let a = new Animal();
-  let b = new Dog();
+  let jsb = new Dog();
   let c: Getter<Animal> = () => new Animal();
   let d: Getter<Dog> = () => new Dog();
 
@@ -52,17 +52,17 @@ class Dog extends Animal {
 
 {
   // error
-  interface State<out T> { // 改成 in out 就ok了, 因为不能同时逆变 和 协变
-    //          ~~~~~
-    // error!
-    // Type 'State<sub-T>' is not assignable to type 'State<super-T>' as implied by variance annotation.
-    //   Types of property 'set' are incompatible.
-    //     Type '(value: sub-T) => void' is not assignable to type '(value: super-T) => void'.
-    //       Types of parameters 'value' and 'value' are incompatible.
-    //         Type 'super-T' is not assignable to type 'sub-T'.
-    get: () => T;
-    set: (value: T) => void;
-  }
+  // interface State<out T> { // 改成 in out 就ok了, 因为不能同时逆变 和 协变
+  //   //          ~~~~~
+  //   // error!
+  //   // Type 'State<sub-T>' is not assignable to type 'State<super-T>' as implied by variance annotation.
+  //   //   Types of property 'set' are incompatible.
+  //   //     Type '(value: sub-T) => void' is not assignable to type '(value: super-T) => void'.
+  //   //       Types of parameters 'value' and 'value' are incompatible.
+  //   //         Type 'super-T' is not assignable to type 'sub-T'.
+  //   get: () => T;
+  //   set: (value: T) => void;
+  // }
 }
 
 type Foo<T> = {
