@@ -150,10 +150,14 @@
   }
 
   class BlackPanther extends Animal {
-    override feet!: number;
+    // override 必须有默认值, 或者有初始化
+    // override feet!: number;
+    override feet: number;
 
     constructor(name: string, numFeet: number, other: any) {
       super(name, numFeet);
+
+      this.feet = 1;
     }
 
      protected override a() {}

@@ -1,8 +1,11 @@
 declare module "url" {
   export interface Url {
-    protocol?: string;
-    hostname?: string;
-    pathname?: string;
+    //  All declarations of protocol must have identical modifiers.
+    // pathname?: string; // error
+
+    protocol: string;
+    hostname: string|undefined;
+
   }
 
   export function parse(

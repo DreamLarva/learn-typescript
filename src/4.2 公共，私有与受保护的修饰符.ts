@@ -101,6 +101,12 @@
    * */
   class Person {
     protected name: string;
+    protected a = 0;
+    private b = 1;
+    public c = 2;
+    protected f() {}
+    private g() {}
+    public h() {}
 
     constructor(name: string) {
       this.name = name;
@@ -124,10 +130,26 @@
     }
 
     public getElevatorPitch() {
+      this.a;
+      // this.b; // error private 不能读取
+      this.c;
+
+      // super.a; // error 不能从父类中用super读取
+      // super.b; // error 不能从父类中用super读取
+      // super.c; // error 不能从父类中用super读取
+
+      this.f();
+      // this.g(); // error private 不能读取
+      this.h();
+
+      super.f();
+      // super.g(); // error private 不能读取
+      super.h();
+
       // 不过我自己还是建议 与来自基类的 成员互动的时候 还是使用 super 前缀更佳
-      return `Hello, my name is ${super.name} and I work in ${
-        this.department
-      }.`;
+      // return `Hello, my name is ${super.name} and I work in ${this.department}.`; // TS5.5 报错 不能从super上取值
+
+      return `Hello, my name is ${this.name} and I work in ${this.department}.`
     }
   }
 

@@ -75,12 +75,13 @@
 
   let test = function (param: Aenum | Benum | Cenum | "string" | 1) {
     // 没错这里  Aenum.a  Benum.a Cenum.a 都为 0
-    if (Aenum.a) {
-    }
-    if (Benum.a) {
-    }
-    if (Cenum.a) {
-    }
+    // From 5.5 已经能够判断出 只能false
+    // if (Aenum.a) {
+    // }
+    // if (Benum.a) {
+    // }
+    // if (Cenum.a) {
+    // }
   };
 
   // 没错这里  Aenum.a  Benum.a Cenum.a 都为 0
