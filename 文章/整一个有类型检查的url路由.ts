@@ -1,5 +1,7 @@
 {
-  type IsParameter<Part> = Part extends `[${infer ParamName}]` ? ParamName : never;
+  type IsParameter<Part> = Part extends `[${infer ParamName}]`
+    ? ParamName
+    : never;
   type FilteredParts<Path> = Path extends `${infer PartA}/${infer PartB}`
     ? IsParameter<PartA> | FilteredParts<PartB>
     : IsParameter<Path>;
@@ -13,11 +15,9 @@
   function get<Path extends string>(path: Path, callback: CallbackFn<Path>) {
     // TODO: implement
   }
-
 }
 
 {
-
   type PathSegments<Path extends string> =
     Path extends `${infer SegmentA}/${infer SegmentB}`
       ? ParamOnly<SegmentA> | PathSegments<SegmentB>
@@ -33,6 +33,4 @@
   type B = RouteParams<"/a/b/:c">;
   type C = RouteParams<"/a/b/:c/:d">;
   type D = RouteParams<"a/b/:c/:d">;
-
 }
-
